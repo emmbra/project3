@@ -1,3 +1,13 @@
 // Authenticate user action types
 export const AUTH_USER = 'AUTH_USER';
 export const AUTH_USER_ERROR = 'AUTH_USER_ERROR';
+
+
+export const GET_USER_BY_ID = 'GET_USER_BY_ID';
+export const GET_USER_BY_ID_ERROR = 'GET_USER_BY_ID_ERROR';
+
+export const GET_ALL_USER_EMAILS = 'GET_ALL_USER_EMAILS';
+export const GET_ALL_USER_EMAILS_ERROR = 'GET_ALL_USER_EMAILS_ERROR';
+
+export const GET_ALL_USER_USERNAMES = 'GET_ALL_USER_USERNAMES';
+export const GET_ALL_USER_USERNAMES_ERROR = 'GET_ALL_USER_USERNAMES_ERROR';
