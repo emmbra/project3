@@ -31,9 +31,17 @@ const EventSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   }],
-  events: [{
+  teams: [{
     type: Schema.Types.ObjectId,
-    ref: 'Event',
+    ref: 'Team',
+  }],
+  logs: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Log',
+  }],
+  records: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Record',
   }],
 });
 
