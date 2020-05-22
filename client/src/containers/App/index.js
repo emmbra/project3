@@ -6,6 +6,7 @@ import { Grid } from 'semantic-ui-react'
 import SignUp from '../SignUp';
 import SignIn from '../SignIn';
 import SignOut from '../SignOut';
+import TeamContainer from '../TeamContainer';
 
 import Navbar from './../../components/Navbar';
 
@@ -20,9 +21,10 @@ class App extends Component {
 
           <Route exact path='/signin' component={SignIn}/>
           <Route exact path='/signout' component={SignOut}/>
-          <Route exact path='/alltodos' component={AllTodosList}/>
+          <Route exact path='/teamsignup' component={TeamContainer}/>
+          {/* <Route exact path='/alltodos' component={AllTodosList}/>
           <Route exact path='/usertodos' component={UserTodoList}/>
-          <Route exact path='/counter' component={Counter}/>
+          <Route exact path='/counter' component={Counter}/> */}
         </Grid.Column>
       </Grid>
     )

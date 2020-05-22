@@ -14,10 +14,7 @@ module.exports = {
   },
   getAllUserEmails: async (req, res) => {
     try {
-      const users = await User.find({}, 'email');
-      if (!users) {
-        return res.status(400).json({ error: 'There are no users registered at the moment' });
-      }
+      const users = await User.findOne({ email: req.query.email }, 'email');
       return res.status(200).json(users);
     } catch (e) {
       return res.status(403).json(e);
@@ -25,10 +22,7 @@ module.exports = {
   },
   getAllUserUsernames: async (req, res) => {
     try {
-      const users = await User.find({}, 'username');
-      if (!users) {
-        return res.status(400).json({ error: 'There are no users registered at the moment' });
-      }
+      const users = await User.find({ email: req.query.username }, 'username');
       return res.status(200).json(users);
     } catch (e) {
       return res.status(403).json(e);

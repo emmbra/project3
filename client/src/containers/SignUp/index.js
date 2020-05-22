@@ -19,6 +19,20 @@ class SignUp extends Component {
     }
   }
 
+  renderUsername = ({ input, meta }) => {
+    return (
+      <Form.Input
+        {...input}
+        fluid
+        error={ meta.touched && meta.error }
+        icon='user'
+        iconPosition='left'
+        autoComplete='off'
+        placeholder='Username'
+      />
+    )
+  }
+  
   renderEmail = ({ input, meta }) => {
     return (
       <Form.Input
@@ -64,6 +78,16 @@ class SignUp extends Component {
             }
             component={this.renderEmail}
           />
+                    <Field
+            name='username'
+            validate={
+              [
+                required({ msg: 'username is required' }),
+                // maxLength15({ msg: 'You must provide a valid username' })
+              ]
+            }
+            component={this.renderUsername}
+          />
           <Field
             name='password'
             validate={
@@ -91,6 +115,7 @@ class SignUp extends Component {
 const asyncValidate = async ({ email }) => {
   try {
     const { data } = await axios.get(`/api/user/emails?email=${email}`);
+    console.log(data);
     if (data) {
       throw new Error();
     }

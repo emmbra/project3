@@ -8,10 +8,10 @@ router.route('/')
 
 // api/user/emails
 router.route('/emails')
-  .get(requireAuth, getAllUserEmails);
+  .get(getAllUserEmails);
 
 // api/user/username
 router.route('/username')
-  .get(requireAuth, getAllUserUsernames);
+  .get(getAllUserUsernames);
 
 module.exports = router;
