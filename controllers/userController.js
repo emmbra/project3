@@ -3,8 +3,7 @@ const { User } = require('../models');
 module.exports = {
   getUserById: async (req, res) => {
     try {
-      const { userId } = req.params;
-      const users = await User.findById(userId).populate('Team').populate('Record').populate('Log').populate('Event');
+      const users = await User.findById(req.user._id).populate('Team').populate('Record').populate('Log').populate('Event');
       if (!users) {
         return res.status(400).json({ error: 'No users found' });
       }
