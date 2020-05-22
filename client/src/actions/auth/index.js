@@ -7,5 +7,3 @@ export const signOut = () => {
     payload: ''
   };
 };
-
-

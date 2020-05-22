@@ -2,13 +2,16 @@ const router = require('express').Router();
 const { getUserById, getAllUserEmails, getAllUserUsernames } = require('../../../controllers/userController');
 const { requireAuth } = require('../../../middlewares/authMiddlewares');
 
-router.route('/user')
+// api/user/
+router.route('/')
   .get(requireAuth, getUserById);
 
-router.route('/user/emails')
+// api/user/emails
+router.route('/emails')
   .get(requireAuth, getAllUserEmails);
 
-router.route('/user/username')
+// api/user/username
+router.route('/username')
   .get(requireAuth, getAllUserUsernames);
 
 module.exports = router;
