@@ -52,6 +52,6 @@ export default function (state = INITIAL_STATE, action) {
     case DELETE_USER_FROM_TEAM_ERROR:
       return {...state, deleteUserFromTeamError: action.payload};
     default:
-      return state
+      return state;
   }
 }

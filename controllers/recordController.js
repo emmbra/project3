@@ -2,7 +2,7 @@ const { Record } = require('../models');
 
 module.exports = {
   // getRecordByUserID
-  getRecords: async (req, res) => {
+  getRecordsByUserId: async (req, res) => {
     try {
       // const records = await Record.find();
       const { userId } = req.params;
