@@ -7,6 +7,9 @@ import SignUp from '../SignUp';
 import SignIn from '../SignIn';
 import SignOut from '../SignOut';
 import TeamContainer from '../TeamContainer';
+import CreateTeam from '../TeamContainer/CreateTeam';
+import JoinTeam from '../TeamContainer/JoinTeam';
+
 
 import Navbar from './../../components/Navbar';
 
@@ -24,6 +27,8 @@ class App extends Component {
           <Route exact path='/signin' component={SignIn}/>
           <Route exact path='/signout' component={SignOut}/>
           <Route exact path='/teamsignup' component={TeamContainer}/>
+          <Route exact path='/createteam' component={CreateTeam}/>
+          <Route exact path='/jointeam' component={JoinTeam}/>
           {/* <Route exact path='/alltodos' component={AllTodosList}/>
           <Route exact path='/usertodos' component={UserTodoList}/>
           <Route exact path='/counter' component={Counter}/> */}
