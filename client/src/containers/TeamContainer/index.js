@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Grid, Button } from "semantic-ui-react";
+import {
+  Button,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Search,
+  Segment,
+} from 'semantic-ui-react'
 
 // import {
 //   ADD_TEAMS,
@@ -25,18 +33,12 @@ class TeamContainer extends Component {
   //     dispatch({ type: ADD_USER_TO_TEAM_ERROR, payload: 'You must provide texta user' });
   //   }
   // }
-  handlePageChangeCreateTeam = (page) => {
-    this.setState({ currentPage: "createTeam" });
-  };
-
-  handlePageChangeJoinTeam = (page) => {
-    this.setState({ currentPage: "joinTeam" });
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page });
   };
 
   renderPage = () => {
     switch (this.state.currentPage) {
-      // case 'teamsignup':
-      //   return '<TeamContainer />';
       case "createTeam":
         return <CreateTeam />;
       case "joinTeam":
@@ -50,25 +52,51 @@ class TeamContainer extends Component {
     console.log("HELLO");
     console.log(this.props);
     return (
-      <Grid
-        // textAlign="center"
-        style={{ height: "100vh" }}
-        verticalAlign="middle"
-      >
-        <Grid.Column style={{ maxWidth: 700 }}>
-          <Button
-            size='big'
+      <Segment placeholder>
+      <Grid columns={2} stackable textAlign='center'>
+        <Divider vertical>Or</Divider>
+        <Grid.Row verticalAlign='middle'>
+          <Grid.Column>
+            <Button icon='users'
+            size='huge'
+            color='teal'
             content="Create Team"
-            onClick={(e) => this.handlePageChangeCreateTeam(e)}
-          />
-          <Button
-            size='big'
+            onClick={() => this.handlePageChange('createTeam')}
+              />
+          </Grid.Column>
+        {this.state.currentPage === 'createTeam' ? null :           <Grid.Column>
+            <Button icon='add user'
+            size='huge'
+            color='teal' 
+            onClick={() => this.handlePageChange('joinTeam')}
             content="Join Team"
-            onClick={(e) => this.handlePageChangeJoinTeam(e)}
-          />
-        </Grid.Column>
+            />
+          </Grid.Column>}
+        </Grid.Row>
         {this.renderPage()}
       </Grid>
+    </Segment>
+
+
+      // <Grid
+      //   // textAlign="center"
+      //   style={{ height: "100vh" }}
+      //   verticalAlign="middle"
+      // >
+      //   <Grid.Column style={{ maxWidth: 700 }}>
+      //     <Button
+      //       size='big'
+      //       content="Create Team"
+      //       onClick={() => this.handlePageChange('createTeam')}
+      //     />
+      //     <Button
+      //       size='big'
+      //       content="Join Team"
+      //       onClick={() => this.handlePageChange('joinTeam')}
+      //     />
+      //   </Grid.Column>
+      //   {this.renderPage()}
+      // </Grid>
     );
   }
 }
