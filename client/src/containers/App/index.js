@@ -27,12 +27,12 @@ class App extends Component {
           <Route exact path='/signin' component={SignIn}/>
           <Route exact path='/signout' component={SignOut}/>
           <Route exact path='/teamsignup' component={TeamContainer}/>
-          <Route exact path='/createteam' component={CreateTeam}/>
-          <Route exact path='/dashboard' component={Dashboard}/>
+          {/* <Route exact path='/createteam' component={CreateTeam}/> */}
+          {/* <Route exact path='/dashboard' component={Dashboard}/>
           <Route exact path='/user' component={User}/>
           <Route exact path='/records' component={Records}/>
           <Route exact path='/events' component={Events}/>
-          <Route exact path='/everciselog' component={JoinTeam}/>
+          <Route exact path='/everciselog' component={JoinTeam}/> */}
 
           {/* <Route exact path='/alltodos' component={AllTodosList}/>
           <Route exact path='/usertodos' component={UserTodoList}/>
