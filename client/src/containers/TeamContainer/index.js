@@ -9,45 +9,33 @@ import {
   Search,
   Segment,
 } from 'semantic-ui-react';
-
-// import {
-//   ADD_TEAMS,
-//   ADD_TEAMS_ERROR,
-//   ADD_USER_TO_TEAM,
-//   ADD_USER_TO_TEAM_ERROR,
-// } from '../types';
-// import axios from 'axios';
-
-import CreateTeam from "./CreateTeam";
-import JoinTeam from "./JoinTeam";
+import {
+  ADD_TEAMS,
+  ADD_TEAMS_ERROR,
+  ADD_USER_TO_TEAM,
+  ADD_USER_TO_TEAM_ERROR,
+} from '../types';
+import axios from 'axios';
 
 class TeamContainer extends Component {
-  state = {
-    currentPage: "teamsignup",
-  };
-  // addUserToTeam = async (formValues, dispatch) => {
-  //   try {
-  //     await axios.post(`/api/team/${teamId}`, formValues, { headers: { 'authorization': localStorage.getItem('token')}});
-  //     dispatch({ type: ADD_USER_TO_TEAM });
-  //     // this.props.getUserTodos();
-  //   } catch (e) {
-  //     dispatch({ type: ADD_USER_TO_TEAM_ERROR, payload: 'You must provide texta user' });
-  //   }
-  // }
-  // handlePageChange = (page) => {
-  //   this.setState({ currentPage: page });
-  // };
 
-  // renderPage = () => {
-  //   switch (this.state.currentPage) {
-  //     case "createTeam":
-  //       return <CreateTeam />;
-  //     case "joinTeam":
-  //       return <JoinTeam />;
-  //     default:
-  //       break;
-  //   }
-  // };
+  onSubmitCreateTeam = async (formValues, dispatch) => {
+    try {
+      await axios.post('/api/team', formValues, { headers: { 'authorization': localStorage.getItem('token') }});
+      dispatch({ type: ADD_TEAMS });
+    } catch (error) {
+      dispatch({ type: ADD_TEAMS_ERROR, payload: 'Error: cannot create team!' })
+    }
+  }
+
+  onSubmitAddUserToTeam = async (formValues, dispatch) => {
+    try {
+      await axios.post('/api/team', formValues, { headers: { 'authorization': localStorage.getItem('token') }});
+      dispatch({ type: ADD_USER_TO_TEAM });
+    } catch (error) {
+      dispatch({ type: ADD_USER_TO_TEAM_ERROR, payload: 'Error: cannot add user to team!' })
+    }
+  }
 
   render() {
     console.log("HELLO");
@@ -65,6 +53,7 @@ class TeamContainer extends Component {
             size='huge'
             color='teal'
             content="Create Team"
+            createTeam={this.props.onSubmitCreateTeam}
               />
           </Grid.Column>
             <Grid.Column>
@@ -75,32 +64,12 @@ class TeamContainer extends Component {
             size='huge'
             color='teal' 
             content="Join Team"
+            addUserToTeam={this.props.onSubmitAddUserToTeam}
             />
           </Grid.Column>
         </Grid.Row>
       </Grid>
     </Segment>
-
-
-      // <Grid
-      //   // textAlign="center"
-      //   style={{ height: "100vh" }}
-      //   verticalAlign="middle"
-      // >
-      //   <Grid.Column style={{ maxWidth: 700 }}>
-      //     <Button
-      //       size='big'
-      //       content="Create Team"
-      //       onClick={() => this.handlePageChange('createTeam')}
-      //     />
-      //     <Button
-      //       size='big'
-      //       content="Join Team"
-      //       onClick={() => this.handlePageChange('joinTeam')}
-      //     />
-      //   </Grid.Column>
-      //   {this.renderPage()}
-      // </Grid>
     );
   }
 }

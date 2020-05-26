@@ -44,15 +44,19 @@ export default (props) => {
 
           <Form.Group grouped>
             <label>Do you want this to be a private or public team? </label>
-            <Form.Field label='Public' control='input' type='checkbox' />
-            <Form.Field label='Private' control='input' type='checkbox' />
-            <Form.Field>
+            <Form.Field name = 'public' label='Public' control='input' type='checkbox' />
+            <Form.Field name = 'private' label='Private' control='input' type='checkbox' />
+            <Form.Field name = 'passcode' type='password'>
               <label>If this is a private team, please enter a passcode for your other team members</label>
               <input placeholder='ThePasscode' />
             </Form.Field>
           </Form.Group>
 
-          <Button type='submit'>Submit</Button>
+          <Button 
+            type='submit'
+            onClick={ () => props.onSubmitCreateTeam }
+          >Submit</Button>
+          <Button onClick={props.history.goBack}>Go Back</Button>
         </Form>
       </Container>
     )
