@@ -1,10 +1,12 @@
 import React from 'react';
 import { Header, List, Button, Popup } from 'semantic-ui-react';
+import { Field, reduxForm } from 'redux-form';
+import { getAllTeams } from '../../../actions/team';
 
 // Make sure handleUpdate is passed in parent container
       // handleUpdate="{this.props.updateCompleteUserTodoById}
 
-export default (props) => {
+function JoinTeam (props) {
   console.log(props);
   if (props.teams.length === 0) {
     return <Header content='There are no teams yet'/>;
@@ -50,11 +52,16 @@ export default (props) => {
                   content='What is the passcode for this team?'
                   onClick={ (event) => props.handleUpdate(_id, name, passcode)}
                 />
+
               }
+              
             />
+          <Button onClick={props.resetView}>Go Back</Button>
           </List.Content>
         </List.Item>
       );
     });
   }
 }
+
+export default reduxForm({ form: 'JoinTeam' })(JoinTeam);

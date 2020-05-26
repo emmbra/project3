@@ -38,6 +38,7 @@ module.exports = {
   },
 
   addTeams: async (req, res) => {
+    console.log(req.body);
     try {
       // console.log('im the body:', req.body);
       // console.log('im the user:', req.user);
@@ -49,6 +50,8 @@ module.exports = {
       const newTeam = await new Team({ name, passcode, mascotIMG, teamType });
       newTeam.users.push(req.user._id);
       newTeam.save();
+      req.user.teams.push(newTeam._id);
+      req.user.save();
       // console.log('after the save!', newTeam);
       return res.status(200).json(newTeam);
     } catch (e) {

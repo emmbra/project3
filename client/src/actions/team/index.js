@@ -15,7 +15,7 @@ import axios from 'axios';
 
 export const getAllTeams = () => async dispatch => {
   try {
-    const { data } = await axios.get('/api/team');
+    const { data } = await axios.get('/api/team', { headers: { 'authorization': localStorage.getItem('token') }});
     dispatch({ type: GET_ALL_TEAMS, payload: data });
   } catch (e) {
     dispatch({ type: GET_ALL_TEAMS_ERROR, payload: e });
@@ -24,7 +24,7 @@ export const getAllTeams = () => async dispatch => {
 
 export const getAllPublicTeams = () => async dispatch => {
   try {
-    const { data } = await axios.get('/api/team/public');
+    const { data } = await axios.get('/api/team/public', { headers: { 'authorization': localStorage.getItem('token') }});
     dispatch({ type: GET_ALL_PUBLIC_TEAMS, payload: data });
   } catch (e) {
     dispatch({ type: GET_ALL_PUBLIC_TEAMS_ERROR, payload: e });
@@ -33,7 +33,7 @@ export const getAllPublicTeams = () => async dispatch => {
 
 export const getAllPrivateTeams = () => async dispatch => {
   try {
-    const { data } = await axios.get('/api/team/private');
+    const { data } = await axios.get('/api/team/private', { headers: { 'authorization': localStorage.getItem('token') }});
     dispatch({ type: GET_ALL_PRIVATE_TEAMS, payload: data });
   } catch (e) {
     dispatch({ type: GET_ALL_PRIVATE_TEAMS_ERROR, payload: e });
@@ -50,9 +50,10 @@ export const deleteUserFromTeam = teamId => async dispatch => {
   }
 };
 
-export const addTeams = () => async dispatch => {
+export const addTeams = (formValues) => async dispatch => {
+  console.log(formValues);
   try {
-    const { data } = await axios.post('/api/team');
+    const { data } = await axios.post('/api/team', formValues, { headers: { 'authorization': localStorage.getItem('token') }});
     dispatch({ type: ADD_TEAMS, payload: data });
   } catch (e) {
     dispatch({ type: ADD_TEAMS_ERROR, payload: e })
