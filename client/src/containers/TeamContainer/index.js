@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Route, Link } from 'react-router-dom';
 import {
   Button,
   Divider,
@@ -7,7 +8,7 @@ import {
   Icon,
   Search,
   Segment,
-} from 'semantic-ui-react'
+} from 'semantic-ui-react';
 
 // import {
 //   ADD_TEAMS,
@@ -33,20 +34,20 @@ class TeamContainer extends Component {
   //     dispatch({ type: ADD_USER_TO_TEAM_ERROR, payload: 'You must provide texta user' });
   //   }
   // }
-  handlePageChange = (page) => {
-    this.setState({ currentPage: page });
-  };
+  // handlePageChange = (page) => {
+  //   this.setState({ currentPage: page });
+  // };
 
-  renderPage = () => {
-    switch (this.state.currentPage) {
-      case "createTeam":
-        return <CreateTeam />;
-      case "joinTeam":
-        return <JoinTeam />;
-      default:
-        break;
-    }
-  };
+  // renderPage = () => {
+  //   switch (this.state.currentPage) {
+  //     case "createTeam":
+  //       return <CreateTeam />;
+  //     case "joinTeam":
+  //       return <JoinTeam />;
+  //     default:
+  //       break;
+  //   }
+  // };
 
   render() {
     console.log("HELLO");
@@ -57,23 +58,26 @@ class TeamContainer extends Component {
         <Divider vertical>Or</Divider>
         <Grid.Row verticalAlign='middle'>
           <Grid.Column>
-            <Button icon='users'
+            <Button 
+            as={Link}
+            to='/createteam'
+            icon='users'
             size='huge'
             color='teal'
             content="Create Team"
-            onClick={() => this.handlePageChange('createTeam')}
               />
           </Grid.Column>
-        {this.state.currentPage === 'createTeam' ? null :           <Grid.Column>
-            <Button icon='add user'
+            <Grid.Column>
+            <Button 
+            as={Link}
+            to='/jointeam'
+            icon='add user'
             size='huge'
             color='teal' 
-            onClick={() => this.handlePageChange('joinTeam')}
             content="Join Team"
             />
-          </Grid.Column>}
+          </Grid.Column>
         </Grid.Row>
-        {this.renderPage()}
       </Grid>
     </Segment>
 
