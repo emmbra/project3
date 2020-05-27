@@ -4,7 +4,7 @@ class ExerciseLog extends Component {
   render() {
     return (
       <div>
-        IM THE EXERCISE LOG CONTAINER
+        I'M THE EXERCISE LOG CONTAINER
       </div>
     )
   }

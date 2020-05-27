@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
-import { Route, Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { compose } from "redux";
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { Route, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 import {
   Button,
@@ -15,31 +15,43 @@ import {
   Segment,
   Checkbox,
   Radio,
-} from "semantic-ui-react";
-import { addTeams, addUserToTeam, getAllTeams } from "../../actions/team";
+} from 'semantic-ui-react';
+import { addTeams, addUserToTeam, getAllTeams } from '../../actions/team';
 
-import JoinTeam from "./JoinTeam";
-import CreateTeam from "./CreateTeam";
+import JoinTeam from './JoinTeam';
+import CreateTeam from './CreateTeam';
 
 class TeamContainer extends Component {
   state = {
-    teamView: "",
+    teamView: '',
     isClicked: false,
   };
+
   componentDidMount() {
     this.props.getAllTeams();
   }
 
   onSubmit = async (formValues) => {
     try {
-      this.props.addTeams(formValues);
+      this.props.addTeams(formValues, () => {
+        this.props.history.push('/dashboard');
+      });
     } catch (e) {
       console.log(e);
     }
   }
 
+  
+  // onClick = async () => {
+  //   try {
+  //     this.props.addUserToTeam();
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
+
   // onSubmit = async (formValues, dispatch) => {
-  //   console.log("test");
+  //   console.log('test');
   //   try {
   //     const { data } = await axios.post('/api/auth/signup', formValues);
   //     localStorage.setItem('token', data.token);
@@ -55,21 +67,12 @@ class TeamContainer extends Component {
   };
 
   resetView = () => {
-    this.setState({ teamView: "", isClicked: false });
+    this.setState({ teamView: '', isClicked: false });
   };
 
   renderView = () => {
     switch (this.state.teamView) {
-      case "join":
-        return (
-          <JoinTeam
-            resetView={this.resetView}
-            renderTeams={this.props.getAllTeams}
-            renderInput={this.renderInput}
-            renderRadio={this.renderRadio}
-          />
-        );
-      case "create":
+      case 'create':
         return (
           <CreateTeam
             resetView={this.resetView}
@@ -79,10 +82,21 @@ class TeamContainer extends Component {
             onSubmit={this.onSubmit}
           />
         );
+      case 'join':
+        return (
+          <JoinTeam
+            resetView={this.resetView}
+            teams={this.props.allTeams}
+            renderInput={this.renderInput}
+            renderRadio={this.renderRadio}
+            handleUpdate={this.addUserToTeam}
+          />
+        );
       default:
         return <div></div>;
     }
   };
+  
   renderRadio = ({ input, label }) => (
     <Radio
       label={label}
@@ -101,7 +115,7 @@ class TeamContainer extends Component {
           {...input}
           fluid
           error={meta.touched && meta.error}
-          autoComplete="off"
+          autoComplete='off'
           placeholder={placeholder}
         />
       </div>
@@ -109,43 +123,42 @@ class TeamContainer extends Component {
   };
 
   render() {
-    console.log("HELLO");
+    console.log('HELLO');
     console.log(this.props);
     return (
       <Segment placeholder>
-        <Grid columns={2} stackable textAlign="center">
-          {/* <Divider vertical>Or</Divider> */}
+        <Grid columns={2} stackable textAlign='center'>
+        {/* <Divider vertical>Or</Divider> */}
           {!this.state.isClicked && (
-            <Grid.Row verticalAlign="middle">
+            <Grid.Row verticalAlign='middle'>
               <Grid.Column>
                 <Button
                   // as={Link}
                   // to='/createteam'
-                  icon="users"
-                  size="huge"
-                  color="teal"
-                  content="Create Team"
-                  onClick={() => this.renderTeamView("create")}
+                  icon='users'
+                  size='huge'
+                  color='teal'
+                  content='Create Team'
+                  onClick={() => this.renderTeamView('create')}
                 />
               </Grid.Column>
               <Grid.Column>
                 <Button
                   // as={Link}
                   // to='/jointeam'
-                  icon="add user"
-                  size="huge"
-                  color="teal"
-                  content="Join Team"
+                  icon='add user'
+                  size='huge'
+                  color='teal'
+                  content='Join Team'
                   // todos={this.props.userTodos.slice(this.state.start, this.state.end)}
                   // teams = {this.props}
-
                   // handleUpdate={this.props.addUserToTeam()}
-                  onClick={() => this.renderTeamView("join")}
+                  onClick={() => this.renderTeamView('join')}
                 />
               </Grid.Column>
             </Grid.Row>
           )}
-          <Grid.Row>
+          <Grid.Row>           
             <Grid.Column>{this.renderView()}</Grid.Column>
           </Grid.Row>
         </Grid>
@@ -156,7 +169,7 @@ class TeamContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    team: state.teams,
+    allTeams: state.team.teams,
   };
 }
 

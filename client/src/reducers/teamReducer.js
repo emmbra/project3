@@ -30,7 +30,7 @@ const INITIAL_STATE = {
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case GET_ALL_TEAMS:
-      return {...state, allTeams: action.payload, getAllTeamsError: ''};
+      return {...state, teams: action.payload, getAllTeamsError: ''};
     case GET_ALL_TEAMS_ERROR:
       return {...state, getAllTeamsError: action.payload};
     case GET_ALL_PUBLIC_TEAMS:
