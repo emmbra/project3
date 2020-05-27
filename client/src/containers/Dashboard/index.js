@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Menu, Button, Divider, Grid, Segment } from 'semantic-ui-react';
+import axios from 'axios';
+
 import User from '../User';
 import Team from '../Team';
 import Records from '../Records';
 import Events from '../Events';
 import ExerciseLog from '../ExerciseLog';
 
+import { getUserById } from '../../actions/user';
+
 class Dashboard extends Component {
   
+  componentDidMount() {
+    this.props.getUserById();
+  }
+  
+
   render() {
-    console.log(this.props);
+
+    console.log(this.props.user);
+    console.log(this.props.user.teams);
+
     const { pathname } = this.props.location;
 
     return (
@@ -62,4 +75,11 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+function mapStateToProps(state) {
+  return { 
+    user: state.users.currentUser,
+    myTeams: state.users.currentUser.teams,
+ };
+}
+
+export default connect(mapStateToProps, {getUserById})(Dashboard);

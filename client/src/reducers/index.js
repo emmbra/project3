@@ -12,7 +12,7 @@ import recordReducer from './recordReducer';
 
 export default combineReducers({
   auth: authReducer,
-  user: userReducer,
+  users: userReducer,
   team: teamReducer,
   event: eventReducer,
   log: logReducer,

@@ -89,7 +89,7 @@ class TeamContainer extends Component {
             teams={this.props.allTeams}
             renderInput={this.renderInput}
             renderRadio={this.renderRadio}
-            handleUpdate={this.addUserToTeam}
+            handleUpdate={this.props.addUserToTeam}
           />
         );
       default:

@@ -16,7 +16,7 @@ function JoinTeam(props) {
     console.log(teamid);
     return  (
       <>
-        <input
+        <Form.Input
           {...input}
           error={ meta.error || meta.valid }
         />
@@ -87,7 +87,7 @@ function JoinTeam(props) {
                 </p>
               </List.Content>
               <List.Content floated="right" position='top right'>
-              <Field name={name} teamid={_id} component={renderInput} type="text" placeholder="Passcode"/>
+              <Field name={name} teamid={_id} component={renderInput} type="text" placeholder="Passcode" />
               {/* <Popup
                   on='click'
                   position='top right'
