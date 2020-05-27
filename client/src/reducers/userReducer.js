@@ -8,7 +8,7 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  users: [],
+  currentUser: [],
   emails: [],
   usernames: [],
   getUserByIdError: '',
@@ -19,7 +19,7 @@ const INITIAL_STATE = {
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case GET_USER_BY_ID:
-      return {...state, users: action.payload, getUserByIdError: ''};
+      return {...state, currentUser: action.payload, getUserByIdError: ''};
     case GET_USER_BY_ID_ERROR:
       return {...state, getUserByIdError: action.payload};
     case GET_ALL_USER_EMAILS:
