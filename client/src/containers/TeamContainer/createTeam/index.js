@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { List, Form, Header, Button, Container, Image, Grid, Radio } from 'semantic-ui-react';
 import { addTeams } from '../../../actions/team';
 import { required } from 'redux-form-validators';
-import mascots from "../../../static/mascots"
+import mascots from "../../../static/mascots";
 
 function CreateTeam (props) {
   const { handleSubmit } = props;
@@ -77,9 +77,8 @@ function CreateTeam (props) {
             />}
           </Form.Group>
 
-          <Button 
-            type='submit'
-          >Submit</Button>
+          <Button type='submit'>Submit</Button>
+          
           <Button onClick={props.resetView}>Go Back</Button>
         </Form>
       </Container>

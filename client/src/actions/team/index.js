@@ -50,20 +50,26 @@ export const deleteUserFromTeam = teamId => async dispatch => {
   }
 };
 
-export const addTeams = (formValues) => async dispatch => {
-  console.log(formValues);
+export const addTeams = (formValues, cb) => async dispatch => {
   try {
     const { data } = await axios.post('/api/team', formValues, { headers: { 'authorization': localStorage.getItem('token') }});
     dispatch({ type: ADD_TEAMS, payload: data });
+    cb();
   } catch (e) {
     dispatch({ type: ADD_TEAMS_ERROR, payload: e })
   }
 }
 
-export const addUserToTeam = () => async dispatch => {
+export const addUserToTeam = (event, _id, passcode, cb ) => async dispatch => {
+
+  // event.preventDefault();
+  event.stopPropagation();
+
+  console.log(cb);
   try {
-    const { data } = await axios.post('/api/team');
-    dispatch({ type: ADD_USER_TO_TEAM, payload: data })
+    const { data } = await axios.post(`/api/team/${_id}`, {passcode}, { headers: { 'authorization': localStorage.getItem('token') }});
+    dispatch({ type: ADD_USER_TO_TEAM, payload: data });
+    cb();
   } catch (e) {
     dispatch({ type: ADD_USER_TO_TEAM_ERROR, payload: e })
   }

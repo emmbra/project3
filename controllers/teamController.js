@@ -45,7 +45,9 @@ module.exports = {
       const { name, mascotIMG, teamType, passcode } = req.body;
       // check if team mascotIMG or teamType would come from req.params
       if (!name) {
-        return res.status(400).json({ error: 'You must provide a team name. ' });
+        return res
+          .status(400)
+          .json({ error: 'You must provide a team name. ' });
       }
       const newTeam = await new Team({ name, passcode, mascotIMG, teamType });
       newTeam.users.push(req.user._id);
@@ -61,27 +63,61 @@ module.exports = {
 
   addUserToTeam: async (req, res) => {
     const { teamId } = req.params;
+    const { passcode } = req.body;
     // check where is coming from the info from the drop down
+
     try {
-      // update team by Id push req.user into team.users
-      const teamToUpdate = await Team.findByIdAndUpdate(
-        teamId,
-        { $push: { users: req.user._id } },
-        { new: true },
-      );
-      // return res.status(200).json(teamToUpdate);
-      if (teamToUpdate.users.length === teamToUpdate.maxMembers) {
-        const updatedTeam = await Team.findByIdAndUpdate(
-          teamId,
-          { teamStatus: 'ready' },
-          { new: true },
-        );
-        return res.status(200).json(updatedTeam);
+      // find the team that they're trying to join
+      const teamToJoin = await Team.findById(teamId);
+      console.log(passcode);
+      console.log(teamToJoin.passcode);
+      if (teamToJoin.teamType === 'private') {
+        if (teamToJoin.passcode === passcode) {
+          if (teamToJoin.users.includes(req.user._id)) {
+            return res.status(400).json({ error: 'Already on this team, cannot join again!' });
+          }
+          teamToJoin.users.push(req.user._id);
+          await teamToJoin.save();
+          req.user.teams.push(teamToJoin._id);
+          await req.user.save();
+          return res.status(200).json({ success: true });
+        }
+        return res.status(403).json({ error: 'Wrong passcode, please try again!' });
       }
-      return res.status(200).json(teamToUpdate);
+      // if (teamToJoin.user._id)
+      // figure out how to check if the user is already on this team
+      if (teamToJoin.users.includes(req.user._id)) {
+        return res.status(400).json({ error: 'Already on this team, cannot join again!' });
+      }
+      teamToJoin.users.push(req.user._id);
+      await teamToJoin.save();
+      req.user.teams.push(teamToJoin._id);
+      await req.user.save();
+      return res.status(200).json({ success: true });
     } catch (e) {
-      return res.status(403).json({ e });
+      return res.status(403).json(e);
     }
+
+    //   // update team by Id push req.user into team.users
+
+    //   const teamToUpdate = await Team.findByIdAndUpdate(
+    //     teamId,
+    //     { $push: { users: req.user._id } },
+    //     { new: true },
+    //   );
+    //   // return res.status(200).json(teamToUpdate);
+    //   if (teamToUpdate.users.length === teamToUpdate.maxMembers) {
+    //     const updatedTeam = await Team.findByIdAndUpdate(
+    //       teamId,
+    //       { teamStatus: 'ready' },
+    //       { new: true },
+    //     );
+    //     return res.status(200).json(updatedTeam);
+    //   }
+    //   return res.status(200).json(teamToUpdate);
+    // } catch (e) {
+    //   return res.status(403).json({ e });
+    // }
     // compare team.users.length to team.maxmembers
     // if those numbers are equal then update team and set team.teamStatus to ready
   },

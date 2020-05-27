@@ -4,7 +4,7 @@ class Event extends Component {
   render() {
     return (
       <div>
-        IM THE EVENT CONTAINER
+        I'M THE EVENT CONTAINER
       </div>
     )
   }
