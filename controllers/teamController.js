@@ -61,6 +61,80 @@ module.exports = {
     }
   },
 
+  // addUserToTeam: async (req, res) => {
+  //   const { teamId } = req.params;
+  //   const { passcode } = req.body;
+  //   // check where is coming from the info from the drop down
+
+  //   try {
+  //     // find the team that they're trying to join
+  //     const teamToJoin = await Team.findById(teamId);
+  //     console.log(passcode);
+  //     console.log(teamToJoin.passcode);
+  //     if (teamToJoin.teamType === 'private') {
+  //       if (teamToJoin.passcode === passcode) {
+  //         if (teamToJoin.users.includes(req.user._id)) {
+  //           return res.status(400).json({ error: 'Already on this team, cannot join again!' });
+  //         }
+  //         if (teamToJoin.users.length >= teamToJoin.maxMembers) {
+  //           return res.status(400).json({ error: 'Team is full, please join another team!' });
+  //         }
+  //         teamToJoin.users.push(req.user._id);
+  //         await teamToJoin.save();
+  //         req.user.teams.push(teamToJoin._id);
+  //         await req.user.save();
+  //         if (teamToJoin.users.length === teamToJoin.maxMembers) {
+  //           teamToJoin.teamStatus = 'ready';
+  //           teamToJoin.save();
+  //         }
+  //         return res.status(200).json({ success: true });
+  //       }
+  //       return res.status(403).json({ error: 'Wrong passcode, please try again!' });
+  //     }
+  //     if (teamToJoin.users.includes(req.user._id)) {
+  //       return res.status(400).json({ error: 'Already on this team, cannot join again!' });
+  //     }
+  //     if (teamToJoin.users.length >= teamToJoin.maxMembers) {
+  //       console.log("this team is full");
+  //       return res.status(400).json({ error: 'Team is full, please join another team!' });
+  //     }
+  //     teamToJoin.users.push(req.user._id);
+  //     await teamToJoin.save();
+  //     req.user.teams.push(teamToJoin._id);
+  //     await req.user.save();
+  //     if (teamToJoin.users.length === teamToJoin.maxMembers) {
+  //       teamToJoin.teamStatus = 'ready';
+  //       teamToJoin.save();
+  //     }
+  //     return res.status(200).json({ success: true });
+  //   } catch (e) {
+  //     return res.status(403).json(e);
+  //   }
+
+  //   //   // update team by Id push req.user into team.users
+
+  //   //   const teamToUpdate = await Team.findByIdAndUpdate(
+  //   //     teamId,
+  //   //     { $push: { users: req.user._id } },
+  //   //     { new: true },
+  //   //   );
+  //   //   // return res.status(200).json(teamToUpdate);
+  //   //   if (teamToUpdate.users.length === teamToUpdate.maxMembers) {
+  //   //     const updatedTeam = await Team.findByIdAndUpdate(
+  //   //       teamId,
+  //   //       { teamStatus: 'ready' },
+  //   //       { new: true },
+  //   //     );
+  //   //     return res.status(200).json(updatedTeam);
+  //   //   }
+  //   //   return res.status(200).json(teamToUpdate);
+  //   // } catch (e) {
+  //   //   return res.status(403).json({ e });
+  //   // }
+  //   // compare team.users.length to team.maxmembers
+  //   // if those numbers are equal then update team and set team.teamStatus to ready
+  // },
+
   addUserToTeam: async (req, res) => {
     const { teamId } = req.params;
     const { passcode } = req.body;
@@ -71,55 +145,37 @@ module.exports = {
       const teamToJoin = await Team.findById(teamId);
       console.log(passcode);
       console.log(teamToJoin.passcode);
+      // check passcode
       if (teamToJoin.teamType === 'private') {
-        if (teamToJoin.passcode === passcode) {
-          if (teamToJoin.users.includes(req.user._id)) {
-            return res.status(400).json({ error: 'Already on this team, cannot join again!' });
-          }
-          teamToJoin.users.push(req.user._id);
-          await teamToJoin.save();
-          req.user.teams.push(teamToJoin._id);
-          await req.user.save();
-          return res.status(200).json({ success: true });
+        if (teamToJoin.passcode !== passcode) {
+          return res.status(400).json({ error: 'Your passcode does not match' });
         }
-        return res.status(403).json({ error: 'Wrong passcode, please try again!' });
       }
-      // if (teamToJoin.user._id)
-      // figure out how to check if the user is already on this team
+      // check if user is on team
       if (teamToJoin.users.includes(req.user._id)) {
         return res.status(400).json({ error: 'Already on this team, cannot join again!' });
       }
+      // check if team is full
+      if (teamToJoin.users.length >= teamToJoin.maxMembers) {
+        console.log("full");
+        return res.status(400).json({ error: 'Team is full, please join another team!' });
+      }
+
       teamToJoin.users.push(req.user._id);
       await teamToJoin.save();
       req.user.teams.push(teamToJoin._id);
       await req.user.save();
+
+      if (teamToJoin.users.length === teamToJoin.maxMembers) {
+        teamToJoin.teamStatus = 'ready';
+        teamToJoin.save();
+      }
+
       return res.status(200).json({ success: true });
     } catch (e) {
+      console.log(e);
       return res.status(403).json(e);
     }
-
-    //   // update team by Id push req.user into team.users
-
-    //   const teamToUpdate = await Team.findByIdAndUpdate(
-    //     teamId,
-    //     { $push: { users: req.user._id } },
-    //     { new: true },
-    //   );
-    //   // return res.status(200).json(teamToUpdate);
-    //   if (teamToUpdate.users.length === teamToUpdate.maxMembers) {
-    //     const updatedTeam = await Team.findByIdAndUpdate(
-    //       teamId,
-    //       { teamStatus: 'ready' },
-    //       { new: true },
-    //     );
-    //     return res.status(200).json(updatedTeam);
-    //   }
-    //   return res.status(200).json(teamToUpdate);
-    // } catch (e) {
-    //   return res.status(403).json({ e });
-    // }
-    // compare team.users.length to team.maxmembers
-    // if those numbers are equal then update team and set team.teamStatus to ready
   },
 
   deleteUserFromTeam: async (req, res) => {

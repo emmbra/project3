@@ -1,0 +1,106 @@
+const { logSeed, eventSeed, teamSeed, userSeed } = require('./data')
+console.log(""logSeed);
+
+// MongoDB Playground
+// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// Make sure you are connected to enable completions and to be able to run a playground.
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// Select the database to use.
+use('runningappdb');
+
+// The drop() command destroys all data from a collection.
+// Make sure you run it against proper database and collection.
+db.event.drop();
+db.teams.drop();
+db.users.drop();
+
+// Insert a few documents into the sales collection.
+db.users.insertMany([
+  {
+    username: 'Snake',
+    email: 'ajain0@utexas.edu',
+    password: 'R4WyCrG5O6',
+    dateCreated: '9/23/2019',
+  },
+  {
+    username: 'Squirrel',
+    email: 'cbrabant1@i2i.jp',
+    password: 'dYkGJ3',
+    dateCreated: '12/31/2019',
+  },
+  {
+    username: 'Flycatcher',
+    email: 'lgrainge2@plala.or.jp',
+    password: 'SOr3zQoGxv8l',
+    dateCreated: '10/26/2019',
+  },
+  {
+    username: 'Buffalo',
+    email: 'sgebhard3@japanpost.jp',
+    password: 'lMsrjN9jK',
+    dateCreated: '9/26/2019',
+  },
+  {
+    username: 'Rat',
+    email: 'jiacovucci4@umn.edu',
+    password: 'DLNI6Y6DOX',
+    dateCreated: '11/24/2019',
+  },
+  {
+    username: 'Lion',
+    email: 'kubsdell5@ifeng.com',
+    password: '18kxOuNOJ4',
+    dateCreated: '10/6/2019',
+  },
+  {
+    username: 'Turkey',
+    email: 'rharsnipe6@shinystat.com',
+    password: 'ao9a9YRk',
+    dateCreated: '2/17/2020',
+  },
+  {
+    username: 'Turtle',
+    email: 'fgaunt7@google.com.hk',
+    password: 'QhiNnHqwN',
+    dateCreated: '7/29/2019',
+  },
+  {
+    username: 'Peacock',
+    email: 'gmainz8@redcross.org',
+    password: 'zOH6631zA',
+    dateCreated: '11/3/2019',
+  },
+  {
+    username: 'Eagle',
+    email: 'bpointon9@taobao.com',
+    password: 'dMsZNYPq',
+    dateCreated: '12/1/2019',
+  },
+  {
+    username: 'Vulture',
+    email: 'jlinfoota@amazon.de',
+    password: 'VMTi2ROXSqLv',
+    dateCreated: '2/27/2020',
+  },
+  {
+    username: 'Cat',
+    email: 'wsammutb@ox.ac.uk',
+    password: 'cGMrdRKu',
+    dateCreated: '11/23/2019',
+  },
+]);
+
+db.events.insertMany([
+
+]);
+
+// Run a find command to view items sold on April 4th, 2014.
+db.sales.find({ date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') } });
+
+// Run an aggregation to view total sales for each product in 2014.
+const aggregation = [
+  { $match: { date: { $gte: new Date('2014-01-01'), $lt: new Date('2015-01-01') } } },
+  { $group: { _id : '$item', totalSaleAmount: { $sum: { $multiply: [ '$price', '$quantity' ] } } } }
+];
+db.sales.aggregate(aggregation);

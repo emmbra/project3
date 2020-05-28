@@ -71,6 +71,7 @@ export const addUserToTeam = (event, _id, passcode, cb ) => async dispatch => {
     dispatch({ type: ADD_USER_TO_TEAM, payload: data });
     cb();
   } catch (e) {
+    console.log(e);
     dispatch({ type: ADD_USER_TO_TEAM_ERROR, payload: e })
   }
 }

@@ -83,10 +83,12 @@ class TeamContainer extends Component {
           />
         );
       case 'join':
+        const filteredTeams = this.props.allTeams.filter( team => team.teamStatus === 'available')
+        console.log(filteredTeams);
         return (
           <JoinTeam
             resetView={this.resetView}
-            teams={this.props.allTeams}
+            teams={filteredTeams}
             renderInput={this.renderInput}
             renderRadio={this.renderRadio}
             handleUpdate={this.props.addUserToTeam}
