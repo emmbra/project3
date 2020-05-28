@@ -3,7 +3,8 @@ const { Team } = require('../models');
 module.exports = {
   getAllTeams: async (req, res) => {
     try {
-      const team = await Team.find();
+      const team = await Team.find().populate('users');
+      console.log(team);
       if (!team) {
         return res.status(401).json({ error: 'No teams found' });
       }
