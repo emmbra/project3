@@ -5,6 +5,7 @@ import {
   GET_ALL_PUBLIC_TEAMS_ERROR ,
   GET_ALL_PRIVATE_TEAMS,
   GET_ALL_PRIVATE_TEAMS_ERROR,
+  GET_TEAM_USERS,
   ADD_TEAMS,
   ADD_TEAMS_ERROR,
   ADD_USER_TO_TEAM,
@@ -39,6 +40,22 @@ export const getAllPrivateTeams = () => async dispatch => {
     dispatch({ type: GET_ALL_PRIVATE_TEAMS_ERROR, payload: e });
   }
 };
+
+export const getTeamUsers = ( teamSelected, teamInfo ) => {
+  let teamToFind;
+  
+  for (let i = 0; i < teamInfo.length; i++) {
+    if (teamSelected === teamInfo[i].name) {
+      teamToFind = teamInfo[i].users
+    }
+  }
+  console.log(teamSelected);
+  console.log(teamInfo);
+  return {
+    type: GET_TEAM_USERS, payload: teamToFind
+  }
+
+}
 
 export const deleteUserFromTeam = teamId => async dispatch => {
   try {

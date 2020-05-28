@@ -5,6 +5,7 @@ import {
   GET_ALL_PUBLIC_TEAMS_ERROR,
   GET_ALL_PRIVATE_TEAMS,
   GET_ALL_PRIVATE_TEAMS_ERROR,
+  GET_TEAM_USERS,
   ADD_TEAMS,
   ADD_TEAMS_ERROR,
   ADD_USER_TO_TEAM,
@@ -19,6 +20,7 @@ const INITIAL_STATE = {
   teams: [],
   publicTeams: [],
   privateTeams: [],
+  teamUsers: [],
   getAllTeamsError: '',
   getAllPublicTeamsError: '',
   getAllPrivateTeamsError: '',
@@ -41,6 +43,8 @@ export default function (state = INITIAL_STATE, action) {
       return {...state, privateTeams: action.payload, getAllPrivateTeamsError: ''};
     case GET_ALL_PRIVATE_TEAMS_ERROR:
       return {...state, getAllPrivateTeamsError: action.payload};
+    case GET_TEAM_USERS:
+      return {...state, teamUsers: action.payload};
     case ADD_TEAMS:
       return {...state, myteam: action.payload, addTeamsError: ''};
     case ADD_TEAMS_ERROR:

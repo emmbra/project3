@@ -14,7 +14,7 @@ class SignIn extends Component {
       const { data } = await axios.post('/api/auth/signin', formValues);
       localStorage.setItem('token', data.token);
       dispatch({ type: AUTH_USER, payload: data.token });
-      this.props.history.push('/teamsignup');
+      this.props.history.push('/dashboard');
     } catch (e) {
       throw new SubmissionError({
         email: 'Wrong email',

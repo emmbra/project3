@@ -33,4 +33,7 @@ router.route('/private')
 router.route('/public')
   .get(requireAuth, getAllPublicTeams);
 
+// router.route('/users')
+//   .get(requireAuth, getTeamUsers);
+
 module.exports = router;
