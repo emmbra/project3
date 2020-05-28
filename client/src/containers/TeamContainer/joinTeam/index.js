@@ -76,7 +76,6 @@ function JoinTeam(props) {
         )
       } else
       return (
-      
         <Grid key={_id}>
           <Grid.Column>
             <List.Item>

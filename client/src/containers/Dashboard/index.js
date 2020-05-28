@@ -18,7 +18,6 @@ class Dashboard extends Component {
     this.props.getUserById();
   }
   
-
   render() {
 
     console.log(this.props.user);
