@@ -1,0 +1,22 @@
+use('runningappdb');
+
+// The drop() command destroys all data from a collection.
+// Make sure you run it against proper database and collection.
+db.events.drop();
+
+// Insert a few documents into the sales collection.
+db.events.insertOne(
+  {
+    name: 'North Pole Virtual Relay',
+    distance: 3000,
+    startTime: new Date(),
+    completedTime: '',
+    dateCreated: new Date(),
+    status: 'active',
+    users: [],
+    teams: [],
+    logs: [],
+    records: [],
+    code: '1234'
+  },
+);

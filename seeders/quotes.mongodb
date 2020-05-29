@@ -1,0 +1,58 @@
+// const { logSeed, eventSeed, teamSeed, userSeed } = require('./data')
+// console.log(""logSeed);
+
+// // MongoDB Playground
+// // To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// // Make sure you are connected to enable completions and to be able to run a playground.
+// // Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// // Select the database to use.
+// use('runningappdb');
+
+// // The drop() command destroys all data from a collection.
+// // Make sure you run it against proper database and collection.
+// db.event.drop();
+// db.teams.drop();
+// db.users.drop();
+
+// // Insert a few documents into the sales collection.
+// db.users.insertMany([
+//   {
+//     text: 'We are what we repeatedly do. Excellence, then, is not an act, but a habit.',
+//     author: 'Aristotle',
+//   },
+//   {
+//     text: 'Run in the morning … before your brain figures out what your body is doing!',
+//     author: 'Anonymous',
+//   },
+//   {
+//     text: 'Life is short. Running makes it seem longer.',
+//     author: 'Baron Hansen',
+//   },
+//   {
+//     text: 'Just Do It!',
+//     author: 'Nike',
+//   },
+//   {
+//     text: 'Run like there's a hot guy in front of you and a creepy one behind you.',
+//     author: 'Anonymous',
+//   },
+//   {
+//     text: 'You're doing great!',
+//     author: 'UCB Ext Dream Team',
+//   },
+// ]);
+
+// db.events.insertMany([
+
+// ]);
+
+// // Run a find command to view items sold on April 4th, 2014.
+// db.sales.find({ date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') } });
+
+// // Run an aggregation to view total sales for each product in 2014.
+// const aggregation = [
+//   { $match: { date: { $gte: new Date('2014-01-01'), $lt: new Date('2015-01-01') } } },
+//   { $group: { _id : '$item', totalSaleAmount: { $sum: { $multiply: [ '$price', '$quantity' ] } } } }
+// ];
+// db.sales.aggregate(aggregation);

@@ -4,7 +4,7 @@ module.exports = {
   getAllTeams: async (req, res) => {
     try {
       const team = await Team.find().populate('users');
-      console.log(team);
+      // console.log(team);
       if (!team) {
         return res.status(401).json({ error: 'No teams found' });
       }
@@ -39,7 +39,7 @@ module.exports = {
   },
 
   addTeams: async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     try {
       // console.log('im the body:', req.body);
       // console.log('im the user:', req.user);
@@ -144,8 +144,8 @@ module.exports = {
     try {
       // find the team that they're trying to join
       const teamToJoin = await Team.findById(teamId);
-      console.log(passcode);
-      console.log(teamToJoin.passcode);
+      // console.log(passcode);
+      // console.log(teamToJoin.passcode);
       // check passcode
       if (teamToJoin.teamType === 'private') {
         if (teamToJoin.passcode !== passcode) {
@@ -158,7 +158,7 @@ module.exports = {
       }
       // check if team is full
       if (teamToJoin.users.length >= teamToJoin.maxMembers) {
-        console.log("full");
+        // console.log("full");
         return res.status(400).json({ error: 'Team is full, please join another team!' });
       }
 
@@ -174,7 +174,7 @@ module.exports = {
 
       return res.status(200).json({ success: true });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       return res.status(403).json(e);
     }
   },

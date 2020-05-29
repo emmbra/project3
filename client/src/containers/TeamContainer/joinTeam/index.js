@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, List, Button, Popup, Grid, Divider, Form } from "semantic-ui-react";
+import { Header, List, Button, Popup, Grid, Form } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "mongoose";
 import { withRouter } from 'react-router-dom';

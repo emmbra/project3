@@ -17,7 +17,6 @@ const EventSchema = new Schema({
   },
   completedTime: {
     type: Date,
-    default: Date.now(),
   },
   dateCreated: {
     type: Date,
@@ -43,6 +42,9 @@ const EventSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Record',
   }],
+  code: {
+    type: String,
+  },
 });
 
 module.exports = model('Event', EventSchema);

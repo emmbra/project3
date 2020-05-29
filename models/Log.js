@@ -13,22 +13,18 @@ const LogSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-  users: [{
+  user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-  }],
-  teams: [{
+  },
+  team: {
     type: Schema.Types.ObjectId,
     ref: 'Team',
-  }],
-  events: [{
+  },
+  event: {
     type: Schema.Types.ObjectId,
     ref: 'Event',
-  }],
-  records: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Record',
-  }],
+  },
 });
 
 module.exports = model('Log', LogSchema);

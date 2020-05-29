@@ -17,6 +17,7 @@ import Dashboard from '../Dashboard';
 // import Events from '../Events';
 // import ExerciseLog from '../exerciselog';
 
+import placeholder from '../../assets/running-jumbo.jpg'
 
 import Navbar from './../../components/Navbar';
 
@@ -25,6 +26,10 @@ class App extends Component {
     return (
       <div>
       <Navbar authenticated={this.props.authenticated}/>
+      <img src={placeholder} alt = 'placeholder hero pic' style={{
+          width: '100%',
+          // height:'300px',
+        }} />
       <Grid>
         <Grid.Column>
           <Route exact path='/' component={SignUp}/>
@@ -40,6 +45,7 @@ class App extends Component {
           <Route exact path='/everciselog' component={ExerciseLog}/> */}
         </Grid.Column>
       </Grid>
+
       </div>
     )
   }
