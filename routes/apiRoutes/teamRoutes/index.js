@@ -7,6 +7,7 @@ const {
   deleteUserFromTeam,
   getAllPrivateTeams,
   getAllPublicTeams,
+  getAllTeamsByEventId,
 } = require('../../../controllers/teamController');
 const { requireAuth } = require('../../../middlewares/authMiddlewares');
 
@@ -20,6 +21,10 @@ router.route('/:teamId')
   // .get(requireAuth, getTotalMileageByTeamId)
   .post(requireAuth, addUserToTeam)
   .delete(requireAuth, deleteUserFromTeam);
+
+// api/team/:eventId
+router.route('/:eventId')
+  .get(requireAuth, getAllTeamsByEventId);
 
 // api/team/adduser
 // router.route('/adduser')

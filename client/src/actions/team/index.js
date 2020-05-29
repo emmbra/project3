@@ -5,6 +5,8 @@ import {
   GET_ALL_PUBLIC_TEAMS_ERROR ,
   GET_ALL_PRIVATE_TEAMS,
   GET_ALL_PRIVATE_TEAMS_ERROR,
+  GET_ALL_TEAMS_BY_EVENT_ID,
+  GET_ALL_TEAMS_BY_EVENT_ID_ERROR,
   GET_TEAM_USERS,
   ADD_TEAMS,
   ADD_TEAMS_ERROR,
@@ -13,6 +15,15 @@ import {
   DELETE_USER_FROM_TEAM_ERROR,
 } from '../types';
 import axios from 'axios';
+
+export const getAllTeamsByEventId = (eventId) => async dispatch => {
+  try {
+    const { data } = await axios.get(`/api/team/${eventId}`, eventId, { headers: { 'authorization': localStorage.getItem('token') }});
+    dispatch({ type: GET_ALL_TEAMS_BY_EVENT_ID, payload: data });
+  } catch (e) {
+    dispatch({ type: GET_ALL_TEAMS_BY_EVENT_ID_ERROR, payload: e });
+  }
+};
 
 export const getAllTeams = () => async dispatch => {
   try {

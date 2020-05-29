@@ -42,48 +42,6 @@ class Team extends Component {
     // console.log("team:", this.props.selectedTeam.values.teamNames);
     // console.log("state:", this.state);
     return (
-      // <Segment key="team_id">
-      //   <Container>
-      //     <Header> Select a team to view your fellow team members </Header>
-      //       <Container textAlign='left'>
-      //           <Form>
-      //             <select onChange={this.handleChange}>
-      //               {this.getTeamList()}
-      //             </select>
-      //           </Form>
-      //       </Container>
-      //       <Container textAlign='right'>
-      //         <p>LINK TO TEAM CONTAINER</p>
-      //         <Button animated='fade'>
-      //           <Button.Content as={Link} to='/TeamContainer' hidden>Join Team</Button.Content>
-      //           <Button.Content visible>
-      //             <Icon name='add user' />
-      //           </Button.Content>
-      //         </Button>
-      //         <Button animated='fade'>
-      //         <Button.Content hidden>Create Team</Button.Content>
-      //         <Button.Content visible>
-      //           <Icon name='users' />
-      //         </Button.Content>
-      //           </Button>
-      //       </Container>
-      //     </Container>
-      //     <Grid columns={2} stackable textAlign='center'>
-      //     <Grid.Row  verticalAlign='middle'>
-      //       <Grid.Column>
-      //       <Header content="Team Members" />
-      //         <List>
-      //         {this.renderUsersByTeamId()}
-      //         </List>
-      //       </Grid.Column>
-
-      //       <Grid.Column>
-      //         <p>DISPLAY: VIEW TEAM EXERCISE LOG</p>
-      //         <Header content="Team Exercise Log Totals " />
-      //       </Grid.Column>
-      //     </Grid.Row>
-      //   </Grid>
-      // </Segment>
       <Segment key="team_id">
         <Grid celled>
           <Grid.Column stackable width={13}>
@@ -121,9 +79,9 @@ class Team extends Component {
               >
                 Team Members
               </Divider>
-              <List>
+              <Header style={{ textTransform: 'uppercase' }} >
                 {this.renderUsersByTeamId()}
-              </List>
+              </Header>
             </Grid.Column>
             <Grid.Column stackable width={10}>
               <Divider

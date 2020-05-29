@@ -15,15 +15,20 @@ module.exports = {
 
   joinEvent: async (req, res) => {
     const { teamId } = req.body;
+    console.log(teamId);
     try {
       const eventToJoin = await Event.findOne({ code: '1234' });
       eventToJoin.users.push(req.user._id);
       eventToJoin.teams.push(teamId);
+      console.log(eventToJoin.teams.length);
       await eventToJoin.save();
+      console.log(eventToJoin.teams.length);
       const eventToFind = await Event.findOne({ code: '1234' })
         .populate('teams')
         .populate('users')
         .populate('logs');
+
+      console.log(eventToFind.teams.length);
       return res.status(200).json(eventToFind);
     } catch (e) {
       return res.status(403).json(e);

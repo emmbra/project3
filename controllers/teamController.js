@@ -179,6 +179,17 @@ module.exports = {
     }
   },
 
+
+  getAllTeamsByEventId: async (req, res) => {
+    const { eventId } = req.body;
+    try {
+      const teamToFind = await Team.find({ events: { _id: eventId } });
+      return res.status(200).json(teamToFind);
+    } catch (e) {
+      return res.status(403).json(e);
+    }
+  },
+
   deleteUserFromTeam: async (req, res) => {
     const { teamId } = req.params;
     try {

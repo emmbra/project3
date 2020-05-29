@@ -16,8 +16,8 @@ import {
 } from 'semantic-ui-react';
 import { addTeams, addUserToTeam, getAllTeams } from '../../actions/team';
 
-import JoinTeam from './joinTeam';
-import CreateTeam from './createTeam';
+import JoinTeam from './JoinTeam';
+import CreateTeam from './CreateTeam';
 
 class TeamContainer extends Component {
   state = {

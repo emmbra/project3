@@ -20,16 +20,6 @@ function JoinTeam(props) {
           {...input}
           error={meta.error || meta.valid}
         />
-        {/* <Button
-          // color='green'
-          content='What is the passcode for this team?'
-          onClick={(event) => props.handleUpdate(event, teamid, input.value, () => {
-            console.log("Called");
-            props.history.push('/dashboard');
-          })}
-          type='submit'
-          trigger={'What is the passcode for this team?'}
-        /> */}
         <Popup className='inlineItem'
           on="click"
           position="top right"
@@ -56,6 +46,7 @@ function JoinTeam(props) {
   } else {
     return props.teams.map(
       ({ _id, name, mascotIMG, teamType, teamStatus, passcode, users }) => {
+      
         if (teamType === 'public') {
           return (
             <Segment key={_id} teamid={_id} id='joinTeamContainers'>
@@ -123,9 +114,9 @@ function JoinTeam(props) {
               </List.Item>
             </Segment>
             // <Button onClick={props.resetView}>Go Back</Button> 
-
           )
-      })
+      }
+      )
   }
 
 }
