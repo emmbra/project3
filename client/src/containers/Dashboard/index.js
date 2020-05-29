@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu, Button, Divider, Grid, Segment, Statistic, Icon } from 'semantic-ui-react';
+import { Menu, Grid, Segment, Statistic, Icon } from 'semantic-ui-react';
 import axios from 'axios';
 
 import User from '../User';
@@ -11,12 +11,15 @@ import Events from '../Events';
 import ExerciseLog from '../ExerciseLog';
 
 import { getUserById } from '../../actions/user';
+import { getEvent } from '../../actions/event';
 
 class Dashboard extends Component {
   
   componentDidMount() {
     this.props.getUserById();
+    this.props.getEvent();
   }
+
   
   render() {
     // console.log(this.props.user);
@@ -68,8 +71,6 @@ class Dashboard extends Component {
             to='/dashboard/exerciselog' 
           />
         </Menu>
-        <Statistic.Group>
-          </Statistic.Group>
           <Statistic.Group>
           <Statistic size='mini'>
             <Statistic.Value>123</Statistic.Value>
@@ -94,10 +95,16 @@ class Dashboard extends Component {
           <Team
             getUserTeams={this.props.user.teams}
             />}/>
-          <Route exact path='/dashboard/event' render={ () => <Events/>}/>
+          <Route exact path='/dashboard/event' render={ () => <Events
+            getUserTeams={this.props.user.teams}
+          />}/>
           <Route exact path='/dashboard/records' render={ () => <Records/>}/>
-          <Route exact path='/dashboard/exerciselog' render={ () => <ExerciseLog/>}/>
-          <Route path='/dashboard' render={ () => <Team getUserTeams={this.props.user.teams} />} />
+          <Route exact path='/dashboard/exerciselog' render={ () => <ExerciseLog 
+            getUserTeams={this.props.user.teams}
+            />}/>
+          <Route path='/dashboard' render={ () => <Team 
+            getUserTeams={this.props.user.teams} 
+            />} />
         </Switch>
       </Grid.Column>
       
@@ -114,4 +121,4 @@ function mapStateToProps(state) {
  };
 }
 
-export default connect(mapStateToProps, {getUserById})(Dashboard);
+export default connect(mapStateToProps, { getUserById, getEvent })(Dashboard);

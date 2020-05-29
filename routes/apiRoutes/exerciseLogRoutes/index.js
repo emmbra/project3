@@ -1,11 +1,11 @@
-// const router = require('express').Router();
-// const {
-//   getExerciseLog,
-// } = require('../../../controllers/exerciseLogController');
-// const { requireAuth } = require('../../../middlewares/authMiddlewares');
+const router = require('express').Router();
+const {
+  addExerciseLog,
+} = require('../../../controllers/logController');
+const { requireAuth } = require('../../../middlewares/authMiddlewares');
 
 // /api/exerciselog
-// router.route('/')
-//   .post(requireAuth, addExerciseLog);
+router.route('/')
+  .post(requireAuth, addExerciseLog);
 
-// module.exports = router;
+module.exports = router;

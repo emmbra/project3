@@ -32,6 +32,10 @@ export const EDIT_EVENT = 'EDIT_EVENT';
 export const EDIT_EVENT_ERROR = 'EDIT_EVENT_ERROR';
 export const DELETE_EVENT = 'DELETE_EVENT';
 export const DELETE_EVENT_ERROR = 'DELETE_EVENT_ERROR';
+export const GET_EVENT = 'GET_EVENT';
+export const GET_EVENT_ERROR = 'GET_EVENT_ERROR';
+export const JOIN_EVENT = 'JOIN_EVENT';
+export const JOIN_EVENT_ERROR = 'JOIN_EVENT_ERROR';
 
 // Log Actions
 export const ADD_EXERCISE_LOG = 'ADD_EXERCISE_LOG';

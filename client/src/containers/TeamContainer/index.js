@@ -6,14 +6,10 @@ import { compose } from 'redux';
 
 import {
   Button,
-  Divider,
   Grid,
   Header,
   Form,
-  Icon,
-  Search,
   Segment,
-  Checkbox,
   Radio,
 } from 'semantic-ui-react';
 import { addTeams, addUserToTeam, getAllTeams } from '../../actions/team';
@@ -40,27 +36,6 @@ class TeamContainer extends Component {
       console.log(e);
     }
   }
-
-  
-  // onClick = async () => {
-  //   try {
-  //     this.props.addUserToTeam();
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
-
-  // onSubmit = async (formValues, dispatch) => {
-  //   console.log('test');
-  //   try {
-  //     const { data } = await axios.post('/api/auth/signup', formValues);
-  //     localStorage.setItem('token', data.token);
-  //     dispatch({ type: AUTH_USER, payload: data.token });
-  //     this.props.history.push('/counter');
-  //   } catch (e) {
-  //     dispatch({ type: AUTH_USER_ERROR, payload: e });
-  //   }
-  // }
   
   renderTeamView = (value) => {
     this.setState({ teamView: value, isClicked: true });

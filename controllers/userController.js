@@ -4,11 +4,11 @@ module.exports = {
   getUserById: async (req, res) => {
     try {
       const users = await User.findById(req.user._id)
-        .populate({ path: 'teams', populate: {path: 'users', select: '-password' } })
+        .populate({ path: 'teams', populate: { path: 'users', select: '-password' } })
         .populate('records')
         .populate('logs')
         .populate('events');
-      console.log(users);
+      // console.log(users);
       if (!users) {
         return res.status(400).json({ error: 'No users found' });
       }

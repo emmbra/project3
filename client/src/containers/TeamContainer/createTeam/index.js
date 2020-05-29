@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { List, Form, Header, Button, Container, Image, Grid, Radio } from 'semantic-ui-react';
+import { List, Form, Header, Button, Container,  Grid} from 'semantic-ui-react';
 import { addTeams } from '../../../actions/team';
 import { required } from 'redux-form-validators';
 import mascots from "../../../static/mascots";

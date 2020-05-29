@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Segment, Dropdown, Button, Header, Form, Icon, Container, Grid, List} from "semantic-ui-react";
+import { Segment, Button, Header, Form, Icon, Container, Grid, List} from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
-
 import { getTeamUsers } from '../../actions/team';
 
 class Team extends Component {
@@ -40,50 +39,97 @@ class Team extends Component {
   render() {
     // console.log("TEAMUSERS:", this.props.teamUsers);
     // console.log("HERE:", this.props.getUserTeams);
-   // console.log("team:", this.props.selectedTeam.values.teamNames);
+    // console.log("team:", this.props.selectedTeam.values.teamNames);
     // console.log("state:", this.state);
     return (
-      <Segment key="team_id">
-        <Container>
-<Header> Select a team to view your fellow team members </Header>
-         <Container textAlign='left'>
-            <Form>
-              <select onChange={this.handleChange}>
-                {this.getTeamList()}
-              </select>
-            </Form>
-        </Container>
-        <Container textAlign='right'>
-            <p>LINK TO TEAM CONTAINER</p>
-            <Button animated='fade'>
-              <Button.Content as={Link} to='/TeamContainer' hidden>Join Team</Button.Content>
-              <Button.Content visible>
-                <Icon name='add user' />
-              </Button.Content>
-            </Button>
-            <Button animated='fade'>
-            <Button.Content hidden>Create Team</Button.Content>
-            <Button.Content visible>
-              <Icon name='users' />
-            </Button.Content>
-              </Button>
-          </Container>
-          </Container>
-          <Grid columns={2} stackable textAlign='center'>
-          <Grid.Row  verticalAlign='middle'>
-          <Grid.Column>
-          <List>
-          {this.renderUsersByTeamId()}
-          </List>
-          </Grid.Column>
+      // <Segment key="team_id">
+      //   <Container>
+      //     <Header> Select a team to view your fellow team members </Header>
+      //       <Container textAlign='left'>
+      //           <Form>
+      //             <select onChange={this.handleChange}>
+      //               {this.getTeamList()}
+      //             </select>
+      //           </Form>
+      //       </Container>
+      //       <Container textAlign='right'>
+      //         <p>LINK TO TEAM CONTAINER</p>
+      //         <Button animated='fade'>
+      //           <Button.Content as={Link} to='/TeamContainer' hidden>Join Team</Button.Content>
+      //           <Button.Content visible>
+      //             <Icon name='add user' />
+      //           </Button.Content>
+      //         </Button>
+      //         <Button animated='fade'>
+      //         <Button.Content hidden>Create Team</Button.Content>
+      //         <Button.Content visible>
+      //           <Icon name='users' />
+      //         </Button.Content>
+      //           </Button>
+      //       </Container>
+      //     </Container>
+      //     <Grid columns={2} stackable textAlign='center'>
+      //     <Grid.Row  verticalAlign='middle'>
+      //       <Grid.Column>
+      //       <Header content="Team Members" />
+      //         <List>
+      //         {this.renderUsersByTeamId()}
+      //         </List>
+      //       </Grid.Column>
 
-          <Grid.Column>
-          <p>DISPLAY: VIEW TEAM EXERCISE LOG</p>
-          
-          </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
+      //       <Grid.Column>
+      //         <p>DISPLAY: VIEW TEAM EXERCISE LOG</p>
+      //         <Header content="Team Exercise Log Totals " />
+      //       </Grid.Column>
+      //     </Grid.Row>
+      //   </Grid>
+      // </Segment>
+            <Segment key="team_id">
+            <Grid celled>
+            <Grid.Column width={13}>
+              <Header> Select a team to view your fellow team members </Header>
+                <Container textAlign='left'>
+                    <Form>
+                      <select onChange={this.handleChange}>
+                        {this.getTeamList()}
+                      </select>
+                    </Form>
+                </Container>
+            </Grid.Column>
+            <Grid.Column width={3}>
+                  <Container textAlign='right'>
+                    <p>LINK TO TEAM CONTAINER</p>
+                    <Button animated='fade'>
+                      <Button.Content as={Link} to='/TeamContainer' hidden>Join Team</Button.Content>
+                      <Button.Content visible>
+                        <Icon name='add user' />
+                      </Button.Content>
+                    </Button>
+                    <Button animated='fade'>
+                    <Button.Content hidden>Create Team</Button.Content>
+                    <Button.Content visible>
+                      <Icon name='users' />
+                    </Button.Content>
+                      </Button>
+                  </Container>
+            </Grid.Column>
+          </Grid>
+              <Grid columns={2} stackable textAlign='center'>
+              <Grid.Row  verticalAlign='middle'>
+                <Grid.Column>
+                <Header content="Team Members" />
+                  <List>
+                  {this.renderUsersByTeamId()}
+                  </List>
+                </Grid.Column>
+    
+                <Grid.Column>
+                  <p>DISPLAY: VIEW TEAM EXERCISE LOG</p>
+                  <Header content="Team Exercise Log Totals " />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Segment>
     );
   }
 }

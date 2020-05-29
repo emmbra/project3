@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Divider, Grid, Image, Statistic, Header, Icon} from 'semantic-ui-react'
+import { Divider, Grid, Statistic, Table} from 'semantic-ui-react'
 
 class User extends Component {
   render() {
@@ -59,6 +59,31 @@ class User extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        <Table celled selectable>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell textAlign='center'> Exercise Date </Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'> Distance (miles) </Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'> Duration (minutes) </Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'> Minutes/Mile </Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell textAlign='center'>5/28/2020</Table.Cell>
+            <Table.Cell textAlign='center'>10</Table.Cell>
+            <Table.Cell textAlign='center'>60</Table.Cell>
+            <Table.Cell textAlign='center'>6</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell textAlign='center'>5/20/2020</Table.Cell>
+            <Table.Cell textAlign='center'>5</Table.Cell>
+            <Table.Cell textAlign='center'>30</Table.Cell>
+            <Table.Cell textAlign='center'>6</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+
       </div>
     )
   }
