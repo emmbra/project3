@@ -9,26 +9,33 @@ import mascots from "../../../static/mascots";
 
 function CreateTeam (props) {
   const { handleSubmit } = props;
-  if ( props.createteam && props.createteam.values) {
+  let sourceImg;
+  if ( props.createteam && props.createteam.values && props.createteam.values.mascotIMG ) {
     console.log(props.createteam.values);
+    sourceImg = props.createteam.values.mascotIMG;
   }
     // console.log(mascots)
     return (
       <Container textAlign='left'>
         <Form size='large' onSubmit={handleSubmit(props.onSubmit)}>
           <Header>
-            Create a Team!
+            Start your Dream Team, create a team today!
           </Header>
-          <List as='ol'>
+          <List as='ol' color = 'black'>
             <List.Item as='li' value='*'>
-              Every team can only have up to 5 members.
+            <Header as='h5'>Every team can only have up to 5 members. </Header>
+            </List.Item>
+            <List.Item as='li' value='*'>
+            <Header as='h5'>Get to your goal by logging in the distance and duration of your runs. </Header>
             </List.Item>
           </List>
+          <Header> Team Name: </Header>
           <Field 
             name='name' 
             component={props.renderInput}
-            label='Team Name'
+            // label='Team Name'
             placeholder='The Lobsters...'
+            width = '100px'
             validate={
               [
                 required({ msg: 'You must provide a team name!'})
@@ -36,34 +43,24 @@ function CreateTeam (props) {
             }
           />
           <Form.Group grouped>
-            <label>Team Mascot</label>
+          <Header> Team Mascot: </Header>
+            {/* <label>Team Mascot</label> */}
             <Grid>
               <Grid.Row>
-              <Field name ="mascotIMG" component='select' >
+              <Field name ="mascotIMG" component='select' width='100px'>
                   <option value="snake">Snake  </option>
                   <option value="tiger">Tiger </option>
                   <option value="turtle">Turtle </option>
               </Field>
-              {/* <img src = {mascots.value.src}/> */}
-                  {/* <Button>
-                    <Field name="mascotIMG" component='select' value = 'snake'/>
-                      Snake
-                      <img src={mascots.snake.src} alt='snake'/>
-                  </Button>
-                  <Button>
-                    Tiger
-                    <img src={mascots.tiger.src} alt='tiger'/>
-                  </Button>
-                  <Button>
-                    Turtle
-                    <img src={mascots.turtle.src} alt='turtle'/>
-                  </Button> */}
+              <img src = {mascots[`${sourceImg}`]}/>
+              <img src={mascots.snake.src} alt='snake' width = '50px'/>
               </Grid.Row>
             </Grid>
           </Form.Group>
 
           <Form.Group grouped>
-            <label>Do you want this to be a private or public team? </label>
+          <Header> Do you want this to be a private or public team?  </Header>
+            {/* <label>Do you want this to be a private or public team? </label> */}
             <label><Field name="teamType" component='input' type="radio" value="private" /> Private </label>
             <label><Field name="teamType" component='input' type="radio" value="public" /> Public</label>
             {/* ES2020 Optional Chaining */}
@@ -77,9 +74,9 @@ function CreateTeam (props) {
             />}
           </Form.Group>
 
-          <Button type='submit'>Submit</Button>
+          <Button type='submit' color='#34c4f8'>Submit</Button>
           
-          <Button onClick={props.resetView}>Go Back</Button>
+          <Button onClick={props.resetView} color='#34c4f8'>Go Back</Button>
         </Form>
       </Container>
     )

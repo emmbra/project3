@@ -11,11 +11,13 @@ import {
   Form,
   Segment,
   Radio,
+  Container,
+  Divider,
 } from 'semantic-ui-react';
 import { addTeams, addUserToTeam, getAllTeams } from '../../actions/team';
 
-import JoinTeam from './JoinTeam';
-import CreateTeam from './CreateTeam';
+import JoinTeam from './joinTeam';
+import CreateTeam from './createTeam';
 
 class TeamContainer extends Component {
   state = {
@@ -100,10 +102,18 @@ class TeamContainer extends Component {
   };
 
   render() {
-    console.log('HELLO');
-    console.log(this.props);
+    // console.log('HELLO');
+    // console.log(this.props);
     return (
-      <Segment placeholder>
+      <Container>
+              <Divider
+          as='h2'
+          className='header'
+          horizontal
+          style={{ color: '#858585', margin: '1em 0em', textTransform: 'uppercase' }}
+        >
+          Hurry and get on a team!
+        </Divider>
         <Grid columns={2} stackable textAlign='center'>
         {/* <Divider vertical>Or</Divider> */}
           {!this.state.isClicked && (
@@ -114,7 +124,7 @@ class TeamContainer extends Component {
                   // to='/createteam'
                   icon='users'
                   size='huge'
-                  color='teal'
+                  color='#34c4f8'
                   content='Create Team'
                   onClick={() => this.renderTeamView('create')}
                 />
@@ -125,7 +135,7 @@ class TeamContainer extends Component {
                   // to='/jointeam'
                   icon='add user'
                   size='huge'
-                  color='teal'
+                  color='glaucous'
                   content='Join Team'
                   // todos={this.props.userTodos.slice(this.state.start, this.state.end)}
                   // teams = {this.props}
@@ -135,11 +145,13 @@ class TeamContainer extends Component {
               </Grid.Column>
             </Grid.Row>
           )}
-          <Grid.Row>           
-            <Grid.Column>{this.renderView()}</Grid.Column>
+          <Grid.Row>
+            {this.renderView()}
+            {/* <Grid.Column>{this.renderView()}</Grid.Column> */}
+
           </Grid.Row>
         </Grid>
-      </Segment>
+      </Container>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, List, Button, Popup, Grid, Form } from "semantic-ui-react";
+import { Header, List, Button, Popup, Grid, Form, Segment, Divider } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "mongoose";
 import { withRouter } from 'react-router-dom';
@@ -10,47 +10,74 @@ import axios from 'axios';
 
 function JoinTeam(props) {
   const { handleSubmit } = props;
-  console.log(props);
+  // console.log(props);
   const renderInput = ({ input, meta, teamid }) => {
-    console.log(input)
-    console.log(teamid);
-    return  (
+    // console.log(input)
+    // console.log(teamid);
+    return (
       <>
-        <Form.Input
+        <Form.Input className='inlineItem'
           {...input}
-          error={ meta.error || meta.valid }
+          error={meta.error || meta.valid}
         />
-        <Button
-          color='green'
+        {/* <Button
+          // color='green'
           content='What is the passcode for this team?'
-          onClick={ (event) => props.handleUpdate(event, teamid, input.value, () => {
+          onClick={(event) => props.handleUpdate(event, teamid, input.value, () => {
             console.log("Called");
             props.history.push('/dashboard');
-          } )}
-          type='submit'/>
+          })}
+          type='submit'
+          trigger={'What is the passcode for this team?'}
+        /> */}
+        <Popup className='inlineItem'
+          on="click"
+          position="top right"
+          content="Enter a passcode for this team."
+          trigger={
+            <Button
+              icon='add'
+              // color="green"
+              size="small"
+              onClick={(event) => props.handleUpdate(event, teamid, input.value, () => {
+                console.log("Called");
+                props.history.push('/dashboard');
+              })
+              }
+            />
+          }
+        />
       </>
     )
   }
-  console.log(props);
+  // console.log(props);
   if (props.teams.length === 0) {
     return <Header content="There are no teams yet." />;
   } else {
     return props.teams.map(
       ({ _id, name, mascotIMG, teamType, teamStatus, passcode, users }) => {
         if (teamType === 'public') {
-        return (
-          <Grid key={_id} teamid={_id}> 
-            <Grid.Column>
+          return (
+            <Segment key={_id} teamid={_id} id='joinTeamContainers'>
+              <Divider
+                as='h2'
+                className='header'
+                horizontal
+                style={{ color: '#ca50a1', margin: '1em 0em', textTransform: 'uppercase' }}
+              >
+                Public Teams
+              </Divider>
+              <List>
                 <List.Item>
-                  <List.Content floated="left">
-                    <p>
-                      {/* {teamType} */}
-                      {name}
-                      {mascotIMG}
-                    </p>
+                  <List.Content className='inlineItem'>
+                    <Header>{name}</Header>
+                    {/* <p>
+                        {teamType}
+                        {name}
+                        {mascotIMG}
+                      </p> */}
                   </List.Content>
-                  {/* <List.Content floated="right"> */}
-                  <List.Content position="top right">
+                  <List.Content className='inlineItem'>
                     <Popup
                       on="click"
                       position="top right"
@@ -58,9 +85,9 @@ function JoinTeam(props) {
                       trigger={
                         <Button
                           icon='add'
-                          color="green"
+                          // color="green"
                           size="small"
-                          onClick={(event) => props.handleUpdate(event, _id, null, () =>{
+                          onClick={(event) => props.handleUpdate(event, _id, null, () => {
                             console.log("Called");
                             props.history.push('/dashboard');
                           })
@@ -70,49 +97,35 @@ function JoinTeam(props) {
                     />
                   </List.Content>
                 </List.Item>
-                 {/* <Button onClick={props.resetView}>Go Back</Button> */}
-                 </Grid.Column>
-              </Grid>
-        )
-      } else
-      return (
-        <Grid key={_id}>
-          <Grid.Column>
-            <List.Item>
-              <List.Content floated="left">
-                <p>
-                  {name}
-                  {mascotIMG}
-                </p>
-              </List.Content>
-              <List.Content floated="right" position='top right'>
-              <Field name={name} teamid={_id} component={renderInput} type="text" placeholder="Passcode" />
-              {/* <Popup
-                  on='click'
-                  position='top right'
-                  // content='Join this team!'
-                  trigger={
-                    <Button
-                      color='orange'
-                      icon='add'
-                      size='small'
-                    />
-                  }
-                  content={
-                    <Button
-                      color='green'
-                      content='What is the passcode for this team?'
-                      onClick={ (event) => props.handleUpdate(_id)}
-                    />
-                  }
-                /> */}
-              </List.Content>
-            </List.Item>
-          </Grid.Column>
-        </ Grid>
-        // <Button onClick={props.resetView}>Go Back</Button> 
-     
-)})
+              </List>
+            </Segment>
+          )
+        } else
+          return (
+            <Segment key={_id} teamid={_id} id='joinTeamContainers'>
+              <Divider
+                as='h2'
+                className='header'
+                horizontal
+                style={{ color: '#ca50a1', margin: '1em 0em', textTransform: 'uppercase' }}
+              >
+                Private Teams
+              </Divider>
+              <List.Item id='inlineItem'>
+                <List.Content id='inlineItem'>
+                  <Header id='inlineItem'>{name}</Header>
+                  {/* {name}
+                    {mascotIMG} */}
+                </List.Content>
+                <List.Content id='inlineItem'>
+                  <Field name={name} teamid={_id} component={renderInput} type="text" placeholder="Passcode" />
+                </List.Content>
+              </List.Item>
+            </Segment>
+            // <Button onClick={props.resetView}>Go Back</Button> 
+
+          )
+      })
   }
 
 }
