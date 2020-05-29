@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Segment, Button, Header, Form } from 'semantic-ui-react'
+import { Segment, Button, Header, Form, Divider } from 'semantic-ui-react'
 import { addExerciseLog } from '../../actions/log';
 import { getTeamUsers } from '../../actions/team';
 
@@ -48,15 +48,27 @@ class ExerciseLog extends Component {
     const { handleSubmit } = this.props;
     return (
       <Segment>
-        How far did you go today?
+        <Divider
+          as='h2'
+          className='header'
+          horizontal
+          style={{ color: '#858585', margin: '1em 0em', textTransform: 'uppercase' }}
+        >
+          How far did you go today?
+        </Divider>
       <Form onSubmit={handleSubmit(this.onSubmit)}>
+      <Form.Field inline>
         <label>Distance (in miles): </label>
         <Field name='time' component='input' type='number'/> 
-        <br/>
+        </Form.Field>
+          <Form.Field inline>
         <label>Duration (in minutes): </label>
         <Field name='distance' component='input' type='number'/>
+        </Form.Field>
+          <Form.Field inline>
         <label>Select your team:</label>
         <Field name='teamId' component={this.renderSelectTeam}/>
+        </Form.Field>
       <Button type='submit'>Submit</Button>
       </Form>
 

@@ -5,60 +5,62 @@ class User extends Component {
   render() {
     return (
       <div>
-        I'M THE USER CONTAINER
-        <Grid columns={5}>
-          <Grid.Row>
-            <Grid.Column>
-              <Divider/>
-            </Grid.Column>
-            <Grid.Column>
+        <Divider
+          as='h2'
+          className='header'
+          horizontal
+          style={{ color: '#858585', margin: '1em 0em', textTransform: 'uppercase' }}
+        >
+          Personal Stats
+        </Divider>
+        <Grid>
+          <Grid.Row centered columns={2} >
+            <Grid.Column  textAlign='center'>
                 <Statistic size='mini'>
                   <Statistic.Label>Total Miles Run</Statistic.Label>
                   <Statistic.Value>2,204</Statistic.Value>
                 </Statistic>
-            </Grid.Column>
-            <Grid.Column>
-              <Divider/>
-            </Grid.Column>
-            <Grid.Column>
+                </Grid.Column>
+                <Grid.Column textAlign='center'>
                 <Statistic size='mini'>
                   <Statistic.Label>Time Spent Running</Statistic.Label>
                   <Statistic.Value>60</Statistic.Value>
                 <Statistic.Label>hours</Statistic.Label>
                 </Statistic>
             </Grid.Column>
-            <Grid.Column>
-              <Divider/>
-            </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row>
-            <Grid.Column>
-              <Divider/>
-            </Grid.Column>
-            <Grid.Column>
+          <Grid.Row centered columns={3}>
+            <Grid.Column textAlign='center'>
               <Statistic size='mini'>
                 <Statistic.Label>Teams</Statistic.Label>
                 <Statistic.Value>2</Statistic.Value>
               </Statistic>      
-            </Grid.Column>
-            <Grid.Column>
+              </Grid.Column>
+            <Grid.Column textAlign='center'>
               <Statistic size='mini'>
                   <Statistic.Label>Active Events</Statistic.Label>
                   <Statistic.Value>1</Statistic.Value>
               </Statistic>
-            </Grid.Column>
-            <Grid.Column>
+              </Grid.Column>
+            <Grid.Column textAlign='center'>
               <Statistic size='mini'>
                 <Statistic.Label>Events Won</Statistic.Label>
                 <Statistic.Value>1</Statistic.Value>
               </Statistic>
             </Grid.Column>
-            <Grid.Column>
-              <Divider/>
-            </Grid.Column>
           </Grid.Row>
         </Grid>
+
+        <Divider
+          as='h2'
+          className='header'
+          horizontal
+          style={{ color: '#858585', margin: '1em 0em', textTransform: 'uppercase' }}
+        >
+          Exercise Log
+        </Divider>
+        
         <Table celled selectable>
         <Table.Header>
           <Table.Row>

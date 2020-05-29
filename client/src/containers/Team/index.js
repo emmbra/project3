@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Segment, Button, Header, Form, Icon, Container, Grid, List} from "semantic-ui-react";
+import { Segment, Button, Header, Form, Icon, Container, Grid, List, Divider } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 import { getTeamUsers } from '../../actions/team';
 
@@ -18,7 +18,7 @@ class Team extends Component {
   };
 
   renderUsersByTeamId = (username) => {
-    if(this.props.teamUsers.length === 0 ) {
+    if (this.props.teamUsers.length === 0) {
       return <Header content="Select a team to view members!" />
     } else {
       return this.props.teamUsers.map(({ username }) => {
@@ -33,7 +33,7 @@ class Team extends Component {
   handleChange = (event) => {
     console.log(event.target.value);
     //call action creator, take team name, send to reducers, reducer looks at team name, sets state of teamname
-    this.props.getTeamUsers(event.target.value, this.props.getUserTeams) 
+    this.props.getTeamUsers(event.target.value, this.props.getUserTeams)
   }
 
   render() {
@@ -84,52 +84,62 @@ class Team extends Component {
       //     </Grid.Row>
       //   </Grid>
       // </Segment>
-            <Segment key="team_id">
-            <Grid celled>
-            <Grid.Column width={13}>
-              <Header> Select a team to view your fellow team members </Header>
-                <Container textAlign='left'>
-                    <Form>
-                      <select onChange={this.handleChange}>
-                        {this.getTeamList()}
-                      </select>
-                    </Form>
-                </Container>
+      <Segment key="team_id">
+        <Grid celled>
+          <Grid.Column stackable width={13}>
+            <Header> Select a team to view your fellow team members </Header>
+            <Container textAlign='left'>
+              <Form>
+                <select onChange={this.handleChange}>
+                  {this.getTeamList()}
+                </select>
+              </Form>
+            </Container>
+          </Grid.Column>
+          <Grid.Column stackable width={3}>
+            <Container textAlign='center'>
+              <Header as='h5'>Looking for a new team? Click Here! </Header>
+              <Button animated='fade'
+                as={Link}
+                to='/teamsignup'>
+                <Button.Content hidden>Teams</Button.Content>
+                <Button.Content visible>
+                  <Icon name='users' />
+                </Button.Content>
+              </Button>
+            </Container>
+          </Grid.Column>
+        </Grid>
+        <Grid columns={2} stackable textAlign='center'>
+          <Grid.Row>
+            <Grid.Column width={6}>
+              <Divider
+                as='h2'
+                className='header'
+                horizontal
+                style={{ color: '#858585', margin: '1em 0em', textTransform: 'uppercase' }}
+              >
+                Team Members
+              </Divider>
+              <List>
+                {this.renderUsersByTeamId()}
+              </List>
             </Grid.Column>
-            <Grid.Column width={3}>
-                  <Container textAlign='right'>
-                    <p>LINK TO TEAM CONTAINER</p>
-                    <Button animated='fade'>
-                      <Button.Content as={Link} to='/TeamContainer' hidden>Join Team</Button.Content>
-                      <Button.Content visible>
-                        <Icon name='add user' />
-                      </Button.Content>
-                    </Button>
-                    <Button animated='fade'>
-                    <Button.Content hidden>Create Team</Button.Content>
-                    <Button.Content visible>
-                      <Icon name='users' />
-                    </Button.Content>
-                      </Button>
-                  </Container>
+            <Grid.Column stackable width={10}>
+              <Divider
+                as='h2'
+                className='header'
+                horizontal
+                style={{ color: '#858585', margin: '1em 0em', textTransform: 'uppercase' }}
+              >
+                Team Exercise Log Totals
+              </Divider>
+              <Header color='red'>DISPLAY: VIEW TEAM EXERCISE LOG</Header>
+              <Header color='orange'>DATE | TOTAL MILES RUN | TOTAL DURATION</Header>
             </Grid.Column>
-          </Grid>
-              <Grid columns={2} stackable textAlign='center'>
-              <Grid.Row  verticalAlign='middle'>
-                <Grid.Column>
-                <Header content="Team Members" />
-                  <List>
-                  {this.renderUsersByTeamId()}
-                  </List>
-                </Grid.Column>
-    
-                <Grid.Column>
-                  <p>DISPLAY: VIEW TEAM EXERCISE LOG</p>
-                  <Header content="Team Exercise Log Totals " />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Segment>
+          </Grid.Row>
+        </Grid>
+      </Segment>
     );
   }
 }
@@ -143,4 +153,4 @@ function mapStateToProps(state) {
 
 export default compose(
   connect(mapStateToProps, { getTeamUsers }),
-  reduxForm({ form: 'Team'}))(Team);
+  reduxForm({ form: 'Team' }))(Team);
