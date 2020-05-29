@@ -6,6 +6,8 @@ import {
   GET_ALL_PRIVATE_TEAMS,
   GET_ALL_PRIVATE_TEAMS_ERROR,
   GET_TEAM_USERS,
+  GET_ALL_TEAMS_BY_EVENT_ID,
+  GET_ALL_TEAMS_BY_EVENT_ID_ERROR,
   ADD_TEAMS,
   ADD_TEAMS_ERROR,
   ADD_USER_TO_TEAM,
@@ -21,9 +23,11 @@ const INITIAL_STATE = {
   publicTeams: [],
   privateTeams: [],
   teamUsers: [],
+  teamsByEventId: [],
   getAllTeamsError: '',
   getAllPublicTeamsError: '',
   getAllPrivateTeamsError: '',
+  getAllTeamsByEventIdError: '',
   addTeamsError: '',
   addUserToTeamError: '',
   deleteUserFromTeamError: ''
@@ -45,6 +49,10 @@ export default function (state = INITIAL_STATE, action) {
       return {...state, getAllPrivateTeamsError: action.payload};
     case GET_TEAM_USERS:
       return {...state, teamUsers: action.payload};
+    case GET_ALL_TEAMS_BY_EVENT_ID:
+      return {...state, teamsByEventId: action.payload, getAllTeamsByEventIdError: ''};
+    case GET_ALL_TEAMS_BY_EVENT_ID_ERROR:
+      return {...state, getAllTeamsByEventIdError: action.payload};
     case ADD_TEAMS:
       return {...state, myteam: action.payload, addTeamsError: ''};
     case ADD_TEAMS_ERROR:

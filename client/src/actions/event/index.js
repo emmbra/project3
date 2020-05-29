@@ -30,9 +30,13 @@ export const getEvent = () => async dispatch => {
   }
 }
 
-export const joinEvent = ({ teamId }) => async dispatch => {
+export const joinEvent = (teamId) => async dispatch => {
+  console.log("HEllo");
+  console.log(teamId);
+  console.log("Happening")
   try {
-    const { data } = await axios.post('/api/event', teamId, { headers: { 'authorization': localStorage.getItem('token') }});
+    const { data } = await axios.post('/api/event', {teamId}, { headers: { 'authorization': localStorage.getItem('token') }});
+    console.log(data);
     dispatch({ type: JOIN_EVENT, payload: data });
   } catch (e) {
     dispatch({ type: JOIN_EVENT_ERROR, payload: e })
