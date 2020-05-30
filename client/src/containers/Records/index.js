@@ -5,7 +5,7 @@ class Records extends Component {
   render() {
     return (
       <div>
-        IM THE RECORDS CONTAINER
+        I'M THE RECORDS CONTAINER
       </div>
     )
   }

@@ -49,6 +49,17 @@ const TeamSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Log',
   }],
+},
+{
+  toJSON: {
+    virtuals: true,
+  },
+});
+
+TeamSchema.virtual('totalDistance').get(function () {
+  return this.logs.reduce((total, logs) => {
+    return total + logs.distance;
+  }, 0);
 });
 
 module.exports = model('Team', TeamSchema);
