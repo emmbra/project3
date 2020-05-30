@@ -90,7 +90,9 @@ class Dashboard extends Component {
       </Grid.Column>
         <Grid.Column stretched width={12}>
           <Switch>
-            <Route exact path='/dashboard/user' render={() => <User />} />
+            <Route exact path='/dashboard/user' render={() => <User 
+            getUserTeams={this.props.user}
+            />} />
             <Route exact path='/dashboard/team' render={() =>
               <Team
                 getUserTeams={this.props.user.teams}

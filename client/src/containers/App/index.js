@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Grid } from 'semantic-ui-react'
+import { Grid, Sticky } from 'semantic-ui-react'
 
 import SignUp from '../SignUp';
 import SignIn from '../SignIn';
@@ -26,14 +26,13 @@ import Navbar from './../../components/Navbar';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div class='backgroundImage'>
+        <Sticky>
         <Navbar authenticated={this.props.authenticated} />
-        <div class='heroImageBackground' >
-          <img class='heroImage' src={placeholder} height='200px' />
-        </div>
-        <div class='backgroundImage'>
+        </Sticky>
+        <div>
           <div class='mainRenderBody'>
-            <Grid>
+            <Grid stackable>
               <Grid.Column>
                 <Route exact path='/' component={SignUp} />
                 <Route exact path='/signin' component={SignIn} />
