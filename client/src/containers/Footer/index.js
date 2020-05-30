@@ -14,7 +14,7 @@ export default class Footer extends Component {
             horizontal
             style={{ color: '#858585', margin: '0.5em 0em', textTransform: 'uppercase' }}
           >
-            <p>Created with something by: </p>
+            <p>Created with FUN by: </p>
             <img src={runningMan} height='20px' />
             <a href="https://github.com/emmbra" target="_blank"> Emmett Brady, </a>
             <a href="https://github.com/Tassim" target="_blank">Tassia Shibuya, & </a>
