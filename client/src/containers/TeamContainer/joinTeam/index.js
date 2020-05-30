@@ -112,6 +112,7 @@ function JoinTeam(props) {
                   <Field name={name} teamid={_id} component={renderInput} type="text" placeholder="Passcode" />
                 </List.Content>
               </List.Item>
+              {/* // <Button onClick={props.resetView}>Go Back</Button>  */}
             </Segment>
             // <Button onClick={props.resetView}>Go Back</Button> 
           )

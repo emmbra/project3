@@ -16,8 +16,24 @@ module.exports = {
       return res.status(403).json({ e });
     }
   },
-  getTotalTeamDistanceByEventIdandTeamId: async (req, res) => {
-
+  getTotalTeamDistance: async (req, res) => {
+    try {
+      const totalDistance = await Log.aggregate(
+        [
+          {
+            $group:
+              {
+                user: req.user._id,
+                totalDistance: { $sum: 'distance' },
+              },
+          },
+        ],
+      );
+      console.log(totalDistance);
+      return res.json(totalDistance);
+    } catch (e) {
+      return res.status(403).json({ e });
+    }
   },
 
 

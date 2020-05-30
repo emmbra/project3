@@ -79,7 +79,6 @@ class SignIn extends Component {
           />
           <Button
             content='Sign In'
-            color='teal'
             fluid
             size='large'
             type='submit'

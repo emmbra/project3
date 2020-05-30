@@ -41,6 +41,17 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Log',
   }],
+},
+{
+  toJSON: {
+    virtuals: true,
+  },
+});
+
+UserSchema.virtual('totalDistance').get(function () {
+  return this.logs.reduce((total, logs) => {
+    return total + logs.distance;
+  }, 0);
 });
 
 UserSchema.methods.toJSON = function () {
