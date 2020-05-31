@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Menu, Grid, Statistic, Icon , Header, Container, Divider} from 'semantic-ui-react';
-import axios from 'axios';
 
 import User from '../User';
 import Team from '../Team';

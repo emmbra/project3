@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 
 import {
   Button,
   Grid,
-  Header,
   Form,
-  Segment,
   Radio,
   Container,
   Divider,

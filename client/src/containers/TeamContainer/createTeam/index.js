@@ -1,19 +1,21 @@
-import React, { Component } from "react";
+import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { List, Form, Header, Button, Container,  Grid} from 'semantic-ui-react';
 import { addTeams } from '../../../actions/team';
 import { required } from 'redux-form-validators';
-import mascots from "../../../static/mascots";
+import mascots from '../../../static/mascots';
 
+let sourceImg;
 function CreateTeam (props) {
   const { handleSubmit } = props;
-  let sourceImg;
   if ( props.createteam && props.createteam.values && props.createteam.values.mascotIMG ) {
-    console.log(props.createteam.values);
+    console.log(props.createteam.values.mascotIMG);
     sourceImg = props.createteam.values.mascotIMG;
-  }
+
+    }
+  
     // console.log(mascots)
     return (
       <Container textAlign='left'>
@@ -47,13 +49,14 @@ function CreateTeam (props) {
             {/* <label>Team Mascot</label> */}
             <Grid>
               <Grid.Row>
-              <Field name ="mascotIMG" component='select' width='100px'>
-                  <option value="snake">Snake  </option>
-                  <option value="tiger">Tiger </option>
-                  <option value="turtle">Turtle </option>
+              <Field name ='mascotIMG' component='select' width='100px'>
+                  <option value='snake'>Snake  </option>
+                  <option value='tiger'>Tiger </option>
+                  <option value='turtle'>Turtle </option>
               </Field>
-              <img src = {mascots[`${sourceImg}`]}/>
+              <img src={mascots[`${sourceImg}`]}  alt='mascot'/>
               <img src={mascots.snake.src} alt='snake' width = '50px'/>
+              {/* {RenderImg()} */}
               </Grid.Row>
             </Grid>
           </Form.Group>
@@ -61,8 +64,8 @@ function CreateTeam (props) {
           <Form.Group grouped>
           <Header> Do you want this to be a private or public team?  </Header>
             {/* <label>Do you want this to be a private or public team? </label> */}
-            <label><Field name="teamType" component='input' type="radio" value="private" /> Private </label>
-            <label><Field name="teamType" component='input' type="radio" value="public" /> Public</label>
+            <label><Field name='teamType' component='input' type='radio' value='private' /> Private </label>
+            <label><Field name='teamType' component='input' type='radio' value='public' /> Public</label>
             {/* ES2020 Optional Chaining */}
             { props.createteam?.values?.teamType === 'private' && 
             <Field 

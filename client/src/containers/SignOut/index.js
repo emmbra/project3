@@ -9,12 +9,12 @@ class SignOut extends Component {
 
 
   componentDidMount() {
-    console.log("Did mount");
+    console.log('Did mount');
     this.props.signOut();
   }
 
   render() {
-    console.log("render");
+    console.log('render');
     return (
       <Container>
         <Message error header="We're sorry to see you go :("/>

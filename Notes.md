@@ -52,4 +52,4 @@ arr.reduce((total, current) => {
 }
 
 
-Try to figure out the sum function for the distance on the log controller....trying to test on the postman...only working on the backend for now
+Try to figure out the sum function for the distance on the log controller....trying to test on the postman...

@@ -59,11 +59,11 @@ class ExerciseLog extends Component {
       <Form onSubmit={handleSubmit(this.onSubmit)}>
       <Form.Field inline>
         <label>Distance (in miles): </label>
-        <Field name='time' component='input' type='number'/> 
+        <Field name='distance' component='input' type='number'/> 
         </Form.Field>
           <Form.Field inline>
         <label>Duration (in minutes): </label>
-        <Field name='distance' component='input' type='number'/>
+        <Field name='time' component='input' type='number'/>
         </Form.Field>
           <Form.Field inline>
         <label>Select your team:</label>
