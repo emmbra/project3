@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const {
   addExerciseLog,
-  getTotalTeamDistance,
+  getTotalUserDistance,
 } = require('../../../controllers/logController');
 const { requireAuth } = require('../../../middlewares/authMiddlewares');
 
 // /api/exerciselog
 router.route('/')
-  .get(requireAuth, getTotalTeamDistance)
+  .get(requireAuth, getTotalUserDistance)
   .post(requireAuth, addExerciseLog);
 
 module.exports = router;

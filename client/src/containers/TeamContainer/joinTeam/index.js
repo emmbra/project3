@@ -1,15 +1,13 @@
-import React from "react";
-import { Header, List, Button, Popup, Grid, Form, Segment, Divider } from "semantic-ui-react";
-import { Field, reduxForm } from "redux-form";
-import { connect } from "mongoose";
+import React from 'react';
+import { Header, List, Button, Popup, Form, Segment, Divider } from 'semantic-ui-react';
+import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
 
 // Make sure handleUpdate is passed in parent container
-// handleUpdate="{this.props.updateCompleteUserTodoById}
+// handleUpdate='{this.props.updateCompleteUserTodoById}
 
 function JoinTeam(props) {
-  const { handleSubmit } = props;
+  // const { handleSubmit } = props;
   // console.log(props);
   const renderInput = ({ input, meta, teamid }) => {
     // console.log(input)
@@ -21,16 +19,16 @@ function JoinTeam(props) {
           error={meta.error || meta.valid}
         />
         <Popup className='inlineItem'
-          on="click"
-          position="top right"
-          content="Enter a passcode for this team."
+          on='click'
+          position='top right'
+          content='Enter a passcode for this team.'
           trigger={
             <Button
               icon='add'
-              // color="green"
-              size="small"
+              // color='green'
+              size='small'
               onClick={(event) => props.handleUpdate(event, teamid, input.value, () => {
-                console.log("Called");
+                console.log('Called');
                 props.history.push('/dashboard');
               })
               }
@@ -42,7 +40,7 @@ function JoinTeam(props) {
   }
   // console.log(props);
   if (props.teams.length === 0) {
-    return <Header content="There are no teams yet." />;
+    return <Header content='There are no teams yet.' />;
   } else {
     return props.teams.map(
       ({ _id, name, mascotIMG, teamType, teamStatus, passcode, users }) => {
@@ -70,16 +68,16 @@ function JoinTeam(props) {
                   </List.Content>
                   <List.Content className='inlineItem'>
                     <Popup
-                      on="click"
-                      position="top right"
-                      content="Join this team!"
+                      on='click'
+                      position='top right'
+                      content='Join this team!'
                       trigger={
                         <Button
                           icon='add'
-                          // color="green"
-                          size="small"
+                          // color='green'
+                          size='small'
                           onClick={(event) => props.handleUpdate(event, _id, null, () => {
-                            console.log("Called");
+                            console.log('Called');
                             props.history.push('/dashboard');
                           })
                           }
@@ -109,7 +107,7 @@ function JoinTeam(props) {
                     {mascotIMG} */}
                 </List.Content>
                 <List.Content id='inlineItem'>
-                  <Field name={name} teamid={_id} component={renderInput} type="text" placeholder="Passcode" />
+                  <Field name={name} teamid={_id} component={renderInput} type='text' placeholder='Passcode' />
                 </List.Content>
               </List.Item>
               {/* // <Button onClick={props.resetView}>Go Back</Button>  */}
@@ -123,4 +121,4 @@ function JoinTeam(props) {
 }
 
 
-export default withRouter(reduxForm({ form: "JoinTeam" })(JoinTeam));
+export default withRouter(reduxForm({ form: 'JoinTeam' })(JoinTeam));

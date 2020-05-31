@@ -8,7 +8,7 @@ import { AUTH_USER, AUTH_USER_ERROR } from '../../actions/types';
 
 class SignUp extends Component {
   onSubmit = async (formValues, dispatch) => {
-    console.log("test");
+    console.log('test');
     try {
       const { data } = await axios.post('/api/auth/signup', formValues);
       localStorage.setItem('token', data.token);

@@ -1,15 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Segment, Button, Header, Form, Icon, Container, Grid, List, Divider } from "semantic-ui-react";
-import { Field, reduxForm } from "redux-form";
+import { Segment, Button, Header, Form, Icon, Container, Grid, List, Divider } from 'semantic-ui-react';
+import { reduxForm } from 'redux-form';
 import { getTeamUsers } from '../../actions/team';
 
 class Team extends Component {
   getTeamList = () => {
     if (this.props.getUserTeams?.length === 0) {
-      return <Header content="No teams found!" />;
+      return <Header content='No teams found!' />;
     } else {
       return this.props.getUserTeams?.map(({ name }) => {
         return <option value={name}>{name}</option>;
@@ -19,7 +19,7 @@ class Team extends Component {
 
   renderUsersByTeamId = (username) => {
     if (this.props.teamUsers.length === 0) {
-      return <Header content="Select a team to view members!" />
+      return <Header content='Select a team to view members!' />
     } else {
       return this.props.teamUsers.map(({ username }) => {
         return <List.Item value={username}>{username}</List.Item>
@@ -37,12 +37,12 @@ class Team extends Component {
   }
 
   render() {
-    // console.log("TEAMUSERS:", this.props.teamUsers);
-    // console.log("HERE:", this.props.getUserTeams);
-    // console.log("team:", this.props.selectedTeam.values.teamNames);
-    // console.log("state:", this.state);
+    // console.log('TEAMUSERS:', this.props);
+    // console.log('HERE:', this.props.getUserTeams);
+    // console.log('team:', this.props.selectedTeam.values.teamNames);
+    // console.log('state:', this.state);
     return (
-      <Segment key="team_id">
+      <Segment key='team_id'>
         <Grid celled>
           <Grid.Column stackable width={13}>
             <Header> Select a team to view your fellow team members </Header>

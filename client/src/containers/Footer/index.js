@@ -7,7 +7,7 @@ export default class Footer extends Component {
     return (
       <div>
         {/* <Divider inverted section /> */}
-        <Container textAlign='center' color='none'>
+        <Container textAlign='center' color='white'>
           <Divider
             as='h5'
             className='header'
@@ -15,11 +15,11 @@ export default class Footer extends Component {
             style={{ color: '#858585', margin: '0.5em 0em', textTransform: 'uppercase' }}
           >
             <p>Created with FUN by: </p>
-            <img src={runningMan} height='20px' />
-            <a href="https://github.com/emmbra" target="_blank"> Emmett Brady, </a>
-            <a href="https://github.com/Tassim" target="_blank">Tassia Shibuya, & </a>
-            <a href="https://github.com/cgleungsf" target="_blank">Christina Leung </a>
-            <img src={runningMan} height='20px' />
+            <img src={runningMan} alt='logo' height='20px' />
+            <a href="https://github.com/emmbra" target="_blank" rel='noreferrer'> Emmett Brady, </a>
+            <a href="https://github.com/Tassim" target="_blank" rel='noreferrer'>Tassia Shibuya, & </a>
+            <a href="https://github.com/cgleungsf" target="_blank" rel='noreferrer'>Christina Leung </a>
+            <img src={runningMan} alt='logo' height='20px' />
           </Divider>
 
         </Container>

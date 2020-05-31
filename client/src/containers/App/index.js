@@ -17,7 +17,7 @@ import Dashboard from '../Dashboard';
 // import Events from '../Events';
 // import ExerciseLog from '../exerciselog';
 
-import placeholder from '../../assets/group-of-runners.jpg'
+// import placeholder from '../../assets/group-of-runners.jpg'
 import Footer from '../Footer';
 import './style.css'
 
@@ -30,7 +30,6 @@ class App extends Component {
         <Sticky>
         <Navbar authenticated={this.props.authenticated} />
         </Sticky>
-        <div>
           <div class='mainRenderBody'>
             <Grid stackable>
               <Grid.Column>
@@ -48,7 +47,6 @@ class App extends Component {
               </Grid.Column>
             </Grid>
           </div>
-        </div>
         <Footer/>
       </div>
     )

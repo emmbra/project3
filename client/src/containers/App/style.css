@@ -12,9 +12,10 @@ grey: #858585'*/
   margin-right: auto;
 }
 
-.inlineItem{
+/* .inlineItem{
   display: inline-block;
-}
+} */
+
 #inlineItem{
   display: inline-block;
 }
@@ -43,7 +44,7 @@ grey: #858585'*/
   background-size: cover;
   background-attachment: fixed;
   min-height: 100vh;
-  color: white;
+  /* color: white; */
 }
 
 .mainRenderBody {
@@ -55,7 +56,6 @@ grey: #858585'*/
   margin-right: auto;
   height: 100%;
   padding: 20px;
-
 }
 
 .ui.form .inline.field > label {
