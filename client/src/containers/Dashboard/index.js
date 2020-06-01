@@ -56,7 +56,7 @@ class Dashboard extends Component {
   render() {
     // console.log(this.props.user);
     console.log("TEAM?:", this.props.user);
-    // console.log("DASH:", this.props.getTotalUserDistance);
+    console.log("DASH:", this.props.getTotalUserDistance);
     const { pathname } = this.props.location;
     return (
       <div class="mainRenderBody">
@@ -106,7 +106,7 @@ class Dashboard extends Component {
               />
             </Menu>
             <Divider />
-            <Segment>
+            <Segment  style={{ border: '1px solid rgba(34,36,38,.15)', boxShadow: '0 1px 2px 0 rgba(34,36,38,.15)' }}>
             <Statistic size='mini'>
               <Statistic.Value>123</Statistic.Value>
               <Statistic.Label>Miles Run</Statistic.Label>
@@ -119,7 +119,7 @@ class Dashboard extends Component {
             </Statistic.Value>
               <Statistic.Label>Current Event</Statistic.Label>
             </Statistic>
-
+          </Segment>
           </Grid.Column>
           <Grid.Column stretched width={12}>
             <Switch>

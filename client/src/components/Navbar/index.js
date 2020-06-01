@@ -56,7 +56,7 @@ export default (props) => (
       <Menu.Item as={Link} to='/information'>
         <Header style={{ color: '#858585', textTransform: 'uppercase' }}>
           {' '}
-           Information
+           Info
           </Header>{' '}
       </Menu.Item>
 

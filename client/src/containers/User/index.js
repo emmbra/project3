@@ -20,7 +20,7 @@ class User extends Component {
             <Table.Cell textAlign='center'>{moment(timeStamp).format('MMM Do YYYY')} </Table.Cell>
             <Table.Cell textAlign='center'>{distance}</Table.Cell>
             <Table.Cell textAlign='center'>{time}</Table.Cell>
-            <Table.Cell textAlign='center'>{time/distance}</Table.Cell>
+            <Table.Cell textAlign='center'>{distance/(time/60)}</Table.Cell>
           </Table.Row>
         );
       });
@@ -28,8 +28,10 @@ class User extends Component {
   };
 
   render() {
-
-    // console.log("I'M INSIDE USER:", this.props.totalUserDistance);
+    console.log("I'M INSIDE USER:", this.props.totalUserDistance[0]);
+    let totalDistanceItem = this.props.totalUserDistance[0];
+    let totalDistance = totalDistanceItem.totalDistance;
+    console.log(totalDistance)
     // console.log("I'M INSIDE USER and GETTING TEAMS:", this.props.getUserTeams);
     // console.log('TEAM USERS INSIDE USERS:', this.props.teamUsers);
     // const numberOfTeams = this.props.getUserTeams.teams
@@ -153,7 +155,7 @@ class User extends Component {
                 </Table.HeaderCell>
                 <Table.HeaderCell textAlign='center'>
                   {' '}
-                Speed (Minutes per Mile){' '}
+                Speed (MPH){' '}
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>

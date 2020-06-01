@@ -53,3 +53,53 @@ arr.reduce((total, current) => {
 
 
 Try to figure out the sum function for the distance on the log controller....trying to test on the postman...
+
+END OF THE GAME:
+
+After the user logged the exercise (IF):
+1) Team distance = event distance
+  -redirect to match page (queries record schema)
+
+
+
+endRace() {
+  users
+  team
+  event
+  record
+}
+
+
+
+
+Controller log exercise: 
+get total updated from team
+check total team distance againt the event distance
+  if <
+    res.json({newLog, status: "newlog"})
+  if >=
+    const gameRecord = await endRace()
+    res.json({gameRecord, status: "raceEnd"})
+
+
+Frontend:
+  const {data} = axios.whatever
+  switch(data.status)
+    case "newLog":
+      display to use Exercise logges successfully
+    case "raceEnd":
+      dispatch gameRecord to store
+      redirect to match page
+
+
+Match page
+mapStatToProps
+get gameRecord data
+display on page
+
+
+2) Exercise logged successfully
+  -send message to user that log successful
+
+Backend: 
+Frontend:
