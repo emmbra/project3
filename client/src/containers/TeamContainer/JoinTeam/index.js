@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import mascots from '../../../static/mascots';
 // Make sure handleUpdate is passed in parent container
 // handleUpdate='{this.props.updateCompleteUserTodoById}
-
 function JoinTeam(props) {
   // const { handleSubmit } = props;
   // console.log(props);
@@ -113,8 +112,5 @@ function JoinTeam(props) {
       }
       )
   }
-
 }
-
-
 export default withRouter(reduxForm({ form: 'JoinTeam' })(JoinTeam));

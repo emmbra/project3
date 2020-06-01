@@ -35,10 +35,10 @@ const RecordSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Team',
   }],
-  events: [{
+  event: {
     type: Schema.Types.ObjectId,
     ref: 'Event',
-  }],
+  },
   logs: [{
     type: Schema.Types.ObjectId,
     ref: 'Log',

@@ -64,9 +64,29 @@ After the user logged the exercise (IF):
 
 endRace() {
   users
+    records: push the records id to the user records
   team
+    records: 
+    teamstatus available
+    push records id to teams records
+    
   event
-  record
+    records: 
+      completedTime: Date.now()
+      status: complete
+      records: push th records id to event record
+      code: 'Archive'
+
+ create a new Event = code 1234
+
+  record - update 
+    recordType: win, 
+    caculatedTime: team totaltime
+    distanceCovered: team totaldistance
+    winningTeamId: teamId
+    losingTeamId: ?? ALL THE OTHER TEAMS
+    winningUserIds: team.users
+    losingUserIds: ?? THE USER OF ?? ALL THE OTHER TEAMS
 }
 
 
