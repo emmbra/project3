@@ -16,7 +16,7 @@ class SignOut extends Component {
   render() {
     console.log('render');
     return (
-      <Container>
+      <Container style={{ maxWidth: 400, marginLeft: 'auto', marginRight:'auto', marginTop: 50, opacity: '0.9'}}>
         <Message error header="We're sorry to see you go :("/>
         <Button as={Link} to='/' content='Go back to sign up'/>
       </Container>

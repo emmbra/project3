@@ -8,15 +8,15 @@ import { getTeamUsers } from '../../actions/team';
 
 class ExerciseLog extends Component {
   renderSelectTeam = (field) => {
-    return(
-      <select 
-      onChange={this.handleChange} 
-      {...field.input}>
-    {this.getTeamList()}
-    </select>
+    return (
+      <select
+        onChange={this.handleChange}
+        {...field.input}>
+        {this.getTeamList()}
+      </select>
     )
   };
-  
+
   getTeamList = () => {
     if (this.props.getUserTeams?.length === 0) {
       return <Header content="No teams found!" />;
@@ -30,19 +30,19 @@ class ExerciseLog extends Component {
   handleChange = (event) => {
     console.log(event.target.value);
     //call action creator, take team name, send to reducers, reducer looks at team name, sets state of teamname
-    this.props.getTeamUsers(event.target.value, this.props.getUserTeams) 
+    this.props.getTeamUsers(event.target.value, this.props.getUserTeams)
   }
 
   onSubmit = async (formValues) => {
     try {
       this.props.addExerciseLog(formValues, () => {
-       return <Header content="Right on! Keep up with the good work! " />;
+        return <Header content="Right on! Keep up with the good work! " />;
       });
     } catch (e) {
       console.log(e);
     }
   }
-  
+
   render() {
     console.log(this.props);
     const { handleSubmit } = this.props;
@@ -56,21 +56,21 @@ class ExerciseLog extends Component {
         >
           How far did you go today?
         </Divider>
-      <Form onSubmit={handleSubmit(this.onSubmit)}>
-      <Form.Field inline>
-        <label>Distance (in miles): </label>
-        <Field name='distance' component='input' type='number'/> 
-        </Form.Field>
+        <Form onSubmit={handleSubmit(this.onSubmit)}>
           <Form.Field inline>
-        <label>Duration (in minutes): </label>
-        <Field name='time' component='input' type='number'/>
-        </Form.Field>
+            <Header as='h5'>Distance (in miles): </Header>
+            <Field name='distance' component='input' type='number' />
+          </Form.Field>
           <Form.Field inline>
-        <label>Select your team:</label>
-        <Field name='teamId' component={this.renderSelectTeam}/>
-        </Form.Field>
-      <Button type='submit'>Submit</Button>
-      </Form>
+            <Header as='h5'>Duration (in minutes): </Header>
+            <Field name='time' component='input' type='number' />
+          </Form.Field>
+          <Form.Field inline>
+            <Header as='h5'>Select your team:</Header>
+            <Field name='teamId' component={this.renderSelectTeam} />
+          </Form.Field>
+          <Button type='submit'>Submit</Button>
+        </Form>
 
       </Segment>
     )
@@ -86,5 +86,5 @@ function mapStateToProps(state) {
 
 export default compose(
   connect(mapStateToProps, { addExerciseLog, getTeamUsers }),
-  reduxForm({form: 'ExerciseLog'})
+  reduxForm({ form: 'ExerciseLog' })
 )(ExerciseLog);

@@ -48,14 +48,14 @@ function JoinTeam(props) {
         if (teamType === 'public') {
           return (
             <Segment key={_id} teamid={_id} id='joinTeamContainers'>
-              <Divider
+              {/* <Divider
                 as='h2'
                 className='header'
                 horizontal
                 style={{ color: '#ca50a1', margin: '1em 0em', textTransform: 'uppercase' }}
               >
                 Public Teams
-              </Divider>
+              </Divider> */}
               <List>
                 <List.Item>
                   <List.Content className='inlineItem'>
@@ -92,14 +92,14 @@ function JoinTeam(props) {
         } else
           return (
             <Segment key={_id} teamid={_id} id='joinTeamContainers'>
-              <Divider
+              {/* <Divider
                 as='h2'
                 className='header'
                 horizontal
                 style={{ color: '#ca50a1', margin: '1em 0em', textTransform: 'uppercase' }}
               >
                 Private Teams
-              </Divider>
+              </Divider> */}
               <List.Item id='inlineItem'>
                 <List.Content id='inlineItem'>
                   <Header id='inlineItem'>{name}</Header>

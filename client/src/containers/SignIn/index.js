@@ -31,11 +31,11 @@ class SignIn extends Component {
       <Form.Input
         {...input}
         fluid
-        error={ meta.touched && meta.error }
+        error={meta.touched && meta.error}
         icon='user'
         iconPosition='left'
         autoComplete='off'
-        placeholder='Email address'
+        placeholder='Email Address'
       />
     )
   }
@@ -45,19 +45,20 @@ class SignIn extends Component {
         {...input}
         type='password'
         fluid
-        error={ meta.touched && meta.error }
+        error={meta.touched && meta.error}
         icon='lock'
         iconPosition='left'
         autoComplete='off'
-        placeholder='password'
+        placeholder='Password'
       />
     )
   }
   render() {
     const { handleSubmit, invalid, submitting, submitFailed } = this.props;
     return (
-      <Form size='large' onSubmit={handleSubmit(this.onSubmit)}>
-        <Segment stacked>
+      <Segment stacked style={{ maxWidth: 500, marginLeft: 'auto', marginRight: 'auto', marginTop: 50, opacity: '0.9' }} >
+        <Form size='large' onSubmit={handleSubmit(this.onSubmit)}>
+          {/* <Segment stacked> */}
           <Field
             name='email'
             component={this.renderEmail}
@@ -69,7 +70,7 @@ class SignIn extends Component {
             }
           />
           <Field
-            name='password'
+            name='Password'
             component={this.renderPassword}
             validate={
               [
@@ -82,11 +83,11 @@ class SignIn extends Component {
             fluid
             size='large'
             type='submit'
-            disabled={ invalid || submitting || submitFailed }
+            disabled={invalid || submitting || submitFailed}
           />
-        </Segment>
-      </Form>
+        </Form>
+      </Segment>
     )
   }
 }
-export default reduxForm({ form: 'SignIn '})(SignIn);
+export default reduxForm({ form: 'SignIn ' })(SignIn);

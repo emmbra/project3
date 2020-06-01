@@ -8,6 +8,7 @@ import {
   Radio,
   Container,
   Divider,
+  Segment
 } from 'semantic-ui-react';
 import { addTeams, addUserToTeam, getAllTeams } from '../../actions/team';
 
@@ -100,7 +101,7 @@ class TeamContainer extends Component {
     // console.log('HELLO');
     // console.log(this.props);
     return (
-      <Container>
+      <Segment style={{ maxWidth: 800, marginLeft: 'auto', marginRight:'auto', marginTop:30, marginBottom:30, opacity: '0.9'}}>
               <Divider
           as='h2'
           className='header'
@@ -146,7 +147,7 @@ class TeamContainer extends Component {
 
           </Grid.Row>
         </Grid>
-      </Container>
+      </Segment>
     );
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu, Grid, Statistic, Icon , Header, Container, Divider} from 'semantic-ui-react';
+import { Menu, Grid, Statistic, Icon, Header, Container, Divider } from 'semantic-ui-react';
 
 import User from '../User';
 import Team from '../Team';
@@ -12,6 +12,9 @@ import ExerciseLog from '../ExerciseLog';
 import { getUserById } from '../../actions/user';
 import { getEvent } from '../../actions/event';
 
+import quotes from '../../static/quotes'
+
+
 class Dashboard extends Component {
 
   componentDidMount() {
@@ -20,28 +23,54 @@ class Dashboard extends Component {
   }
 
 
+  shuffled = () => {
+    console.log(Object.keys(quotes).length)
+    let randomNum = Math.floor(Math.random() * 5);
+    let randomQuote = quotes.quotes[randomNum];
+    let quoteText = randomQuote.text;
+    let quoteAuthor = randomQuote.author;
+    return (
+      <div >
+        <p style={{
+          margin: '0em 0em',
+          // textTransform: 'uppercase',
+          fontSize: '1.5rem',
+          color: '#6e81c3',
+          lineHeight: '0 em',
+        }}
+        >{quoteText}</p>
+        <p style={{
+          margin: '0em 0em',
+          textTransform: 'uppercase',
+          fontSize: '1rem',
+          color: '#34c4f8',
+          lineHeight: '0 em',
+        }}
+        > - {quoteAuthor}</p>
+      </div>
+    );
+  }
+
   render() {
     // console.log(this.props.user);
     // console.log(this.props.user.teams);
-
     const { pathname } = this.props.location;
-
     return (
-      <>
+      <div class="mainRenderBody">
         <Container textAlign='center'>
           <Header font-size='1em'
-            style={{ color: '#858585', margin: '1em 0em', textTransform: 'uppercase' }}
-          > Quote of the Day </Header>
-          <Header font-size='4em'
-            style={{
-              textTransform: 'uppercase',
-              fontSize: '4rem',
-              color: '#6e81c3'
-            }}> You're doing great! </Header>
+            style={{ color: '#858585', margin: '0', textTransform: 'uppercase' }}
+          > Motivation</Header>
+          <Header style={{ margin: 0}}
+          >
+            {this.shuffled()}
+            {/* You're doing great!  */}
+          </Header>
         </Container>
+        <Divider></Divider>
         <Grid>
           <Grid.Column width={4}>
-            <Menu fluid vertical tabular>
+            <Menu fluid vertical tabular size='large'>
               <Menu.Item
                 name='User'
                 active={pathname === '/dashboard/user'}
@@ -86,31 +115,31 @@ class Dashboard extends Component {
             </Statistic.Value>
               <Statistic.Label>Current Event</Statistic.Label>
             </Statistic>
-      </Grid.Column>
-        <Grid.Column stretched width={12}>
-          <Switch>
-            <Route exact path='/dashboard/user' render={() => <User 
-            getUserTeams={this.props.user}
-            />} />
-            <Route exact path='/dashboard/team' render={() =>
-              <Team
+          </Grid.Column>
+          <Grid.Column stretched width={12}>
+            <Switch>
+              <Route exact path='/dashboard/user' render={() => <User
+                getUserTeams={this.props.user}
+              />} />
+              <Route exact path='/dashboard/team' render={() =>
+                <Team
+                  getUserTeams={this.props.user.teams}
+                />} />
+              <Route exact path='/dashboard/event' render={() => <Events
                 getUserTeams={this.props.user.teams}
               />} />
-            <Route exact path='/dashboard/event' render={() => <Events
-              getUserTeams={this.props.user.teams}
-            />} />
-            <Route exact path='/dashboard/records' render={() => <Records />} />
-            <Route exact path='/dashboard/exerciselog' render={() => <ExerciseLog
-              getUserTeams={this.props.user.teams}
-            />} />
-            <Route path='/dashboard' render={() => <Team
-              getUserTeams={this.props.user.teams}
-            />} />
-          </Switch>
-        </Grid.Column>
+              <Route exact path='/dashboard/records' render={() => <Records />} />
+              <Route exact path='/dashboard/exerciselog' render={() => <ExerciseLog
+                getUserTeams={this.props.user.teams}
+              />} />
+              <Route path='/dashboard' render={() => <Team
+                getUserTeams={this.props.user.teams}
+              />} />
+            </Switch>
+          </Grid.Column>
 
-      </Grid>
-      </>
+        </Grid>
+      </div>
     );
   }
 }

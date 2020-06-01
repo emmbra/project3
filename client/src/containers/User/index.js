@@ -1,36 +1,37 @@
 import React, { Component } from 'react';
-import { Divider, Grid, Statistic, Table, Header } from 'semantic-ui-react';
+import { Divider, Grid, Statistic, Table, Header, Container, } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { getTeamUsers } from '../../actions/team';
 import moment from 'moment';
+import { submit } from 'redux-form';
 
 class User extends Component {
 
   renderUserLogHistory = () => {
-    console.log('HELLO', this.props.getUserTeams);
+    // console.log('HELLO', this.props.getUserTeams.logs);
     if (this.props.getUserTeams.length === 0) {
       return <Header content='No teams found!' />;
     } else {
       return this.props.getUserTeams.logs.map(({ timeStamp, time, distance }) => {
         return (
           <Table.Row >
-          <Table.Cell textAlign='center'>{moment(timeStamp).format('MMM Do YYYY')} </Table.Cell>
-          <Table.Cell textAlign='center'>{distance}</Table.Cell>
-          <Table.Cell textAlign='center'>{time}</Table.Cell>
-          {/* <Table.Cell textAlign='center'>Number({time}/{distance})</Table.Cell> */}
-        </Table.Row>
+            <Table.Cell textAlign='center'>{moment(timeStamp).format('MMM Do YYYY')} </Table.Cell>
+            <Table.Cell textAlign='center'>{distance}</Table.Cell>
+            <Table.Cell textAlign='center'>{time}</Table.Cell>
+            <Table.Cell textAlign='center'>{time/distance}</Table.Cell>
+          </Table.Row>
         );
       });
     }
   };
 
   render() {
-    console.log("I'M INSIDE USER:", this.props.getUserTeams.teams);
+    // console.log("I'M INSIDE USER:", this.props.getUserTeams.teams);
     // console.log(this.props.teamUsers);
     // const numberOfTeams = this.props.getUserTeams.teams
     return (
-      <div>
+      <div class="dashboard" >
         <Divider
           as='h2'
           className='header'
@@ -44,7 +45,42 @@ class User extends Component {
           Personal Stats
         </Divider>
         <Grid>
-          <Grid.Row centered columns={2}>
+          <Grid.Row centered columns={5}>
+            <Grid.Column textAlign='center'>
+              <Statistic size='mini'>
+                <Statistic.Label>Total Miles Run</Statistic.Label>
+                <Statistic.Value>2,204</Statistic.Value>
+              </Statistic>
+            </Grid.Column>
+            <Grid.Column textAlign='center'>
+              <Statistic size='mini'>
+                <Statistic.Label>Time Spent Running</Statistic.Label>
+                <Statistic.Value>8</Statistic.Value>
+                <Statistic.Label>hours</Statistic.Label>
+              </Statistic>
+            </Grid.Column>
+            <Grid.Column textAlign='center'>
+              <Statistic size='mini'>
+                <Statistic.Label>Teams</Statistic.Label>
+                <Statistic.Value>2</Statistic.Value>
+              </Statistic>
+            </Grid.Column>
+            <Grid.Column textAlign='center'>
+              <Statistic size='mini'>
+                <Statistic.Label>Active Events</Statistic.Label>
+                <Statistic.Value>1</Statistic.Value>
+              </Statistic>
+            </Grid.Column>
+            <Grid.Column textAlign='center'>
+              <Statistic size='mini'>
+                <Statistic.Label>Events Won</Statistic.Label>
+                <Statistic.Value>1</Statistic.Value>
+              </Statistic>
+            </Grid.Column>
+          </Grid.Row>
+
+
+          {/* <Grid.Row centered columns={2}>
             <Grid.Column textAlign='center'>
               <Statistic size='mini'>
                 <Statistic.Label>Total Miles Run</Statistic.Label>
@@ -64,7 +100,7 @@ class User extends Component {
             <Grid.Column textAlign='center'>
               <Statistic size='mini'>
                 <Statistic.Label>Teams</Statistic.Label>
-        <Statistic.Value>2</Statistic.Value>
+                <Statistic.Value>2</Statistic.Value>
               </Statistic>
             </Grid.Column>
             <Grid.Column textAlign='center'>
@@ -79,7 +115,8 @@ class User extends Component {
                 <Statistic.Value>1</Statistic.Value>
               </Statistic>
             </Grid.Column>
-          </Grid.Row>
+          </Grid.Row> */}
+
         </Grid>
 
         <Divider
@@ -94,32 +131,33 @@ class User extends Component {
         >
           Exercise Log
         </Divider>
-
-        <Table celled selectable>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell textAlign='center'>
-                {' '}
+        <div style={{height: "200px", overflowX: "scroll", }}>
+          <Table celled selectable >
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell textAlign='center'>
+                  {' '}
                 Exercise Date{' '}
-              </Table.HeaderCell>
-              <Table.HeaderCell textAlign='center'>
-                {' '}
+                </Table.HeaderCell>
+                <Table.HeaderCell textAlign='center'>
+                  {' '}
                 Distance (miles){' '}
-              </Table.HeaderCell>
-              <Table.HeaderCell textAlign='center'>
-                {' '}
+                </Table.HeaderCell>
+                <Table.HeaderCell textAlign='center'>
+                  {' '}
                 Duration (minutes){' '}
-              </Table.HeaderCell>
-              {/* <Table.HeaderCell textAlign='center'>
-                {' '}
-                Minutes/Mile{' '}
-              </Table.HeaderCell> */}
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-           {this.renderUserLogHistory()}
-          </Table.Body>
-        </Table>
+                </Table.HeaderCell>
+                <Table.HeaderCell textAlign='center'>
+                  {' '}
+                Speed (Minutes per Mile){' '}
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {this.renderUserLogHistory()}
+            </Table.Body>
+          </Table>
+        </div>
       </div>
     );
   }
