@@ -11,6 +11,11 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
 require('./services/passport');
 // Connect database
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/runningappdb', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false });
