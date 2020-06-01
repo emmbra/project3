@@ -6,12 +6,15 @@ import {
   Form,
   Header,
   List,
+  Progress,
+  Grid,
 } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { joinEvent, getEvent } from "../../actions/event";
 import { getTeamUsers } from "../../actions/team";
+import mascots from '../../static/mascots';
 
 class Event extends Component {
   renderTeamByEvent = (field) => {
@@ -63,10 +66,46 @@ class Event extends Component {
   };
 
   getTeamItem = () => {
-    return this.props.eventList.teams.map(({ name }) => {
-    // console.log("teams")
-    // console.log(name)
-      return <List.Item value={name}>{name}</List.Item>;
+    return this.props.eventList.teams.map(({ name, mascotIMG }) => {
+      // console.log("teams")
+      // console.log(name)
+      return (
+
+        // <List.Item value={name}>
+        //   {name}
+        //   <img src={mascots[`${mascotIMG}`]} alt="active mascots" width='50px' />
+        //   <Progress
+        //     verticalAlign='middle'
+        //     id='inlineItem'
+        //     percent={44}  color= 'blue'
+        //     style={{
+        //       width: 300,
+        //       margin:'0',
+        //     }} />
+        // </List.Item>
+
+        <Grid stacked value={name}>
+          <Grid.Row verticalAlign='middle' style={{ padding: '0' }}>
+            <Grid.Column width={2}>
+              {name}
+            </Grid.Column>
+
+            <Grid.Column width={12}>
+              <Progress
+                verticalAlign='middle'
+                //input total distance 
+                percent={44} color='blue'
+                style={{
+                  // width: 300,
+                  margin: '0',
+                }} />
+            </Grid.Column>
+            <Grid.Column width={2}>
+              <img src={mascots[`${mascotIMG}`]} alt="active mascots" width='50px' />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      )
     });
   };
 
@@ -81,38 +120,54 @@ class Event extends Component {
     // const Teams = [
     //   { key: 'panel-1a', title: 'Participating Teams', content: {this.renderTeamByEvent()} }
     // ]
-    
+
     // const rootPanels = [
     //   { key: 'panel-1', title: {this.props.eventList.name} , content: { content: <Accordion.Accordion panels={Teams} /> } },
     // ]
 
     return (
       <div>
-        <Segment>
-        <Header>Event Name: {this.props.eventList.name}</Header>
-        <Header>Event Distance: {this.props.eventList.distance} miles</Header>
-
-        <Header>Participating Teams:</Header>
-        <Segment> {this.renderTeamByEvent()}  </Segment>
-        {/* <Segment>
-        <Accordion defaultActiveIndex={0} 
-              panels={ key: 'panel-1', 
-              title: {this.props.eventList.name} , 
-              content: { content: 
-                <Accordion.Accordion 
-                  panels={ key: 'panel-1a', 
-                            title: 'Participating Teams', 
-                            content: {renderTeamByEvent()} 
-                  } />
-              } } styled />
-          </Segment> */}
+        <Segment textAlign='left'>
+          <Header as='h3' style={{ color: '#ca50a1', }}>
+            Event Name:
+          <Header.Content style={{ color: '#858585', display: 'inline' }}>
+              {this.props.eventList.name}
+            </Header.Content>
+          </Header>
+          <Header as='h3' style={{ color: '#ca50a1', }}>
+            Event Distance:
+          <Header.Content style={{ color: '#858585', display: 'inline' }}>
+              {this.props.eventList.distance}
+            </Header.Content>
+          </Header>
+          <Header as='h3' style={{ color: '#ca50a1', }}>
+            Participating Teams:
+          <Header.Content style={{ color: '#858585', display: 'inline' }}>
+              {this.props.eventList.name}
+            </Header.Content>
+          </Header>
+          {/* <Header as='h3' style={{ color: '#ca50a1' }}>Event Distance: </Header>{this.props.eventList.distance} miles
+          <Header as='h3' style={{ color: '#ca50a1' }}>Participating Teams:</Header> */}
+          <Segment> {this.renderTeamByEvent()}  </Segment>
           <Form onSubmit={handleSubmit(this.onSubmit)}>
             {/* <List>{this.renderTeamByEvent}</List> */}
             {/* <Segment> {this.getTeamItem}  </Segment>
             <Field name="teamEvent" component={this.getTeamItem} /> */}
-            <Header>Select a team to add to this event:</Header>
+            {/* <Header>Select a team to add to this event:</Header>
             <Field name="teamId" component={this.renderSelectTeam} />
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Submit</Button> */}
+            <Grid centered>
+              <Grid.Row>
+                <Grid.Column width={6} textAlign='right' verticalAlign='bottom'>
+                  <Header>Select a team to add to this event:</Header>
+                  <Field name="teamId" component={this.renderSelectTeam} />
+                </Grid.Column>
+                <Grid.Column width={6} textAlign='left' verticalAlign='bottom'>
+                  <Button type="submit">Submit</Button>
+                </Grid.Column>
+              </Grid.Row>
+
+            </Grid>
           </Form>
         </Segment>
       </div>

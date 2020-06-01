@@ -8,17 +8,41 @@ export default (props) => (
     <div>
       <img class='heroImage' src={placeholder} alt='heroImage' height='90px' />
     </div>
-    <Header
-      size='huge'
-      position='left'
-      style={{
-        color: '#fa7a34 ',
-        margin: '1em 1em',
-        textTransform: 'uppercase',
-      }}
-    >
-      Run to the Sun
-    </Header>
+    {props.authenticated ? (
+      <Header
+        size='huge'
+        position='left'
+        style={{
+          color: '#fa7a34 ',
+          margin: '1em 1em',
+          textTransform: 'uppercase',
+        }}
+      >
+        <a href='/dashboard'
+          style={{
+            color: '#fa7a34 ',
+            margin: '1em 1em',
+            textTransform: 'uppercase',
+          }}>Run to the Sun</a>
+      </Header>
+    ) : (
+        <Header
+          size='huge'
+          position='left'
+          style={{
+            color: '#fa7a34 ',
+            margin: '1em 1em',
+            textTransform: 'uppercase',
+          }}
+        >
+          <a href='/information'
+            style={{
+              color: '#fa7a34 ',
+              margin: '1em 1em',
+              textTransform: 'uppercase',
+            }}>Run to the Sun</a>
+        </Header>
+      )}
 
     <Menu.Menu position='right'>
       {props.authenticated ? (
@@ -29,6 +53,13 @@ export default (props) => (
           </Header>{' '}
         </Menu.Item>
       ) : null}
+      <Menu.Item as={Link} to='/information'>
+        <Header style={{ color: '#858585', textTransform: 'uppercase' }}>
+          {' '}
+           Information
+          </Header>{' '}
+      </Menu.Item>
+
       {props.authenticated ? null : (
         <Menu.Item as={Link} to='/' content='Sign Up'>
           <Header style={{ color: '#858585', textTransform: 'uppercase' }}>
@@ -43,13 +74,13 @@ export default (props) => (
           </Header>{' '}
         </Menu.Item>
       ) : (
-        <Menu.Item as={Link} to='/signin' content='Sign In'>
-          <Header style={{ color: '#858585', textTransform: 'uppercase' }}>
-            {' '}
+          <Menu.Item as={Link} to='/signin' content='Sign In'>
+            <Header style={{ color: '#858585', textTransform: 'uppercase' }}>
+              {' '}
             Sign In
           </Header>{' '}
-        </Menu.Item>
-      )}
+          </Menu.Item>
+        )}
     </Menu.Menu>
   </Menu>
 );

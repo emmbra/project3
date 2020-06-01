@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { Divider, Container, } from 'semantic-ui-react';
-import runningMan from '../../assets/running-man.jpg'
+import runningMan from '../../assets/running_stick.png'
 
 export default class Footer extends Component {
   render() {
     return (
-      <div>
-        {/* <Divider inverted section /> */}
-        <Container textAlign='center' color='white'>
+      <div className = 'footer'>
+        {/* <Container  > */}
           <Divider
             as='h5'
             className='header'
@@ -21,8 +20,7 @@ export default class Footer extends Component {
             <a href="https://github.com/cgleungsf" target="_blank" rel='noreferrer'>Christina Leung </a>
             <img src={runningMan} alt='logo' height='20px' />
           </Divider>
-
-        </Container>
+        {/* </Container> */}
       </div>
     );
   }

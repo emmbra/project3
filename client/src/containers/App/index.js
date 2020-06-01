@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Grid, Sticky } from 'semantic-ui-react'
+import { Grid, Sticky, Container } from 'semantic-ui-react'
 
 import SignUp from '../SignUp';
 import SignIn from '../SignIn';
@@ -9,7 +9,7 @@ import SignOut from '../SignOut';
 import TeamContainer from '../TeamContainer';
 // import CreateTeam from '../TeamContainer/CreateTeam';
 // import JoinTeam from '../TeamContainer/JoinTeam';
-
+import Information from '../../components/Information';
 import Dashboard from '../Dashboard';
 // import User from '../User';
 // import Team from '../Team';
@@ -17,7 +17,6 @@ import Dashboard from '../Dashboard';
 // import Events from '../Events';
 // import ExerciseLog from '../exerciselog';
 
-// import placeholder from '../../assets/group-of-runners.jpg'
 import Footer from '../Footer';
 import './style.css'
 
@@ -28,26 +27,26 @@ class App extends Component {
     return (
       <div class='backgroundImage'>
         <Sticky>
-        <Navbar authenticated={this.props.authenticated} />
+          <Navbar authenticated={this.props.authenticated} />
         </Sticky>
-          <div class='mainRenderBody'>
-            <Grid stackable>
-              <Grid.Column>
-                <Route exact path='/' component={SignUp} />
-                <Route exact path='/signin' component={SignIn} />
-                <Route exact path='/signout' component={SignOut} />
-                <Route exact path='/teamsignup' component={TeamContainer} />
-                {/* <Route exact path='/createteam' component={CreateTeam}/> */}
-                <Route path='/dashboard' component={Dashboard} />
-                {/* <Route exact path='/user' component={User}/>
+        {/* <div class='mainRenderBody'> */}
+        <Grid centered>
+          <Grid.Column textAlign='center' >
+            <Route exact path='/' component={SignUp} />
+            <Route exact path='/signin' component={SignIn} />
+            <Route exact path='/signout' component={SignOut} />
+            <Route exact path='/teamsignup' component={TeamContainer} />
+            <Route path='/dashboard' component={Dashboard} />
+            <Route path='/information' component={Information} />
+            {/* <Route exact path='/user' component={User}/>
           <Route exact path='/team' component={Team}/>
           <Route exact path='/records' component={Records}/>
           <Route exact path='/events' component={Events}/>
           <Route exact path='/everciselog' component={ExerciseLog}/> */}
-              </Grid.Column>
-            </Grid>
-          </div>
-        <Footer/>
+          </Grid.Column>
+        </Grid>
+        <Footer />
+
       </div>
     )
   }

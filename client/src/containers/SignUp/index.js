@@ -24,7 +24,7 @@ class SignUp extends Component {
       <Form.Input
         {...input}
         fluid
-        error={ meta.touched && meta.error }
+        error={meta.touched && meta.error}
         icon='user'
         iconPosition='left'
         autoComplete='off'
@@ -32,17 +32,17 @@ class SignUp extends Component {
       />
     )
   }
-  
+
   renderEmail = ({ input, meta }) => {
     return (
       <Form.Input
         {...input}
         fluid
-        error={ meta.touched && meta.error }
+        error={meta.touched && meta.error}
         icon='user'
         iconPosition='left'
         autoComplete='off'
-        placeholder='Email address'
+        placeholder='Email Address'
       />
     )
   }
@@ -54,11 +54,11 @@ class SignUp extends Component {
         {...input}
         type='password'
         fluid
-        error={ meta.touched && meta.error }
+        error={meta.touched && meta.error}
         icon='lock'
         iconPosition='left'
         autoComplete='off'
-        placeholder='password'
+        placeholder='Password'
       />
     )
   }
@@ -66,8 +66,8 @@ class SignUp extends Component {
   render() {
     const { handleSubmit, invalid, submitting, submitFailed } = this.props;
     return (
-      <Form size='large' onSubmit={handleSubmit(this.onSubmit)}>
-        <Segment stacked>
+      <Segment stacked style={{ maxWidth: 500, marginLeft: 'auto', marginRight:'auto', marginTop: 50, opacity: '0.9'}} >
+      <Form onSubmit={handleSubmit(this.onSubmit)} > 
           <Field
             name='email'
             validate={
@@ -78,7 +78,7 @@ class SignUp extends Component {
             }
             component={this.renderEmail}
           />
-                    <Field
+          <Field
             name='username'
             validate={
               [
@@ -100,14 +100,15 @@ class SignUp extends Component {
           />
           <Button
             content='Sign Up'
-            color='teal'
+            // color='teal'
             fluid
             size='large'
             type='submit'
-            disabled={ invalid || submitting || submitFailed }
+            disabled={invalid || submitting || submitFailed}
           />
-        </Segment>
+       {/* </Segment> */}
       </Form>
+      </Segment>
     );
   }
 };
