@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
+import { Segment } from 'semantic-ui-react';
 import { GET_RECORDS } from '../../actions/types'
 
 class Records extends Component {
   render() {
     return (
-      <div>
-        I'M THE RECORDS CONTAINER
-      </div>
+      
+      <Segment>
+      I'M THE RECORDS CONTAINER
+      </Segment>
     )
   }
 }

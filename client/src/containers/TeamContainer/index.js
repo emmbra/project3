@@ -99,7 +99,7 @@ class TeamContainer extends Component {
 
   render() {
     // console.log('HELLO');
-    // console.log(this.props);
+    // console.log("PROPS:", this.props);
     return (
       <Segment style={{ maxWidth: 800, marginLeft: 'auto', marginRight:'auto', marginTop:30, marginBottom:30, opacity: '0.9'}}>
               <Divider

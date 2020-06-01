@@ -21,6 +21,7 @@ function CreateTeam(props) {
       <Form size='large' onSubmit={handleSubmit(props.onSubmit)} style={{ marginRight: 30, marginLeft: 30 }}>
         <Header>
           Start your Dream Team, create a team today!
+
           </Header>
         <List as='ol' color='black'>
           <List.Item as='li' value='*'>

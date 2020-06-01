@@ -1,11 +1,11 @@
-const { Log } = require('../models');
+const { Log, Team } = require('../models');
 
-const getTotalTeamDistance = async (teamId) => {
+const getTotalTeamDistance = async (team) => {
   try {
-    console.log("LINE5:", teamId);
+    console.log("LINE5:", team);
     const totalDistance = await Log.aggregate([
       { $match: {
-        team: teamId,
+        team: team._id,
         },
       },
       { $group: {
@@ -14,8 +14,8 @@ const getTotalTeamDistance = async (teamId) => {
         },
       },
     ]);
-    console.log(totalDistance);
-    return totalDistance;
+    console.log("TOTAL DISTANCE:", totalDistance);
+    return Promise.resolve(totalDistance);
   } catch (e) {
     return e;
   }
@@ -34,7 +34,8 @@ module.exports = {
       }).save();
       req.user.logs.push(newLog);
       await req.user.save();
-      const totalTeamDistance = await getTotalTeamDistance(teamId);
+      const team = await Team.findById(teamId);
+      const totalTeamDistance = await getTotalTeamDistance(team);
       console.log(totalTeamDistance);
       return res.status(200).json(newLog);
     } catch (e) {
@@ -60,5 +61,4 @@ module.exports = {
       return res.status(403).json({ e });
     }
   },
-
 };

@@ -7,9 +7,10 @@ import moment from 'moment';
 import { submit } from 'redux-form';
 
 class User extends Component {
-
   renderUserLogHistory = () => {
+
     // console.log('HELLO', this.props.getUserTeams.logs);
+
     if (this.props.getUserTeams.length === 0) {
       return <Header content='No teams found!' />;
     } else {
@@ -27,8 +28,10 @@ class User extends Component {
   };
 
   render() {
-    // console.log("I'M INSIDE USER:", this.props.getUserTeams.teams);
-    // console.log(this.props.teamUsers);
+
+    // console.log("I'M INSIDE USER:", this.props.totalUserDistance);
+    // console.log("I'M INSIDE USER and GETTING TEAMS:", this.props.getUserTeams);
+    // console.log('TEAM USERS INSIDE USERS:', this.props.teamUsers);
     // const numberOfTeams = this.props.getUserTeams.teams
     return (
       <div class="dashboard" >
@@ -84,7 +87,7 @@ class User extends Component {
             <Grid.Column textAlign='center'>
               <Statistic size='mini'>
                 <Statistic.Label>Total Miles Run</Statistic.Label>
-                <Statistic.Value>2,204</Statistic.Value>
+                <Statistic.Value>{this.props.totalUserDistance.totalDistance}</Statistic.Value>
               </Statistic>
             </Grid.Column>
             <Grid.Column textAlign='center'>
@@ -100,7 +103,8 @@ class User extends Component {
             <Grid.Column textAlign='center'>
               <Statistic size='mini'>
                 <Statistic.Label>Teams</Statistic.Label>
-                <Statistic.Value>2</Statistic.Value>
+
+        <Statistic.Value>{this.props.getUserTeams.teams.length}</Statistic.Value>
               </Statistic>
             </Grid.Column>
             <Grid.Column textAlign='center'>

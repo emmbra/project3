@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu, Grid, Statistic, Icon, Header, Container, Divider } from 'semantic-ui-react';
+import { Menu, Grid, Statistic, Icon , Header, Container, Divider, Segment } from 'semantic-ui-react';
+
 
 import User from '../User';
 import Team from '../Team';
@@ -11,6 +12,7 @@ import ExerciseLog from '../ExerciseLog';
 
 import { getUserById } from '../../actions/user';
 import { getEvent } from '../../actions/event';
+import { getTotalUserDistance } from '../../actions/log';
 
 import quotes from '../../static/quotes'
 
@@ -20,8 +22,8 @@ class Dashboard extends Component {
   componentDidMount() {
     this.props.getUserById();
     this.props.getEvent();
+    this.props.getTotalUserDistance();
   }
-
 
   shuffled = () => {
     console.log(Object.keys(quotes).length)
@@ -53,7 +55,8 @@ class Dashboard extends Component {
 
   render() {
     // console.log(this.props.user);
-    // console.log(this.props.user.teams);
+    console.log("TEAM?:", this.props.user);
+    // console.log("DASH:", this.props.getTotalUserDistance);
     const { pathname } = this.props.location;
     return (
       <div class="mainRenderBody">
@@ -103,6 +106,7 @@ class Dashboard extends Component {
               />
             </Menu>
             <Divider />
+            <Segment>
             <Statistic size='mini'>
               <Statistic.Value>123</Statistic.Value>
               <Statistic.Label>Miles Run</Statistic.Label>
@@ -115,10 +119,12 @@ class Dashboard extends Component {
             </Statistic.Value>
               <Statistic.Label>Current Event</Statistic.Label>
             </Statistic>
+
           </Grid.Column>
           <Grid.Column stretched width={12}>
             <Switch>
               <Route exact path='/dashboard/user' render={() => <User
+                totalUserDistance={this.props.totalUserDistance}
                 getUserTeams={this.props.user}
               />} />
               <Route exact path='/dashboard/team' render={() =>
@@ -148,7 +154,8 @@ function mapStateToProps(state) {
   return {
     user: state.users.currentUser,
     myTeams: state.users.currentUser.teams,
+    totalUserDistance: state.log.totalUserDistance,
   };
 }
 
-export default connect(mapStateToProps, { getUserById, getEvent })(Dashboard);
+export default connect(mapStateToProps, { getUserById, getEvent, getTotalUserDistance })(Dashboard);
