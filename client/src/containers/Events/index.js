@@ -83,7 +83,7 @@ class Event extends Component {
         //       margin:'0',
         //     }} />
         // </List.Item>
-
+        <div style={{height: "200px", overflowX: "scroll", }}>
         <Grid stacked value={name}>
           <Grid.Row verticalAlign='middle' style={{ padding: '0' }}>
             <Grid.Column width={2}>
@@ -105,6 +105,7 @@ class Event extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        </div>
       )
     });
   };
