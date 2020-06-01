@@ -1,8 +1,8 @@
 import React from 'react';
-import { Header, List, Button, Popup, Form, Segment, Divider } from 'semantic-ui-react';
+import { Header, List, Button, Popup, Form, Segment, Divider, Icon} from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'react-router-dom';
-
+import mascots from '../../../static/mascots';
 // Make sure handleUpdate is passed in parent container
 // handleUpdate='{this.props.updateCompleteUserTodoById}
 
@@ -48,18 +48,12 @@ function JoinTeam(props) {
         if (teamType === 'public') {
           return (
             <Segment key={_id} teamid={_id} id='joinTeamContainers'>
-              {/* <Divider
-                as='h2'
-                className='header'
-                horizontal
-                style={{ color: '#ca50a1', margin: '1em 0em', textTransform: 'uppercase' }}
-              >
-                Public Teams
-              </Divider> */}
               <List>
                 <List.Item>
                   <List.Content className='inlineItem'>
                     <Header>{name}</Header>
+                    <Icon name = 'lock open' />
+                    {/* <img src={mascots[`${mascotIMG}`]} alt='mascot'  width='30px'/> */}
                     {/* <p>
                         {teamType}
                         {name}
@@ -103,6 +97,8 @@ function JoinTeam(props) {
               <List.Item id='inlineItem'>
                 <List.Content id='inlineItem'>
                   <Header id='inlineItem'>{name}</Header>
+                  <Icon name = 'lock' />
+                    {/* <img src={mascots[`${mascotIMG}`]} alt='mascot'  width='30px'/> */}
                   {/* {name}
                     {mascotIMG} */}
                 </List.Content>
