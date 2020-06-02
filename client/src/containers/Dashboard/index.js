@@ -26,7 +26,7 @@ class Dashboard extends Component {
   }
 
   shuffled = () => {
-    console.log(Object.keys(quotes).length)
+    // console.log(Object.keys(quotes).length)
     let randomNum = Math.floor(Math.random() * 5);
     let randomQuote = quotes.quotes[randomNum];
     let quoteText = randomQuote.text;
@@ -67,7 +67,6 @@ class Dashboard extends Component {
           <Header style={{ margin: 0}}
           >
             {this.shuffled()}
-            {/* You're doing great!  */}
           </Header>
         </Container>
         <Divider></Divider>
@@ -115,7 +114,7 @@ class Dashboard extends Component {
               <Statistic.Label>Miles to Event Goal</Statistic.Label>
               <Divider />
               <Statistic.Value>
-                <Icon name='quidditch' />Fly to the Moon
+                <Icon name='quidditch' />Run to the Sun
             </Statistic.Value>
               <Statistic.Label>Current Event</Statistic.Label>
             </Statistic>

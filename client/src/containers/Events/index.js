@@ -19,10 +19,12 @@ import mascots from '../../static/mascots';
 class Event extends Component {
   renderTeamByEvent = (field) => {
     return (
+      <div style={{height: "300px", overflowX: "scroll", }}>
       <Header>
         {this.getTeamItem()}
         {/* {this.getTeamList()} */}
       </Header>
+    </div>
     );
   };
 
@@ -66,28 +68,17 @@ class Event extends Component {
   };
 
   getTeamItem = () => {
-    return this.props.eventList.teams.map(({ name, mascotIMG }) => {
+    console.log(this.props.eventList);
+    
+      return this.props.eventList?.teams?.length !== 0 && this.props.eventList?.teams?.map(( team ) => {
+        
       // console.log("teams")
       // console.log(name)
       return (
-
-        // <List.Item value={name}>
-        //   {name}
-        //   <img src={mascots[`${mascotIMG}`]} alt="active mascots" width='50px' />
-        //   <Progress
-        //     verticalAlign='middle'
-        //     id='inlineItem'
-        //     percent={44}  color= 'blue'
-        //     style={{
-        //       width: 300,
-        //       margin:'0',
-        //     }} />
-        // </List.Item>
-        <div style={{height: "200px", overflowX: "scroll", }}>
-        <Grid stacked value={name}>
+        <Grid stacked value={team.name}>
           <Grid.Row verticalAlign='middle' style={{ padding: '0' }}>
             <Grid.Column width={2}>
-              {name}
+              {team.name}
             </Grid.Column>
 
             <Grid.Column width={12}>
@@ -101,14 +92,14 @@ class Event extends Component {
                 }} />
             </Grid.Column>
             <Grid.Column width={2}>
-              <img src={mascots[`${mascotIMG}`]} alt="active mascots" width='50px' />
+              <img src={mascots[`${team.mascotIMG}`]} alt="active mascots" width='50px' />
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        </div>
       )
-    });
+    })
   };
+  
 
   //loop through this.props.eventList.teams.name (teams array)
   //create level1panel for each time
@@ -118,13 +109,6 @@ class Event extends Component {
     console.log("EVENTLIST:", this.props.eventList);
     console.log("PROPS:", this.props);
     const { handleSubmit } = this.props;
-    // const Teams = [
-    //   { key: 'panel-1a', title: 'Participating Teams', content: {this.renderTeamByEvent()} }
-    // ]
-
-    // const rootPanels = [
-    //   { key: 'panel-1', title: {this.props.eventList.name} , content: { content: <Accordion.Accordion panels={Teams} /> } },
-    // ]
 
     return (
       <div>
@@ -167,7 +151,6 @@ class Event extends Component {
                   <Button type="submit">Submit</Button>
                 </Grid.Column>
               </Grid.Row>
-
             </Grid>
           </Form>
         </Segment>

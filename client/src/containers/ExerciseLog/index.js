@@ -38,13 +38,15 @@ class ExerciseLog extends Component {
       this.props.addExerciseLog(formValues, () => {
         return <Header content="Right on! Keep up with the good work! " />;
       });
+      // to redirect to the dashboard
+      // this.props.history.push('/dashboard');
     } catch (e) {
       console.log(e);
     }
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { handleSubmit } = this.props;
     return (
       <Segment>

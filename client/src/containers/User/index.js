@@ -30,8 +30,8 @@ class User extends Component {
   render() {
     console.log("I'M INSIDE USER:", this.props.totalUserDistance[0]);
     let totalDistanceItem = this.props.totalUserDistance[0];
-    let totalDistance = totalDistanceItem.totalDistance;
-    console.log(totalDistance)
+    // let totalDistance = totalDistanceItem.totalDistance;
+    console.log(totalDistanceItem)
     // console.log("I'M INSIDE USER and GETTING TEAMS:", this.props.getUserTeams);
     // console.log('TEAM USERS INSIDE USERS:', this.props.teamUsers);
     // const numberOfTeams = this.props.getUserTeams.teams
@@ -83,45 +83,6 @@ class User extends Component {
               </Statistic>
             </Grid.Column>
           </Grid.Row>
-
-
-          {/* <Grid.Row centered columns={2}>
-            <Grid.Column textAlign='center'>
-              <Statistic size='mini'>
-                <Statistic.Label>Total Miles Run</Statistic.Label>
-                <Statistic.Value>{this.props.totalUserDistance.totalDistance}</Statistic.Value>
-              </Statistic>
-            </Grid.Column>
-            <Grid.Column textAlign='center'>
-              <Statistic size='mini'>
-                <Statistic.Label>Time Spent Running</Statistic.Label>
-                <Statistic.Value>60</Statistic.Value>
-                <Statistic.Label>hours</Statistic.Label>
-              </Statistic>
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row centered columns={3}>
-            <Grid.Column textAlign='center'>
-              <Statistic size='mini'>
-                <Statistic.Label>Teams</Statistic.Label>
-
-        <Statistic.Value>{this.props.getUserTeams.teams.length}</Statistic.Value>
-              </Statistic>
-            </Grid.Column>
-            <Grid.Column textAlign='center'>
-              <Statistic size='mini'>
-                <Statistic.Label>Active Events</Statistic.Label>
-                <Statistic.Value>1</Statistic.Value>
-              </Statistic>
-            </Grid.Column>
-            <Grid.Column textAlign='center'>
-              <Statistic size='mini'>
-                <Statistic.Label>Events Won</Statistic.Label>
-                <Statistic.Value>1</Statistic.Value>
-              </Statistic>
-            </Grid.Column>
-          </Grid.Row> */}
 
         </Grid>
 
