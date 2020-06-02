@@ -17,8 +17,8 @@ function tokenForUser(user) {
 
 module.exports = {
   signUp: async (req, res) => {
-    const { username, email, AUTH_SECRET } = req.body;
-    if (!username || !email || !AUTH_SECRET) {
+    const { username, email, password } = req.body;
+    if (!username || !email || !password) {
       return res.status(422).json({ error: 'You must complete all fields to sign up' });
     }
     if (!isEmail(email)) {
