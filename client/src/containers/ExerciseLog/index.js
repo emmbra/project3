@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Segment, Button, Header, Form, Divider } from 'semantic-ui-react'
 import { addExerciseLog } from '../../actions/log';
 import { getTeamUsers } from '../../actions/team';
@@ -36,7 +37,7 @@ class ExerciseLog extends Component {
   onSubmit = async (formValues) => {
     try {
       this.props.addExerciseLog(formValues, () => {
-        return <Header content="Right on! Keep up with the good work! " />;
+        this.props.history.push('/dashboard');
       });
       // to redirect to the dashboard
       // this.props.history.push('/dashboard');
@@ -46,7 +47,7 @@ class ExerciseLog extends Component {
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     const { handleSubmit } = this.props;
     return (
       <Segment>
@@ -87,6 +88,7 @@ function mapStateToProps(state) {
 }
 
 export default compose(
+  withRouter,
   connect(mapStateToProps, { addExerciseLog, getTeamUsers }),
   reduxForm({ form: 'ExerciseLog' })
 )(ExerciseLog);
