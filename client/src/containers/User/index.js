@@ -60,8 +60,8 @@ class User extends Component {
             <Grid.Column textAlign='center'>
               <Statistic size='mini'>
                 <Statistic.Label>Time Spent Running</Statistic.Label>
-                  <Statistic.Value>({this.props.totalUserDistance[0].totalTime}/60)</Statistic.Value>
-                <Statistic.Label>Hours</Statistic.Label>
+                  <Statistic.Value>{this.props.totalUserDistance[0].totalTime}</Statistic.Value>
+                <Statistic.Label>Minutes</Statistic.Label>
               </Statistic>
             </Grid.Column>
             <Grid.Column textAlign='center'>
