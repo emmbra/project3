@@ -1,4 +1,4 @@
-const { Log, Team, Event, Record } = require('../models');
+const { Log, Team, Event, Record, User } = require('../models');
 
 const getTotalTeamDistance = async (team) => {
   try {
@@ -17,7 +17,7 @@ const getTotalTeamDistance = async (team) => {
         },
       },
     ]);
-    console.log('TOTAL DISTANCE:', totalDistance);
+    // console.log('TOTAL DISTANCE:', totalDistance);
     return Promise.resolve(totalDistance);
   } catch (e) {
     return e;
@@ -26,14 +26,8 @@ const getTotalTeamDistance = async (team) => {
 
 const endEvent = async (eventInfo, team, totalTeamDistance) => {
   try {
-    // Users
-
-    // Team
-
-    // Event
-
     // Records
-    console.log("EVENT:", eventInfo);
+    // console.log("EVENT:", eventInfo.users);
     // console.log('TOTALTIMEDISTANCE END EVENT:', totalTeamDistance);
     // console.log('EVENT DISTANCE:', eventDistance);
     const newRecord = await new Record({
@@ -47,6 +41,7 @@ const endEvent = async (eventInfo, team, totalTeamDistance) => {
       logs: eventInfo.logs,
       event: eventInfo._id,
     }).save();
+    // console.log("NEWRECORD:", newRecord);
 
     const eventRecord = await Record.findById(newRecord._id)
       .populate('event')
@@ -55,9 +50,52 @@ const endEvent = async (eventInfo, team, totalTeamDistance) => {
       .populate('logs')
       .populate('winningUserIds')
       .populate('winningTeamId');
-    console.log('EVENTRECORD:', eventRecord);
+  console.log('EVENTRECORD:', eventRecord);
 
-    // console.log('NEWRECORD:', newRecord);
+    // Users
+    const winningUsers = newRecord.winningUserIds.map(async ({ _id }) => {
+      const userToUpdate = await User.findById(_id);
+      userToUpdate.records.push(newRecord._id);
+      await userToUpdate.save();
+    });
+
+    // Team
+    const teamToUpdate = await Team.findById(team._id);
+    teamToUpdate.records.push(newRecord._id);
+    teamToUpdate.teamStatus = 'available';
+    await teamToUpdate.save();
+    // console.log("TEAMTOUPDATE:", teamToUpdate);
+
+    const finalEvent = await Event.findById(eventInfo._id)
+      .populate('users')
+      .populate('teams')
+      .populate('logs');
+    console.log('EVENTRECORD:', finalEvent);
+
+    // Event
+    const eventToUpdate = await Event.findById(eventInfo._id);
+    eventToUpdate.completedTime = Date.now();
+    eventToUpdate.status = 'complete';
+    eventToUpdate.code = 'Archived';
+    eventToUpdate.records.push(newRecord._id);
+    await eventToUpdate.save();
+    console.log("EVENTTOUPDATE:", eventToUpdate);
+
+    const newEvent = await new Event({
+      name: "Let's go Hawaii",
+      distance: 2388,
+      startTime: Date.now(),
+      dateCreated: Date.now(),
+      status: 'active',
+      code: 1234,
+    }).save();
+    // const teamToUpdate = await Team.findByIdAndUpdate(
+    //   team._id, 
+    //   { $push: { teamStatus: 'available' } },
+    //   { $push: { records: newRecord._id } },
+    //   { new: true },
+    // );
+
     return newRecord;
   } catch (e) {
     return e;
@@ -66,7 +104,7 @@ const endEvent = async (eventInfo, team, totalTeamDistance) => {
 
 module.exports = {
   addExerciseLog: async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const { time, distance, teamId } = req.body;
     if (!time || !distance) {
       return res.status(400).json({ error: 'You must provide time in minutes and distance in miles.' });
@@ -77,13 +115,13 @@ module.exports = {
       }).save();
       req.user.logs.push(newLog);
       await req.user.save();
-      console.log('NEW LOG', newLog);
+      // console.log('NEW LOG', newLog);
       const team = await Team.findById(teamId);
       // console.log("TEAM:", team);
       const totalTeamDistance = await getTotalTeamDistance(team);
-      console.log('ADD EXERCISE:', totalTeamDistance);
+      // console.log('ADD EXERCISE:', totalTeamDistance);
       const eventInfo = await Event.findOne({ code: '1234' });
-      console.log(eventInfo);
+      // console.log(eventInfo);
       eventInfo.logs.push(newLog._id);
       eventInfo.save();
       // const eventDistance = await Event.findOne({ code: '1234' }, 'distance');
@@ -98,13 +136,9 @@ module.exports = {
       if (totalTeamDistance[0].totalDistance <= eventInfo.distance) {
         return res.status(200).json({ newLog, status: 'newLog' });
       }
-      // const gameRecord = await endRace();
       const gameRecord = await endEvent(eventInfo, team, totalTeamDistance);
       console.log('gameRecord: ', gameRecord);
       return res.json({ gameRecord, status: 'raceEnd' });
-      // console.log('GAME OVER 123');
-      // return res.status(200).json({gameRecord, status: 'eventEnd'});
-      // },
     } catch (e) {
       return res.status(403).json({ e });
     }
@@ -142,10 +176,11 @@ module.exports = {
           $group: {
             _id: null,
             totalDistance: { $sum: '$distance' },
+            totalTime: { $sum: '$time' },
           },
         },
       ]);
-      console.log(totalDistance);
+      // console.log(totalDistance);
       return res.json(totalDistance);
     } catch (e) {
       return res.status(403).json({ e });

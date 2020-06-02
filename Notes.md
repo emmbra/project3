@@ -1,6 +1,3 @@
-
-
-
 ? === ?
 
 distance of Event 
