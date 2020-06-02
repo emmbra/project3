@@ -1,7 +1,7 @@
 const { isEmail, isLength } = require('validator');
 const jwt = require('jwt-simple');
 const { User } = require('../models');
-const { AUTH_SECRET } = require('../config');
+// const { AUTH_SECRET } = require('../config');
 
 function tokenForUser(user) {
   // 1st argument is the information we want to encode
@@ -12,7 +12,7 @@ function tokenForUser(user) {
   const timeStamp = new Date().getTime();
   // This subject will become the payload in our strategy
   // eslint-disable-next-line no-underscore-dangle
-  return jwt.encode({ sub: user._id, iat: timeStamp }, process.env.AUTH_SECRET || AUTH_SECRET);
+  return jwt.encode({ sub: user._id, iat: timeStamp }, process.env.AUTH_SECRET);
 }
 
 module.exports = {
