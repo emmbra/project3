@@ -15,7 +15,6 @@ import { connect } from "react-redux";
 import { joinEvent, getEvent } from "../../actions/event";
 import { getTeamUsers } from "../../actions/team";
 import mascots from '../../static/mascots';
-
 class Event extends Component {
   renderTeamByEvent = (field) => {
     return (
@@ -24,7 +23,6 @@ class Event extends Component {
       </List.Item>
     );
   };
-
   renderSelectTeam = (field) => {
     console.log(field.input);
     return (
@@ -33,7 +31,6 @@ class Event extends Component {
       </select>
     );
   };
-
   getTeamList = () => {
     if (this.props.getUserTeams?.length === 0) {
       return <Header content="No teams found!" />;
@@ -47,13 +44,11 @@ class Event extends Component {
       });
     }
   };
-
   handleChange = (event) => {
     console.log(event.target.value);
     //call action creator, take team name, send to reducers, reducer looks at team name, sets state of teamname
     this.props.getTeamUsers(event.target.value, this.props.getUserTeams);
   };
-
   onSubmit = async (formValues) => {
     console.log("I am values", formValues)
     try {
@@ -63,12 +58,9 @@ class Event extends Component {
       console.log(e);
     }
   };
-
   getTeamItem = () => {
     console.log(this.props.eventList.teams);
-
     return this.props.eventList?.teams?.length !== 0 && this.props.eventList?.teams?.map((team) => {
-
       // console.log("teams")
       // console.log(name)
       return (
@@ -96,17 +88,13 @@ class Event extends Component {
       )
     })
   };
-
-
   //loop through this.props.eventList.teams.name (teams array)
   //create level1panel for each time
   // render on the page
-
   render() {
     console.log("EVENTLIST:", this.props.eventList);
     console.log("PROPS:", this.props);
     const { handleSubmit } = this.props;
-
     return (
       <div>
         <Segment textAlign='left'>
@@ -154,13 +142,11 @@ class Event extends Component {
     );
   }
 }
-
 function mapStateToProps(state) {
   return {
     eventList: state.event.eventCreated,
   };
 }
-
 export default compose(
   connect(mapStateToProps, { joinEvent, getEvent, getTeamUsers }),
   reduxForm({ form: "Event" })

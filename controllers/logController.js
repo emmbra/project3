@@ -43,14 +43,14 @@ const endEvent = async (eventInfo, team, totalTeamDistance) => {
     }).save();
     // console.log("NEWRECORD:", newRecord);
 
-    const eventRecord = await Record.findById(newRecord._id)
-      .populate('event')
-      .populate('users')
-      .populate('teams')
-      .populate('logs')
-      .populate('winningUserIds')
-      .populate('winningTeamId');
-  console.log('EVENTRECORD:', eventRecord);
+  //   const eventRecord = await Record.findById(newRecord._id)
+  //     .populate('event')
+  //     .populate('users')
+  //     .populate('teams')
+  //     .populate('logs')
+  //     .populate('winningUserIds')
+  //     .populate('winningTeamId');
+  // console.log('EVENTRECORD:', eventRecord);
 
     // Users
     const winningUsers = newRecord.winningUserIds.map(async ({ _id }) => {
@@ -139,16 +139,7 @@ module.exports = {
       const gameRecord = await endEvent(eventInfo, team, totalTeamDistance);
       console.log('gameRecord: ', gameRecord);
 
-      const eventRecord = await Record.findById(newRecord._id)
-      //   .populate('event')
-      //   .populate('users')
-      //   .populate('teams')
-      //   .populate('logs')
-      //   .populate('winningUserIds')
-      //   .populate('winningTeamId');
-      // console.log('EVENTRECORD:', eventRecord);
-
-      return res.json({ eventRecord, status: 'raceEnd' });
+      return res.json({ gameRecord, status: 'raceEnd' });
     } catch (e) {
       return res.status(403).json({ e });
     }

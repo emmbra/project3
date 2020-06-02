@@ -3,11 +3,17 @@ import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Segment, Button, Header, Form, Divider } from 'semantic-ui-react'
+import { Segment, Button, Header, Form, Divider, Modal, Image } from 'semantic-ui-react'
 import { addExerciseLog } from '../../actions/log';
 import { getTeamUsers } from '../../actions/team';
+import {winImage} from '../../assets/winner.png';
+
 
 class ExerciseLog extends Component {
+  // state = {
+  //   isParentOpen: false,
+  // }
+  
   renderSelectTeam = (field) => {
     return (
       <select
@@ -39,7 +45,24 @@ class ExerciseLog extends Component {
 
       this.props.addExerciseLog(formValues, (status) => {
         if (status === 'raceEnd') {
+          // this.setState({
+          //   isParentOpen: true
+          // });
+          // console.log(this.this.state.isParentOpen)
           alert('Winner winner chicken dinner!')
+          // return (
+          // // <Modal trigger={<Button>Click Here!</Button>} centered={false}>
+
+          // <Modal
+          //   open={this.state.isParentOpen}
+          //   size="large"
+          // >
+          //   <Modal.Header>   CONGRATULATIONS! YOU ARE THE FIRST TO THE FINISH LINE!</Modal.Header>
+          // <Modal.Content centered={true} image>
+          //   <Image wrapped size='medium' src={winImage} />
+          // </Modal.Content>
+          // </Modal>
+          // )
         }
 
         this.props.history.push('/dashboard');
@@ -52,6 +75,7 @@ class ExerciseLog extends Component {
     }
   }
 
+  
   render() {
     console.log(this.props);
     const { handleSubmit } = this.props;
