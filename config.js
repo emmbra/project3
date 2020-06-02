@@ -1,3 +1,3 @@
 module.exports = {
-  secret: '1yshdgaiasdjhnbadjhgadasbfaihfgaidgasdiyasgduayfgaifsasgdasdadasdadas',
+  AUTH_SECRET: 'lkj234lkjadfoiu13asdlfkj132413',
 };
