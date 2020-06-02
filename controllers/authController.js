@@ -1,7 +1,7 @@
 const { isEmail, isLength } = require('validator');
 const jwt = require('jwt-simple');
 const { User } = require('../models');
-const { secret } = require('../config');
+const { AUTH_SECRET } = require('../config');
 
 function tokenForUser(user) {
   // 1st argument is the information we want to encode
@@ -17,8 +17,8 @@ function tokenForUser(user) {
 
 module.exports = {
   signUp: async (req, res) => {
-    const { username, email, password } = req.body;
-    if (!username || !email || !password) {
+    const { username, email, AUTH_SECRET } = req.body;
+    if (!username || !email || !AUTH_SECRET) {
       return res.status(422).json({ error: 'You must complete all fields to sign up' });
     }
     if (!isEmail(email)) {
