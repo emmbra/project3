@@ -81,13 +81,13 @@ class Dashboard extends Component {
               />
               <Menu.Item
                 name='Team'
-                active={pathname === '/dashboard/team' || pathname === '/dashboard'}
+                active={pathname === '/dashboard/team'}
                 as={Link}
                 to='/dashboard/team'
               />
               <Menu.Item
                 name='Event'
-                active={pathname === '/dashboard/event'}
+                active={pathname === '/dashboard/event' || pathname === '/dashboard'}
                 as={Link}
                 to='/dashboard/event'
               />
@@ -137,7 +137,7 @@ class Dashboard extends Component {
               <Route exact path='/dashboard/exerciselog' render={() => <ExerciseLog
                 getUserTeams={this.props.user.teams}
               />} />
-              <Route path='/dashboard' render={() => <Team
+              <Route path='/dashboard' render={() => <Events
                 getUserTeams={this.props.user.teams}
               />} />
             </Switch>
