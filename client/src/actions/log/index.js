@@ -6,10 +6,11 @@ import {
 } from '../types';
 import axios from 'axios';
 
-export const addExerciseLog = (formValues) => async dispatch => {
+export const addExerciseLog = (formValues, cb) => async dispatch => {
   try {
     const { data } = await axios.post('/api/exerciselog', formValues, { headers: { 'authorization': localStorage.getItem('token') }});
     dispatch({ type: ADD_EXERCISE_LOG, payload: data });
+    cb();
   } catch (e) {
     dispatch({ type: ADD_EXERCISE_LOG_ERROR, payload: e })
   }
