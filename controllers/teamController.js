@@ -154,12 +154,12 @@ module.exports = {
       }
       // check if user is on team
       if (teamToJoin.users.includes(req.user._id)) {
-        return res.status(400).json({ error: 'Already on this team, cannot join again!' });
+        return res.status(402).json({ error: 'Already on this team, cannot join again!' });
       }
       // check if team is full
       if (teamToJoin.users.length >= teamToJoin.maxMembers) {
         // console.log("full");
-        return res.status(400).json({ error: 'Team is full, please join another team!' });
+        return res.status(401).json({ error: 'Team is full, please join another team!' });
       }
 
       teamToJoin.users.push(req.user._id);

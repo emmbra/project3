@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu, Grid, Statistic, Icon , Header, Container, Divider, Segment } from 'semantic-ui-react';
+import { Menu, Grid, Statistic, Icon, Header, Container, Divider, Segment } from 'semantic-ui-react';
 
 
 import User from '../User';
@@ -34,8 +34,8 @@ class Dashboard extends Component {
     return (
       <div >
         <p style={{
-          margin: '0em 0em',
-          // textTransform: 'uppercase',
+          margin: '.5em 0em',
+          textTransform: 'uppercase',
           fontSize: '1.5rem',
           color: '#6e81c3',
           lineHeight: '0 em',
@@ -60,15 +60,15 @@ class Dashboard extends Component {
     const { pathname } = this.props.location;
     return (
       <div class="mainRenderBody">
-        <Container textAlign='center'>
-          <Header font-size='1em'
-            style={{ color: '#858585', margin: '0', textTransform: 'uppercase' }}
-          > Motivation</Header>
-          <Header style={{ margin: 0}}
+        <Grid textAlign='center'>
+          <Header font-size='3em'
+            style={{ color: '#858585', margin: '1em', textTransform: 'uppercase', width: '300' }}
+          > Motivational Quote</Header>
+          <Header style={{ margin: 0 }}
           >
             {this.shuffled()}
           </Header>
-        </Container>
+        </Grid>
         <Divider></Divider>
         <Grid>
           <Grid.Column width={4}>
@@ -104,21 +104,35 @@ class Dashboard extends Component {
                 to='/dashboard/exerciselog'
               />
             </Menu>
-            <Divider />
-            <Segment  style={{ border: '1px solid rgba(34,36,38,.15)', boxShadow: '0 1px 2px 0 rgba(34,36,38,.15)' }}>
-            <Statistic size='mini'>
-              <Statistic.Value>123</Statistic.Value>
-              <Statistic.Label>Miles Run</Statistic.Label>
-              <Divider />
-              <Statistic.Value>1887</Statistic.Value>
-              <Statistic.Label>Miles to Event Goal</Statistic.Label>
-              <Divider />
-              <Statistic.Value>
-                <Icon name='quidditch' />Run to the Sun
-            </Statistic.Value>
-              <Statistic.Label>Current Event</Statistic.Label>
-            </Statistic>
-          </Segment>
+            {/* <Divider style = {{ margin: '0'}}/> */}
+            <Segment style={{ border: '1px solid #fa7a34', boxShadow: '0 1px 2px 0 rgba(34,36,38,.15)',color: '#fa7a34' }}>
+            <Header as='h4' style={{ color: '#34c4f8', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
+                123
+                </Header>
+                <Header as='h4' style={{ color: '#858585', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
+                Miles Run
+              </Header>
+
+              <Divider style = {{ margin: '0.2'}}/>
+
+              <Header as='h4' style={{ color: '#34c4f8', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
+              1887
+                </Header>
+                <Header as='h4' style={{ color: '#858585', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
+              Miles to Event Goal
+              </Header>
+
+              <Divider style = {{ margin: '0.2'}}/>
+
+              <Header as='h4' style={{ color: '#34c4f8', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
+              <Icon name='sun' />
+              Run to the Sun
+                </Header>
+                <Header as='h4' style={{ color: '#858585', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
+              Current Event
+              </Header>
+
+            </Segment>
           </Grid.Column>
           <Grid.Column stretched width={12}>
             <Switch>
