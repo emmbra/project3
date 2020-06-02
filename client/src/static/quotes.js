@@ -13,7 +13,7 @@ export const quotes =
     author: "Nike",
   },
   {
-    text: "Run like there's someone hot in front of you and a creepy one behind you.",
+    text: "Run like you're in a zombie apocolypse.",
     author: "Anonymous",
   },
   {
