@@ -19,12 +19,9 @@ import mascots from '../../static/mascots';
 class Event extends Component {
   renderTeamByEvent = (field) => {
     return (
-      <div style={{height: "300px", overflowX: "scroll", }}>
-      <Header>
+      <List.Item>
         {this.getTeamItem()}
-        {/* {this.getTeamList()} */}
-      </Header>
-    </div>
+      </List.Item>
     );
   };
 
@@ -68,38 +65,38 @@ class Event extends Component {
   };
 
   getTeamItem = () => {
-    console.log(this.props.eventList);
-    
-      return this.props.eventList?.teams?.length !== 0 && this.props.eventList?.teams?.map(( team ) => {
-        
+    console.log(this.props.eventList.teams);
+
+    return this.props.eventList?.teams?.length !== 0 && this.props.eventList?.teams?.map((team) => {
+
       // console.log("teams")
       // console.log(name)
       return (
-        <Grid stacked value={team.name}>
+        <Grid stacked value={team.name} >
           <Grid.Row verticalAlign='middle' style={{ padding: '0' }}>
             <Grid.Column width={2}>
-              {team.name}
+              <label>{team.name}</label>
             </Grid.Column>
-
             <Grid.Column width={12}>
               <Progress
                 verticalAlign='middle'
-                //input total distance 
-                percent={44} color='blue'
+                // THIS PERCENTAGE DOES NOT WORK YET ALL VALUES COME UP AS ZERO
+                percent= {team.totalDistance}
+                 color='blue'
                 style={{
                   // width: 300,
                   margin: '0',
                 }} />
             </Grid.Column>
             <Grid.Column width={2}>
-              <img src={mascots[`${team.mascotIMG}`]} alt="active mascots" width='50px' />
+              <img src={mascots[`${team.mascotIMG}`]} alt="active mascots" width='30px' />
             </Grid.Column>
           </Grid.Row>
         </Grid>
       )
     })
   };
-  
+
 
   //loop through this.props.eventList.teams.name (teams array)
   //create level1panel for each time
@@ -113,46 +110,45 @@ class Event extends Component {
     return (
       <div>
         <Segment textAlign='left'>
-          <Header as='h3' style={{ color: '#ca50a1', }}>
-            Event Name:
-          <Header.Content style={{ color: '#858585', display: 'inline' }}>
-              {this.props.eventList.name}
-            </Header.Content>
-          </Header>
-          <Header as='h3' style={{ color: '#ca50a1', }}>
-            Event Distance:
-          <Header.Content style={{ color: '#858585', display: 'inline' }}>
-              {this.props.eventList.distance}
-            </Header.Content>
-          </Header>
-          <Header as='h3' style={{ color: '#ca50a1', }}>
-            Participating Teams:
-          <Header.Content style={{ color: '#858585', display: 'inline' }}>
-              {this.props.eventList.name}
-            </Header.Content>
-          </Header>
-          {/* <Header as='h3' style={{ color: '#ca50a1' }}>Event Distance: </Header>{this.props.eventList.distance} miles
-          <Header as='h3' style={{ color: '#ca50a1' }}>Participating Teams:</Header> */}
-          <Segment> {this.renderTeamByEvent()}  </Segment>
-          <Form onSubmit={handleSubmit(this.onSubmit)}>
-            {/* <List>{this.renderTeamByEvent}</List> */}
-            {/* <Segment> {this.getTeamItem}  </Segment>
-            <Field name="teamEvent" component={this.getTeamItem} /> */}
-            {/* <Header>Select a team to add to this event:</Header>
-            <Field name="teamId" component={this.renderSelectTeam} />
-            <Button type="submit">Submit</Button> */}
-            <Grid centered>
-              <Grid.Row>
-                <Grid.Column width={6} textAlign='right' verticalAlign='bottom'>
-                  <Header>Select a team to add to this event:</Header>
-                  <Field name="teamId" component={this.renderSelectTeam} />
-                </Grid.Column>
-                <Grid.Column width={6} textAlign='left' verticalAlign='bottom'>
-                  <Button type="submit">Submit</Button>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Form>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={10}>
+                <Header as='h3' style={{ color: '#ca50a1',textTransform: 'uppercase' }}>
+                  Event Name:
+                  <Header.Content style={{ color: '#858585', display: 'inline', fontWeight:'normal' }}>
+                    {this.props.eventList.name}
+                  </Header.Content>
+                </Header>
+                <Header as='h3' style={{ color: '#ca50a1',textTransform: 'uppercase' }}>
+                  Event Distance:
+                  <Header.Content style={{ color: '#858585', display: 'inline', fontWeight:'normal'  }}>
+                    {this.props.eventList.distance} miles
+                  </Header.Content>
+                </Header>
+                <Header as='h3' style={{ color: '#ca50a1',textTransform: 'uppercase' }}>
+                  Participating Teams & Current Progress
+                </Header>
+              </Grid.Column>
+              <Grid.Column width={5}>
+                <Form onSubmit={handleSubmit(this.onSubmit)}>
+                  {/* <Grid centered> */}
+                  <Grid.Row>
+                    <Grid.Column width={2} verticalAlign='bottom' style={{ textAlign: 'right', float: 'left' }}>
+                      <Header as='h5'>Select a team to add to this event:</Header>
+                      <Field name="teamId" component={this.renderSelectTeam} />
+                    </Grid.Column>
+                    <Grid.Column width={1} style={{ textAlign: 'right', float: 'right' }}>
+                      <Button type="submit">Submit</Button>
+                    </Grid.Column>
+                  </Grid.Row>
+                  {/* </Grid>  */}
+                </Form>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+          <div style={{ height: "250px", overflowX: "scroll", paddingTop:'30px' }}>
+            {this.renderTeamByEvent()}
+          </div>
         </Segment>
       </div>
     );

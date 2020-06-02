@@ -35,7 +35,10 @@ class ExerciseLog extends Component {
 
   onSubmit = async (formValues) => {
     try {
+      console.log("EXERCISE LOG: clicking submit before formvalues")
+      // console.log(formValues)
       this.props.addExerciseLog(formValues, () => {
+        console.log("EXERCISE LOG: inside addExerciseLog")
         return <Header content="Right on! Keep up with the good work! " />;
       });
       // to redirect to the dashboard

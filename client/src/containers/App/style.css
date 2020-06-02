@@ -63,7 +63,7 @@ grey: #858585'*/
 
 }
 .dashboard{
-   padding:20px;
+   padding:0px 20px 0px 20px;
  }
  .ui.segment{
    border-color:none;
