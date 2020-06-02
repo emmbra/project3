@@ -111,7 +111,7 @@ class Team extends Component {
                 {this.renderUsersByTeamId()}
               </Header>
             </Grid.Column>
-            <Grid.Column stackable width={10}>
+            {/* <Grid.Column stackable width={10}>
               <Divider
                 as='h2'
                 className='header'
@@ -121,14 +121,10 @@ class Team extends Component {
                 Team Exercise Log Totals
               </Divider>
               <Header color='red'>DISPLAY: VIEW TEAM EXERCISE LOG</Header>
-              {/* <Header color='orange'>DATE | TOTAL MILES RUN | TOTAL DURATION</Header> */}
+              <Header color='orange'>DATE | TOTAL MILES RUN | TOTAL DURATION</Header>
               <Table celled selectable>
                 <Table.Header>
                   <Table.Row>
-                    {/* <Table.HeaderCell textAlign='center'>
-                      {' '}
-                Exercise Date{' '}
-                    </Table.HeaderCell> */}
                     <Table.HeaderCell textAlign='center'>
                       {' '}
                Total Distance (miles){' '}
@@ -141,10 +137,10 @@ class Team extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {/* {this.renderUserLogHistory()} */}
+                  {this.renderUserLogHistory()}
                 </Table.Body>
-              </Table>
-            </Grid.Column>
+              </Table> 
+            </Grid.Column>*/}
           </Grid.Row>
         </Grid>
       </Container>
