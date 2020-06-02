@@ -45,8 +45,12 @@ class App extends Component {
           <Route exact path='/everciselog' component={ExerciseLog}/> */}
           </Grid.Column>
         </Grid>
+        <br/>
+        <br/>
+        <br/>
+        {/* <Sticky>
         <Footer />
-
+        </Sticky> */}
       </div>
     )
   }
