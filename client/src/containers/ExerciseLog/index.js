@@ -36,9 +36,11 @@ class ExerciseLog extends Component {
 
   onSubmit = async (formValues) => {
     try {
-      console.log("EXERCISE LOG: clicking submit before formvalues")
-      // console.log(formValues)
-      this.props.addExerciseLog(formValues, () => {
+
+      this.props.addExerciseLog(formValues, (status) => {
+        if (status === 'raceEnd') {
+          alert('Winner winner chicken dinner!')
+        }
 
         this.props.history.push('/dashboard');
 

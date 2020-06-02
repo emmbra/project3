@@ -54,14 +54,14 @@ class User extends Component {
             <Grid.Column textAlign='center'>
               <Statistic size='mini'>
                 <Statistic.Label>Total Miles Run</Statistic.Label>
-                <Statistic.Value>2,204</Statistic.Value>
+                <Statistic.Value>{this.props.totalUserDistance[0].totalDistance}</Statistic.Value>
               </Statistic>
             </Grid.Column>
             <Grid.Column textAlign='center'>
               <Statistic size='mini'>
                 <Statistic.Label>Time Spent Running</Statistic.Label>
-                <Statistic.Value>8</Statistic.Value>
-                <Statistic.Label>hours</Statistic.Label>
+                  <Statistic.Value>{this.props.totalUserDistance[0].totalTime}</Statistic.Value>
+                <Statistic.Label>Minutes</Statistic.Label>
               </Statistic>
             </Grid.Column>
             <Grid.Column textAlign='center'>
