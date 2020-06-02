@@ -9,8 +9,9 @@ import axios from 'axios';
 export const addExerciseLog = (formValues, cb) => async dispatch => {
   try {
     const { data } = await axios.post('/api/exerciselog', formValues, { headers: { 'authorization': localStorage.getItem('token') }});
+    console.log(data);
     dispatch({ type: ADD_EXERCISE_LOG, payload: data });
-    cb();
+    cb(data.status);
   } catch (e) {
     dispatch({ type: ADD_EXERCISE_LOG_ERROR, payload: e })
   }

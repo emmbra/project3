@@ -8,7 +8,11 @@ import {
   Radio,
   Container,
   Divider,
-  Segment
+  Segment,
+  List,
+  Table,
+  Header,
+  Icon,
 } from 'semantic-ui-react';
 import { addTeams, addUserToTeam, getAllTeams } from '../../actions/team';
 
@@ -34,7 +38,7 @@ class TeamContainer extends Component {
       console.log(e);
     }
   }
-  
+
   renderTeamView = (value) => {
     this.setState({ teamView: value, isClicked: true });
   };
@@ -56,9 +60,10 @@ class TeamContainer extends Component {
           />
         );
       case 'join':
-        const filteredTeams = this.props.allTeams.filter( team => team.teamStatus === 'available')
+        const filteredTeams = this.props.allTeams.filter(team => team.teamStatus === 'available')
         console.log(filteredTeams);
         return (
+
           <JoinTeam
             resetView={this.resetView}
             teams={filteredTeams}
@@ -71,7 +76,7 @@ class TeamContainer extends Component {
         return <div></div>;
     }
   };
-  
+
   renderRadio = ({ input, label }) => (
     <Radio
       label={label}
@@ -84,8 +89,7 @@ class TeamContainer extends Component {
   renderInput = ({ input, meta, type, label, placeholder }) => {
     return (
       <div>
-        <label>{label}</label>
-
+        {/* <label>{label}</label> */}
         <Form.Input
           {...input}
           fluid
@@ -101,8 +105,8 @@ class TeamContainer extends Component {
     // console.log('HELLO');
     // console.log("PROPS:", this.props);
     return (
-      <Segment style={{ maxWidth: 800, marginLeft: 'auto', marginRight:'auto', marginTop:30, marginBottom:30, opacity: '0.9'}}>
-              <Divider
+      <Segment style={{ maxWidth: 800, marginLeft: 'auto', marginRight: 'auto', marginTop: 30, marginBottom: 30, opacity: '0.9' }}>
+        <Divider
           as='h2'
           className='header'
           horizontal
@@ -110,14 +114,26 @@ class TeamContainer extends Component {
         >
           Hurry and get on a team!
         </Divider>
+        <List as='ol' color='black' style={{ textAlign: "left" }}>
+          <List.Item as='li' value='*'>
+            Every team can only have up to 5 members.
+          </List.Item>
+          <List.Item as='li' value='*'>
+            There are <b>private</b> and <b>public</b> teams, private teams require a passcode so make sure to share your passcode to your desired team mates if you are creating a team.
+           </List.Item>
+          <List.Item as='li' value='*'>
+            If you are joining a team, the lock icon <Icon name='lock' /> signified a private team and the unlocked icon <Icon name='lock open' /> represents a public team.
+         </List.Item>
+          <List.Item as='li' value='*'>
+            Have Fun!
+         </List.Item>
+        </List>
+        <Divider style={{ color: '#858585', margin: '1em 0em',}} />
         <Grid columns={2} stackable textAlign='center'>
-        {/* <Divider vertical>Or</Divider> */}
           {!this.state.isClicked && (
             <Grid.Row verticalAlign='middle'>
               <Grid.Column>
                 <Button
-                  // as={Link}
-                  // to='/createteam'
                   icon='users'
                   size='huge'
                   color='#34c4f8'
@@ -127,8 +143,6 @@ class TeamContainer extends Component {
               </Grid.Column>
               <Grid.Column>
                 <Button
-                  // as={Link}
-                  // to='/jointeam'
                   icon='add user'
                   size='huge'
                   color='glaucous'
@@ -141,11 +155,9 @@ class TeamContainer extends Component {
               </Grid.Column>
             </Grid.Row>
           )}
-          <Grid.Row>
+          <List celled>
             {this.renderView()}
-            {/* <Grid.Column>{this.renderView()}</Grid.Column> */}
-
-          </Grid.Row>
+          </List>
         </Grid>
       </Segment>
     );

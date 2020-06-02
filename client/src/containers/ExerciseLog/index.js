@@ -36,8 +36,14 @@ class ExerciseLog extends Component {
 
   onSubmit = async (formValues) => {
     try {
-      this.props.addExerciseLog(formValues, () => {
+
+      this.props.addExerciseLog(formValues, (status) => {
+        if (status === 'raceEnd') {
+          alert('Winner winner chicken dinner!')
+        }
+
         this.props.history.push('/dashboard');
+
       });
       // to redirect to the dashboard
       // this.props.history.push('/dashboard');

@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { List, Form, Header, Button, Container, Grid, Image } from 'semantic-ui-react';
+import { List, Form, Header, Button, Container, Grid, Image, Divider } from 'semantic-ui-react';
 // import { addTeams } from '../../../actions/team';
 import { required } from 'redux-form-validators';
 import mascots from '../../../static/mascots';
@@ -17,23 +17,12 @@ function CreateTeam(props) {
   }
   // console.log(mascots)
   return (
-    <Container textAlign='left' >
-      <Form size='large' onSubmit={handleSubmit(props.onSubmit)} style={{ marginRight: 30, marginLeft: 30 }}>
-        <Header>
+    // <Container textAlign='left' >
+      <Form size='large' onSubmit={handleSubmit(props.onSubmit)} style={{ textAlign: 'left', marginBottom: 30, marginRight: 30, marginLeft: 30 }}>
+        <Header >
           Start your Dream Team, create a team today!
-
           </Header>
-        <List as='ol' color='black'>
-          <List.Item as='li' value='*'>
-            Every team can only have up to 5 members.
-          </List.Item>
-          <List.Item as='li' value='*'>
-            Get to your goal by logging in the distance and duration of your runs.
-          </List.Item>
-          <List.Item as='li' value='*'>
-            All exercise must be intentional exercise (Steps walked during you normal day do not count!)
-          </List.Item>
-        </List>
+
         <Grid>
           <Grid.Row>
             <Grid.Column width={8}>
@@ -98,7 +87,7 @@ function CreateTeam(props) {
 
         </Grid>
       </Form>
-    </Container >
+    // {/* </Container > */}
   )
 }
 
