@@ -29,7 +29,6 @@ class App extends Component {
         <Sticky>
           <Navbar authenticated={this.props.authenticated} />
         </Sticky>
-        {/* <div class='mainRenderBody'> */}
         <Grid centered>
           <Grid.Column textAlign='center' >
             <Route exact path='/' component={SignUp} />

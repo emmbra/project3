@@ -8,9 +8,7 @@ import { submit } from 'redux-form';
 
 class User extends Component {
   renderUserLogHistory = () => {
-
     // console.log('HELLO', this.props.getUserTeams.logs);
-
     if (this.props.getUserTeams.length === 0) {
       return <Header content='No teams found!' />;
     } else {
@@ -29,9 +27,6 @@ class User extends Component {
 
   render() {
     console.log("I'M INSIDE USER:", this.props.totalUserDistance[0]);
-    let totalDistanceItem = this.props.totalUserDistance[0];
-    // let totalDistance = totalDistanceItem.totalDistance;
-    console.log(totalDistanceItem)
     // console.log("I'M INSIDE USER and GETTING TEAMS:", this.props.getUserTeams);
     // console.log('TEAM USERS INSIDE USERS:', this.props.teamUsers);
     // const numberOfTeams = this.props.getUserTeams.teams

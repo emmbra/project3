@@ -12,6 +12,7 @@ class SignIn extends Component {
   onSubmit = async (formValues, dispatch) => {
     try {
       const { data } = await axios.post('/api/auth/signin', formValues);
+      console.log(data);
       localStorage.setItem('token', data.token);
       dispatch({ type: AUTH_USER, payload: data.token });
       this.props.history.push('/dashboard');
