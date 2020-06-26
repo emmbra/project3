@@ -61,7 +61,7 @@ class Dashboard extends Component {
     return (
       <div class="mainRenderBody">
         <Grid textAlign='center'>
-          <Header font-size='3em'
+          <Header fontSize='3em'
             style={{ color: '#858585', margin: '1em', textTransform: 'uppercase', width: '300' }}
           > Motivational Quote</Header>
           <Header style={{ margin: 0 }}
@@ -105,7 +105,7 @@ class Dashboard extends Component {
               />
             </Menu>
             {/* <Divider style = {{ margin: '0'}}/> */}
-            <Segment style={{ border: '1px solid #fa7a34', boxShadow: '0 1px 2px 0 rgba(34,36,38,.15)',color: '#fa7a34' }}>
+            {/* <Segment style={{ border: '1px solid #fa7a34', boxShadow: '0 1px 2px 0 rgba(34,36,38,.15)',color: '#fa7a34' }}>
             <Header as='h4' style={{ color: '#34c4f8', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
                 123
                 </Header>
@@ -132,7 +132,7 @@ class Dashboard extends Component {
               Current Event
               </Header>
 
-            </Segment>
+            </Segment> */}
           </Grid.Column>
           <Grid.Column stretched width={12}>
             <Switch>

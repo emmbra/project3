@@ -136,7 +136,7 @@ class TeamContainer extends Component {
                 <Button
                   icon='users'
                   size='huge'
-                  color='#34c4f8'
+                  // color='#34c4f8'
                   content='Create Team'
                   onClick={() => this.renderTeamView('create')}
                 />
@@ -145,7 +145,7 @@ class TeamContainer extends Component {
                 <Button
                   icon='add user'
                   size='huge'
-                  color='glaucous'
+                  // color='glaucous'
                   content='Join Team'
                   // todos={this.props.userTodos.slice(this.state.start, this.state.end)}
                   // teams = {this.props}
