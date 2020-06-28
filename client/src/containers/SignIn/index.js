@@ -5,8 +5,6 @@ import { email, required } from 'redux-form-validators';
 import axios from 'axios';
 import { AUTH_USER } from '../../actions/types';
 
-
-
 class SignIn extends Component {
   // When the user submits the form, send the formValues to /api/auth/signin
   onSubmit = async (formValues, dispatch) => {

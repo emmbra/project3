@@ -35,7 +35,7 @@ class ExerciseLog extends Component {
   };
 
   handleChange = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     //call action creator, take team name, send to reducers, reducer looks at team name, sets state of teamname
     this.props.getTeamUsers(event.target.value, this.props.getUserTeams)
   }

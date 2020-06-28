@@ -40,33 +40,33 @@ class User extends Component {
 
   renderUserDistance = () => {
     if (!this.props.totalUserDistance.length) {
-      return (
-          <Statistic.Value>0</Statistic.Value>
-      );
+      return <Statistic.Value>0</Statistic.Value>;
     } else {
       return (
-          <Statistic.Value>
-            {this.props.totalUserDistance[0].totalDistance}
-          </Statistic.Value>
+        <Statistic.Value>
+          {this.props.totalUserDistance[0].totalDistance}
+        </Statistic.Value>
       );
     }
   };
 
   renderUserTime = () => {
     if (!this.props.totalUserDistance.length) {
-      return (<Statistic.Value>0</Statistic.Value>);
+      return <Statistic.Value>0</Statistic.Value>;
     } else {
       return (
         <Statistic.Value>
           {this.props.totalUserDistance[0].totalTime}
         </Statistic.Value>
-    );
+      );
     }
   };
 
   render() {
     // console.log("I'M INSIDE USER:", this.props);
-    // console.log("I'M INSIDE USER and GETTING TEAMS:", this.props.getUserTeams);
+    console.log("I'M INSIDE USER: ", this.props.getUserTeams.teams);
+    const teams = this.props.getUserTeams.teams;
+    console.log(teams.length);
     // console.log('TEAM USERS INSIDE USERS:', this.props.teamUsers);
     // const numberOfTeams = this.props.getUserTeams.teams
     return (
@@ -101,7 +101,7 @@ class User extends Component {
             <Grid.Column textAlign="center">
               <Statistic size="mini">
                 <Statistic.Label>Teams</Statistic.Label>
-                <Statistic.Value>2</Statistic.Value>
+                <Statistic.Value>{teams.length}</Statistic.Value>
               </Statistic>
             </Grid.Column>
             <Grid.Column textAlign="center">

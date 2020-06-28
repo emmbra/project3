@@ -24,7 +24,7 @@ class Event extends Component {
     );
   };
   renderSelectTeam = (field) => {
-    console.log(field.input);
+    // console.log(field.input);
     return (
       <select {...field.input}>
         {this.getTeamList()}
@@ -46,21 +46,21 @@ class Event extends Component {
     }
   };
   handleChange = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     //call action creator, take team name, send to reducers, reducer looks at team name, sets state of teamname
     this.props.getTeamUsers(event.target.value, this.props.getUserTeams);
   };
   onSubmit = async (formValues) => {
-    console.log("I am values", formValues)
+    // console.log("I am values", formValues)
     try {
       this.props.joinEvent(formValues.teamId);
-      console.log(formValues);
+      // console.log(formValues);
     } catch (e) {
       console.log(e);
     }
   };
   getTeamItem = () => {
-    console.log("IN EVENTS", this.props.eventList.teams);
+    // console.log("IN EVENTS", this.props.eventList.teams);
     return this.props.eventList?.teams?.length !== 0 && this.props.eventList?.teams?.map((team) => {
       // console.log("teams")
       // console.log(name)
@@ -93,8 +93,8 @@ class Event extends Component {
   //create level1panel for each time
   // render on the page
   render() {
-    console.log("EVENTLIST:", this.props.eventList);
-    console.log("PROPS:", this.props);
+    // console.log("EVENTLIST:", this.props.eventList);
+    // console.log("PROPS:", this.props);
     const { handleSubmit } = this.props;
     return (
       <div>
