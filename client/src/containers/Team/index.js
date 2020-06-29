@@ -22,13 +22,12 @@ class Team extends Component {
   };
 
   renderUsersByTeamId = (username) => {
-        console.log('HELLO MASCOT', this.props.getUserTeams);
-
+        // console.log('HELLO MASCOT', this.props.getUserTeams);
     if (this.props.teamUsers.length === 0) {
       return <Header as='h5' content='Select a team to view members!' />
     } else {
       return this.props.teamUsers.map(({ username }) => {
-        console.log(this.props.users);
+        // console.log(this.props.users);
         return <List.Item value={username}>{username}</List.Item>
         // <List.Item value={username}>{username}</List.Item>
       });
@@ -54,7 +53,7 @@ class Team extends Component {
   //     }
 
   handleChange = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     //call action creator, take team name, send to reducers, reducer looks at team name, sets state of teamname
     this.props.getTeamUsers(event.target.value, this.props.getUserTeams)
   }

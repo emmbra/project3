@@ -55,8 +55,8 @@ class Dashboard extends Component {
 
   render() {
     // console.log(this.props.user);
-    console.log("TEAM?:", this.props.user);
-    console.log("DASH:", this.props.getTotalUserDistance);
+    // console.log("TEAM?:", this.props.user);
+    // console.log("DASH:", this.props.getTotalUserDistance);
     const { pathname } = this.props.location;
     return (
       <div class="mainRenderBody">
