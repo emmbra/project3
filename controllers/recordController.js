@@ -1,19 +1,16 @@
 const { Record } = require('../models');
 
 module.exports = {
-  // getRecordByUserID
-  getRecordsByUserId: async (req, res) => {
+  // getRecords
+  getRecords: async (req, res) => {
     try {
-      // const records = await Record.find();
-      const { userId } = req.params;
-      // console.log(userId);
-      const records = await Record.findById(userId).populate('Team').populate('Event');
+      const records = await Record.find().populate('winningTeamId').populate('event');
       if (!records) {
         return res.status(200).json({ error: 'You have no records yet!' });
       }
       return res.json(records);
-    } catch (error) {
-      return res.status(403).json({ error });
+    } catch (e) {
+      return res.status(403).json({ e });
     }
   },
   // ADD RECORDS IS NOT DONE

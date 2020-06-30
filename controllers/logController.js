@@ -144,7 +144,6 @@ module.exports = {
       return res.status(403).json({ e });
     }
   },
-
   // addExerciseLog: async (req, res) => {
   //   console.log(req.body);
   //   const { time, distance, teamId } = req.body;
