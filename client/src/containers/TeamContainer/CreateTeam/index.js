@@ -11,7 +11,6 @@ let sourceImg;
 function CreateTeam(props) {
   const { handleSubmit } = props;
   if (props.createteam && props.createteam.values && props.createteam.values.mascotIMG) {
-    console.log(props.createteam.values.mascotIMG);
     sourceImg = props.createteam.values.mascotIMG;
   }
   // console.log(mascots)

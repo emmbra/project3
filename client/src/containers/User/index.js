@@ -104,7 +104,7 @@ class User extends Component {
                 <Statistic.Value>{teams.length}</Statistic.Value>
               </Statistic>
             </Grid.Column>
-            <Grid.Column textAlign="center">
+            {/* <Grid.Column textAlign="center">
               <Statistic size="mini">
                 <Statistic.Label>Active Events</Statistic.Label>
                 <Statistic.Value>1</Statistic.Value>
@@ -115,7 +115,7 @@ class User extends Component {
                 <Statistic.Label>Events Won</Statistic.Label>
                 <Statistic.Value>1</Statistic.Value>
               </Statistic>
-            </Grid.Column>
+            </Grid.Column> */}
           </Grid.Row>
         </Grid>
 

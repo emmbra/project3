@@ -14,7 +14,8 @@ const RecordSchema = new Schema({
     type: Number,
   },
   winningTeamId: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Team',
   },
   losingTeamId: {
     type: String,

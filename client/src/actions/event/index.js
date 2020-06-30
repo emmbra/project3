@@ -31,9 +31,6 @@ export const getEvent = () => async dispatch => {
 }
 
 export const joinEvent = (teamId) => async dispatch => {
-  console.log("HEllo");
-  console.log(teamId);
-  console.log("Happening")
   try {
     const { data } = await axios.post('/api/event', {teamId}, { headers: { 'authorization': localStorage.getItem('token') }});
     console.log(data);

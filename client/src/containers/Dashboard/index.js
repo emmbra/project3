@@ -13,6 +13,7 @@ import ExerciseLog from '../ExerciseLog';
 import { getUserById } from '../../actions/user';
 import { getEvent } from '../../actions/event';
 import { getTotalUserDistance } from '../../actions/log';
+import { getRecords } from '../../actions/records';
 
 import quotes from '../../static/quotes'
 
@@ -23,6 +24,7 @@ class Dashboard extends Component {
     this.props.getUserById();
     this.props.getEvent();
     this.props.getTotalUserDistance();
+    this.props.getRecords();
   }
 
   shuffled = () => {
@@ -147,7 +149,8 @@ class Dashboard extends Component {
               <Route exact path='/dashboard/event' render={() => <Events
                 getUserTeams={this.props.user.teams}
               />} />
-              <Route exact path='/dashboard/records' render={() => <Records />} />
+              <Route exact path='/dashboard/records' render={() => <Records
+                getRecords={this.props.records} />} />
               <Route exact path='/dashboard/exerciselog' render={() => <ExerciseLog
                 getUserTeams={this.props.user.teams}
               />} />
@@ -168,7 +171,8 @@ function mapStateToProps(state) {
     user: state.users.currentUser,
     myTeams: state.users.currentUser.teams,
     totalUserDistance: state.log.totalUserDistance,
+    records: state.records,
   };
 }
 
-export default connect(mapStateToProps, { getUserById, getEvent, getTotalUserDistance })(Dashboard);
+export default connect(mapStateToProps, { getUserById, getEvent, getTotalUserDistance, getRecords })(Dashboard);
