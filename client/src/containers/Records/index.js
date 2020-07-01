@@ -45,7 +45,7 @@ class Records extends Component {
                 <Header
                   style={{ textTransform: "uppercase", color: "#39bc78" }}
                 >
-                  3,000 {distanceCovered}
+                  3,000
                 </Header>
               </Grid.Column>
 
@@ -53,7 +53,7 @@ class Records extends Component {
                 <Header
                   style={{ textTransform: "uppercase", color: "#39bc78" }}
                 >
-                  500 {calculatedTime}
+                  500
                 </Header>
               </Grid.Column>
 

@@ -1,10 +1,6 @@
 import {
   GET_USER_BY_ID,
   GET_USER_BY_ID_ERROR,
-  // GET_ALL_USER_EMAILS,
-  // GET_ALL_USER_EMAILS_ERROR,
-  // GET_ALL_USER_USERNAMES,
-  // GET_ALL_USER_USERNAMES_ERROR,
 } from '../types';
 import axios from 'axios';
 

@@ -1,68 +1,60 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Run to the sun
 
-## Available Scripts
+[Run to the sun](https://runtothesun.herokuapp.com/)
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+In times like these, with the world environment changing so often, we need to be adaptable. Adaptable to working from home, juggling a full-time job while home schooling children, and distancing ourselves from friends and family.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Group exercises, classes and bootcamps have been a huge success over the past several years, it’s motivating to feed off the energy of the class and push yourself to new limits with your classmates. However, the recent social distancing guidance has made group classes impossible, which has caused people to shift to virtual group classes and events. Run to the sun is designed to allow runners to participate in team based virtual relays, where you specify a location you want to “run” to (i.e. San Francisco to New York or 2,900 miles), as a team you track your individual runs until the combined miles equal your goal. Upon reaching your goal you can celebrate by traveling to your desired location as a group, once social distancing restrictions are lifted. The travel aspect will allow for the monetization of the app through integration with third party travel agencies using a revenue share model. This app will keep you motivated to work out, help you stay in-touch with your friends and eagerly anticipate the end of social distancing with a group vacation.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Aspects included: dashboard of user stats, team information, current event, record, and an exercise log.
 
-### `npm test`
+"Alone we can do so little, together we can do so much." --Helen Keller-- 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
 
-### `npm run build`
+* MongoDB
+* Express
+* React
+* Redux
+* Node.js
+* Semantic UI React
+* HTML5
+* CSS3
+* JavaScript
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Challenges
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+* Aggregating and summing information from the database is something new we’d never done before, but we needed to do it in order to check if the race was finished. 
+* Using redux, redux-form, and mapping state to the props for the first time. We ran into a few challenges with this process until we’d done it a few times and absorbed the pattern and workflow for putting information into and grabbing information from the state.
+* Inter-relationships between schemas and seed data.
+* Routing: to use react router or conditional rendering?
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Directions for future Development
 
-### `npm run eject`
+* Add ability for users to create events.
+* Add multi-event support.
+* Add OAuth so users can login with Facebook, Google, etc.
+* Add social media elements so users can interact.
+* Add ability for teams to challenge other teams.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Screenshots
+![SignUp](./client/src/assets/rsScreenshot1.png)
+![Exerciselog](./client/src/assets/rsScreenshot2.png)
+![Event](./client/src/assets/rsScreenshot3.png)
+![User](./client/src/assets/rsScreenshot4.png)
+![Info](./client/src/assets/rsScreenshot5.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Credits
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Thank you to Berkeley Coding Bootcamp, our instructor Emmanual Jucaban, and our TAs Musa Akbari and Sergio Di Martino for answering all our questions and helping us along the way.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Collaborators on this project include:
+* [Christina Leung](https://github.com/cgleungsf)
+* [Tassia Shibuya](https://github.com/Tassim)
+* [Emmett Brady](https://github.com/emmbra)
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit).

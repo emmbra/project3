@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu, Grid, Statistic, Icon, Header, Container, Divider, Segment } from 'semantic-ui-react';
-
+import { Menu, Grid, Header, Divider } from 'semantic-ui-react';
 
 import User from '../User';
 import Team from '../Team';
@@ -17,7 +16,6 @@ import { getRecords } from '../../actions/records';
 
 import quotes from '../../static/quotes'
 
-
 class Dashboard extends Component {
 
   componentDidMount() {
@@ -28,7 +26,6 @@ class Dashboard extends Component {
   }
 
   shuffled = () => {
-    // console.log(Object.keys(quotes).length)
     let randomNum = Math.floor(Math.random() * 5);
     let randomQuote = quotes.quotes[randomNum];
     let quoteText = randomQuote.text;
@@ -106,35 +103,6 @@ class Dashboard extends Component {
                 to='/dashboard/exerciselog'
               />
             </Menu>
-            {/* <Divider style = {{ margin: '0'}}/> */}
-            {/* <Segment style={{ border: '1px solid #fa7a34', boxShadow: '0 1px 2px 0 rgba(34,36,38,.15)',color: '#fa7a34' }}>
-            <Header as='h4' style={{ color: '#34c4f8', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
-                123
-                </Header>
-                <Header as='h4' style={{ color: '#858585', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
-                Miles Run
-              </Header>
-
-              <Divider style = {{ margin: '0.2'}}/>
-
-              <Header as='h4' style={{ color: '#34c4f8', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
-              1887
-                </Header>
-                <Header as='h4' style={{ color: '#858585', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
-              Miles to Event Goal
-              </Header>
-
-              <Divider style = {{ margin: '0.2'}}/>
-
-              <Header as='h4' style={{ color: '#34c4f8', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
-              <Icon name='sun' />
-              Run to the Sun
-                </Header>
-                <Header as='h4' style={{ color: '#858585', display: 'inline-block', padding: '0px 10px 0px 0px', margin: '0em 0em', textTransform: 'uppercase', }}>
-              Current Event
-              </Header>
-
-            </Segment> */}
           </Grid.Column>
           <Grid.Column stretched width={12}>
             <Switch>

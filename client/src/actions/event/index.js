@@ -5,10 +5,6 @@ import {
   GET_EVENT_ERROR,
   JOIN_EVENT,
   JOIN_EVENT_ERROR
-  // EDIT_EVENT,
-  // EDIT_EVENT_ERROR,
-  // DELETE_EVENT,
-  // DELETE_EVENT_ERROR,
 } from '../types';
 import axios from 'axios';
 
@@ -20,7 +16,6 @@ export const addEvent = () => async dispatch => {
     dispatch({ type: ADD_EVENT_ERROR, payload: e })
   }
 }
-
 export const getEvent = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/event', { headers: { 'authorization': localStorage.getItem('token') }});

@@ -60,7 +60,7 @@ class Event extends Component {
     }
   };
   getTeamItem = () => {
-    // console.log("IN EVENTS", this.props.eventList.teams);
+    console.log("IN EVENTS", this.props.eventList.teams);
     return this.props.eventList?.teams?.length !== 0 && this.props.eventList?.teams?.map((team) => {
       // console.log("teams")
       // console.log(name)
