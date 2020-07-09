@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Segment, Button, Header, Form, Icon, Container, Grid, List, Divider, Table } from 'semantic-ui-react';
+import { Button, Header, Form, Icon, Container, Grid, List, Divider,} from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
 import { getTeamUsers } from '../../actions/team';
 
-import mascots from '../../static/mascots';
+// import mascots from '../../static/mascots';
 
 class Team extends Component {
 

@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import {
   Segment,
-  Accordion,
-  Button,
   Form,
   Header,
+  Button,
   List,
   Progress,
   Grid,
-  Checkbox,
 } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 import { compose } from "redux";

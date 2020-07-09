@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, List, Button, Popup, Form, Segment, Divider, Icon, Grid, Table } from 'semantic-ui-react';
+import { Header, Button, Popup, Form, Icon, Table } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import mascots from '../../../static/mascots';

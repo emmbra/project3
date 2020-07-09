@@ -9,8 +9,6 @@ import {
   Button,
   Dimmer,
   Header,
-  Icon,
-  Statistic,
 } from "semantic-ui-react";
 import { getRecords } from "../../actions/records";
 import mascots from "../../static/mascots";

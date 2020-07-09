@@ -5,13 +5,12 @@ import {
   Statistic,
   Table,
   Header,
-  Container,
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { getTeamUsers } from "../../actions/team";
 import moment from "moment";
-import { submit } from "redux-form";
+// import { submit } from "redux-form";
 
 class User extends Component {
   renderUserLogHistory = () => {

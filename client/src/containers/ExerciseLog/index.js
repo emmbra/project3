@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { Segment, Button, Header, Form, Divider, Modal, Image } from 'semantic-ui-react'
 import { addExerciseLog } from '../../actions/log';
 import { getTeamUsers } from '../../actions/team';
-import {winImage} from '../../assets/winner.png';
+// import {winImage} from '../../assets/winner.png';
 
 
 class ExerciseLog extends Component {
