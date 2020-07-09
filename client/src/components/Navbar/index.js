@@ -6,7 +6,7 @@ import placeholder from '../../assets/group-of-runners.jpg';
 export default (props) => (
   <Menu as='h5'>
     <div>
-      <img class='heroImage' src={placeholder} alt='heroImage' height='90px' />
+      <img className='heroImage' src={placeholder} alt='heroImage' height='90px' />
     </div>
     {props.authenticated ? (
       <Header
@@ -61,20 +61,20 @@ export default (props) => (
       </Menu.Item>
 
       {props.authenticated ? null : (
-        <Menu.Item as={Link} to='/' content='Sign Up'>
+        <Menu.Item as={Link} to='/' label='Sign Up'>
           <Header style={{ color: '#858585', textTransform: 'uppercase' }}>
             Sign Up
           </Header>{' '}
         </Menu.Item>
       )}
       {props.authenticated ? (
-        <Menu.Item as={Link} to='/signout' content='Sign Out'>
+        <Menu.Item as={Link} to='/signout' label='Sign Out'>
           <Header style={{ color: '#858585', textTransform: 'uppercase' }}>
             Sign Out
           </Header>{' '}
         </Menu.Item>
       ) : (
-          <Menu.Item as={Link} to='/signin' content='Sign In'>
+          <Menu.Item as={Link} to='/signin' label='Sign In'>
             <Header style={{ color: '#858585', textTransform: 'uppercase' }}>
               {' '}
             Sign In

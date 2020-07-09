@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Divider, Container, } from 'semantic-ui-react';
+import { Divider, } from 'semantic-ui-react';
 import runningMan from '../../assets/running_stick.png'
 
 export default class Footer extends Component {
   render() {
     return (
-      <div className = 'footer'>
-        {/* <Container  > */}
+      <footer>
           <Divider
             as='h5'
             className='header'
@@ -15,13 +14,12 @@ export default class Footer extends Component {
           >
             <p>Created with FUN by: </p>
             <img src={runningMan} alt='logo' height='20px' />
-            <a href="https://github.com/emmbra" target="_blank" rel='noreferrer'> Emmett Brady, </a>
-            <a href="https://github.com/Tassim" target="_blank" rel='noreferrer'>Tassia Shibuya, & </a>
-            <a href="https://github.com/cgleungsf" target="_blank" rel='noreferrer'>Christina Leung </a>
+            <a href="https://github.com/emmbra" target="_blank" rel='noopener noreferrer'> Emmett Brady, </a>
+            <a href="https://github.com/Tassim" target="_blank" rel='noopener noreferrer'>Tassia Shibuya, & </a>
+            <a href="https://github.com/cgleungsf" target="_blank" rel='noopener noreferrer'>Christina Leung </a>
             <img src={runningMan} alt='logo' height='20px' />
           </Divider>
-        {/* </Container> */}
-      </div>
+</footer>
     );
   }
 }

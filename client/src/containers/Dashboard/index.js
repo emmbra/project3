@@ -58,7 +58,7 @@ class Dashboard extends Component {
     // console.log("DASH:", this.props.getTotalUserDistance);
     const { pathname } = this.props.location;
     return (
-      <div class="mainRenderBody">
+      <div className="mainRenderBody">
         <Grid textAlign='center'>
           <Header fontSize='3em'
             style={{ color: '#858585', margin: '1em', textTransform: 'uppercase', width: '300' }}

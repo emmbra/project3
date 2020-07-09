@@ -6,12 +6,9 @@ import {
   Grid,
   Form,
   Radio,
-  Container,
   Divider,
   Segment,
   List,
-  Table,
-  Header,
   Icon,
 } from 'semantic-ui-react';
 import { addTeams, addUserToTeam, getAllTeams } from '../../actions/team';
